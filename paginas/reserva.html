@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu bicicleta</title>
+</head>
+<body>
+    <h1>Reserva tu bicicleta</h1>
+    <p>Completa el formulario para reservar tu bicicleta:</p>
+    <form action="#" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="bicicleta">Bicicleta:</label>
+        <select id="bicicleta" name="bicicleta" required>
+            <option value="">Selecciona una opción</option>
+            <option value="urbana">Urbana</option>
+            <option value="montaña">Montaña</option>
+            <option value="eléctrica">Eléctrica</option>
+        </select>
+        <br><br>
+        <label for="duracion">Duración:</label>
+        <select id="duracion" name="duracion" required>
+            <option value="">Selecciona una opción</option>
+            <option value="1hora">1 hora</option>
+            <option value="mediodia">Medio día</option>
+            <option value="diacompleto">Día completo</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Reservar">
+    </form>
+</body>
+</html>
