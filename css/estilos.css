@@ -1,0 +1,81 @@
+body {
+    background-color: #FAF6EF;
+    color: #5B6470;
+    font-family: sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+}
+h1, h2, h3, dt {
+    color: #14213D;
+}
+
+/* Menú de Navegación */
+nav ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+nav ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+nav a {
+    color: #14213D;            /* Azul Noche */
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #1E7A4F;            /* Verde Ruta al pasar el mouse */
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #ffffff;
+}
+caption {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #14213D;
+}
+th, td {
+    border: 1px solid #5B6470;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #14213D; /* Azul Noche */
+    color: #FAF6EF;            /* Texto Crema */
+}
+fieldset {
+    border: 2px solid #14213D;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 10px;
+    color: #14213D;
+}
+button[type="submit"], input[type="submit"] {
+    background-color: #F39A2B; /* Naranja Pedal */
+    color: #14213D;            /* Azul Noche (Ratio 6.4:1 - Apto Texto Normal) */
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+button[type="submit"]:hover, input[type="submit"]:hover {
+    background-color: #14213D;
+    color: #FAF6EF;            /* Invierte colores al pasar el mouse */
+}
+strong {
+    color: #1E7A4F;            /* Verde Ruta (Apto solo para texto grande/destacado) */
+}

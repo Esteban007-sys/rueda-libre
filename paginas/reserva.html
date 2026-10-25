@@ -1,6 +1,7 @@
 <!DOCTYPE html> 
 <html lang="es">
 <head>
+    <link rel="stylesheet" href="../css/estilos.css">
     <link rel="icon" href="../img/favicon.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,50 +11,122 @@
     <header>
         <h1>Reserva tu bicicleta</h1>
         <p>Completa el formulario para reservar tu bicicleta, o puedes deslizar a la parte inferior para consultar los horarios de atención:</p>
-                    <nav>
-                <ul>
-                    <li><a href="../index.html">Inicio</a></li>
-                    <li><a href="nuestroservicios.html">Tarifas y rutas</a></li>
-                    <li><a href="reserva.html">Reservas</a></li>
-                </ul>
-            </nav>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="nuestroservicios.html">Tarifas y rutas</a></li>
+                <li><a href="reserva.html">Reservas</a></li>
+            </ul>
+        </nav>
     </header>
   
-    <section id="horarios de atención">
-    <dl>
-        <dt><strong>Horarios de atención</strong></dt>
-        <dd>Lunes a viernes: 8:00 a.m. - 6:00 p.m.</dd>
-        <dd>Sábados: 9:00 a.m. - 4:00 p.m.</dd>
-        <dd>Domingos y festivos: Cerrado</dd>
-    </df>
-    </section>
-    <p><strong>Completa el formulario para reservar tu bicicleta:</strong></p>
-    <form action="#" method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br><br>
-        <label for="bicicleta">Bicicleta:</label>
-        <select id="bicicleta" name="bicicleta" required>
-            <option value="">Selecciona una opción</option>
-            <option value="urbana">Urbana</option>
-            <option value="montaña">Montaña</option>
-            <option value="eléctrica">Eléctrica</option>
-        </select>
-        <br><br>
-        <label for="duracion">Duración:</label>
-        <select id="duracion" name="duracion" required>
-            <option value="">Selecciona una opción</option>
-            <option value="1hora">1 hora</option>
-            <option value="mediodia">Medio día</option>
-            <option value="diacompleto">Día completo</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Reservar">
-    </form>
+    <main>
+        <!-- SECCIÓN DE HORARIOS MANTENIENDO TU ESTRUCTURA -->
+        <aside>
+            <section id="horarios de atención">
+                <dl>
+                    <dt><strong>Horarios de atención</strong></dt>
+                    <!-- Se actualizaron los textos con las reglas comerciales del cliente para este reto -->
+                    <dd>Lunes a viernes: 7:00 a.m. - 7:00 p.m.</dd>
+                    <dd>Sábados, domingos y festivos: 6:00 a.m. - 2:00 p.m.</dd>
+                </dl>
+            </section>
+        </aside>
+
+        <!-- SECCIÓN DE FORMULARIO SIGUIENDO TU IDENTIFICADOR Y PARRAFO -->
+        <section id="formulario de reserva">
+            <p><strong>Completa el formulario para reservar tu bicicleta:</strong></p>
+            <form action="#" method="post">
+                
+                <!-- GRUPO 1: TUS DATOS -->
+                <fieldset>
+                    <legend>Tus datos</legend>
+                    <br>
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre_completo" required minlength="3">
+                    <br><br>
+                    
+                    <label for="documento">Número de documento:</label>
+                    <input type="text" id="documento" name="numero_documento" required pattern="[0-9]{6,10}" title="El documento debe contener solo números, entre 6 y 10 dígitos.">
+                    <br><br>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <br><br>
+
+                    <label for="celular">Celular:</label>
+                    <input type="tel" id="celular" name="telefono_celular" required pattern="3[0-9]{9}" title="El celular debe tener 10 dígitos numéricos y comenzar con el número 3.">
+                    <br><br>
+                </fieldset>
+                <br>
+
+                <!-- GRUPO 2: TU ALQUILER -->
+                <fieldset>
+                    <legend>Tu alquiler</legend>
+                    <br>
+                    <label for="fecha">Fecha del alquiler:</label>
+                    <input type="date" id="fecha" name="fecha_alquiler" required min="2026-11-01" max="2026-12-31">
+                    <br><br>
+
+                    <label for="bicicleta">Bicicleta:</label>
+                    <select id="bicicleta" name="bicicleta" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="urbana">Urbana</option>
+                        <option value="montaña">Montaña</option>
+                        <option value="eléctrica">Eléctrica</option>
+                    </select>
+                    <br><br>
+
+                    <fieldset>
+                        <legend>Plan (Selecciona una opción):</legend>
+                        <p>
+                            <input type="radio" id="plan-1h" name="plan_alquiler" value="1hora" required>
+                            <label for="plan-1h">1 hora</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="plan-medio" name="plan_alquiler" value="mediodia">
+                            <label for="plan-medio">Medio día</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="plan-completo" name="plan_alquiler" value="diacompleto">
+                            <label for="plan-completo">Día completo</label>
+                        </p>
+                    </fieldset>
+                    <br>
+
+                    <label for="cantidad">Cantidad de bicicletas:</label>
+                    <input type="number" id="cantidad" name="cantidad_bicicletas" required min="1" max="6">
+                    <br><br>
+
+                    <label for="recorrido">Recorrido guiado:</label>
+                    <select id="recorrido" name="recorrido_guiado">
+                        <option value="ninguno">Ninguno</option>
+                        <option value="rio_parques">Río y Parques</option>
+                        <option value="sabores_barrio">Sabores de Barrio</option>
+                        <option value="reto_palmas">Reto Las Palmas</option>
+                    </select>
+                    <br><br>
+
+                    <label for="comentarios">Comentarios:</label><br>
+                    <textarea id="comentarios" name="comentarios" rows="4" cols="40" maxlength="300"></textarea>
+                    <br><br>
+                </fieldset>
+                <br>
+
+                <!-- GRUPO 3: CONFIRMACIÓN -->
+                <fieldset>
+                    <legend>Confirmación</legend>
+                    <br>
+                    <input type="checkbox" id="politicas" name="politicas_alquiler" value="aceptado" required>
+                    <label for="politicas">Acepto las políticas de alquiler del establecimiento.</label>
+                    <br><br>
+                </fieldset>
+                <br>
+
+                <input type="submit" value="Reservar">
+            </form>
         </section>
+    </main>
 
     <footer><!-- PIE DE PÁGINA -->
         <p><strong>Rueda Libre</strong></p>
