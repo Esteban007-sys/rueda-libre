@@ -1,15 +1,29 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
+    <link rel="icon" href="../img/favicon.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestros servicios</title>
+    <title>Rueda libre | Alquiler de Bicicletas</title>
 </head>
 <body>
-
+  <img src="../img/logo.jpg" alt="Logotipo oficial de Rueda Libre" width="300">
+      <section> <!-- CABECERA DE LA PÁGINA -->
+        <header>
+            <h1>Nuestros servicios</h1>
+            <p>Bienvenido a Rueda Libre, el compañero de tus verdaderas aventuras urbanas y naturales. Si deseas visitarnos directamente, puedes ir a nuestra sección de <a href="#encuentranos">Encuéntranos</a>.</p>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="nuestroservicios.html">Tarifas y rutas</a></li>
+                    <li><a href="reserva.html">Reservas</a></li>
+                </ul>
+            </nav>
+          </header>
+    </section>
+<!--PRIMERA TABLA, TARIFAS Y SERVICIOS -->
   <table border="1">
     <caption>Tarifas y servicios</caption>
-    <p> Todas las tarifas incluyen casco y candado. Los recorridos salen sábados y domingos a las 7:00 a. m. Qué llevar: ropa cómoda, agua, protector solar y documento de identidad.</p>
     <thead>
       <tr>
         <th scope="col">Tipo de bicicleta</th>
@@ -20,25 +34,26 @@
     </thead>
     <tbody>
       <tr>
-        <td>Urbana</td>
+        <th scope="row">Urbana</th>
         <td>$5.000</td>
         <td>$15.000</td>
         <td>$25.000</td>
       </tr>
       <tr>
-        <td>Montaña</td>
+        <th scope="row">Montaña</th>
         <td>$8.000</td>
         <td>$22.000</td>
         <td>$35.000</td>
       </tr>
       <tr>
-        <td>Eléctrica</td>
+        <th scope="row">Eléctrica</th>
         <td>$12.000</td>
         <td>$35.000</td>
         <td>$55.000</td>
       </tr>
     </tbody>
   </table>
+<!--SEGUNDA TABLA, RECORRIDOS GUIADOS -->
   <section id="recorridos-guiados">
     <table border="1">
       <caption>Recorridos guiados</caption>
@@ -75,6 +90,25 @@
         </tr>
       </tbody>
     </table>
-  </section>
+    <a href="reserva.html">Reserva ahora</a></li>
+    <section>
+      <h2>Información adicional</h2>
+      <p>Todas las tarifas incluyen casco y candado. Los recorridos salen sábados y domingos a las 7:00 a. m.</p> 
+      <p><strong>Qué llevar:</strong></p>
+      <ul>
+        <li>ropa cómoda</li>
+        <li>agua</li>
+        <li>protector solar</li>
+        <li>documento de identidad</li>
+      </ul>
+    </section>
+    <footer><!-- PIE DE PÁGINA -->
+        <p><strong>Rueda Libre</strong></p>
+        <p><a href="https://wa.me" target="_blank">Escríbenos por WhatsApp aquí para reservar</a></p>
+        <p>Recuerda que también contamos con un correo para sugerencias: <a href="mailto:hola@ruedalibre.ejemplo">hola@ruedalibre.ejemplo</a></p>
+        <p><a href="../index.html">Regresar al menú anterior</a></p>
+        <p>&copy; 2024 Rueda Libre. Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
