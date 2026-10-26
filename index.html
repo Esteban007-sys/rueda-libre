@@ -1,30 +1,36 @@
 <!DOCTYPE html> 
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="icon" href="img/favicon.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rueda libre | Alquiler de Bicicletas</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <!-- CUERPO DE LA PÁGINA, NO SE PUEDE PONER UNA SECCIÓN EN EL HEADER, ES PREFERIBLE UN HEADER DENTRO DE UNA SECCIÓN -->
 <body>
 
     <section> <!-- ESTA ES LA PRIMERA SECCIÓN -->
         <header id="header-principal">
-            <img src="img/logo.png" alt="Logo de Rueda Libre" width="100"> 
-        <p>Bienvenido a Rueda Libre, el compañero de tus verdaderas aventuras urbanas y naturales. Si deseas visitarnos directamente, puedes ir a nuestra sección de <a href="#encuentranos">Encuéntranos</a>.</p>
-        
         <h1>Rueda Libre</h1>
+        <div class="logo-principal">
+        <img src="img/logo.png" alt="Logo de Rueda Libre" width="100"> 
+        <p>Bienvenido a Rueda Libre, el compañero de tus verdaderas aventuras urbanas y naturales. Si deseas visitarnos directamente, puedes ir a nuestra sección de <a href="#encuentranos">Encuéntranos</a>.</p>
+        </div>
         <nav>
+        
     <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="paginas/nuestroservicios.html">Tarifas y rutas</a></li>
         <li><a href="paginas/reserva.html">Reservas</a></li>
     </ul>
     
-</nav>
-        </header>
+        </nav>
+        
+    </header>
     </section>
 
 </section>
@@ -38,17 +44,29 @@
         <h2>Nuestros servicios</h2>
         <p>Descubre nuestras increíbles opciones de alquiler y tours guiados.</p>
         <a href="paginas/nuestroservicios.html" target="_blank">Explora nuestras aventuras dinámicas aquí</a>
+    <section class="recorridos-servicios"> <!-- ESTA ES LA CUARTA SECCIÓN -->
         
-        <h3>Alquiler Diario</h3>
-        <p>Disfruta de una bicicleta durante todo el día para tus recorridos largos. <strong>Incluye casco y candado</strong> de seguridad sin costo adicional. <em>Sujeto a disponibilidad de existencias.</em></p>
-       
-        <img src="img/bicicletazul.png" alt="Bicicleta urbana de color azul lista para alquilar" width="200">
-        <img src="img/carreras.jpg" alt="Bicicleta de carreras lista para competir" width="200">
-        <h3>Tours Guiados</h3>
-        <p>Únete a nuestros grupos de fin de semana para descubrir rutas históricas. <strong>Reserva con 24 horas de anticipación</strong> para asegurar tu cupo. <em>Los guías hablan español e inglés.</em></p>
+        <article class="recorrido1">
+            <h2>Alquiler Diario</h2>
+            <p>Explora la ciudad a tu propio ritmo con nuestras bicicletas de alquiler diario.
+           <div> <img src="img/bicicletazul.png" alt="Bicicleta urbana de color azul lista para alquilar" width="200"></div>
+        </article>
+        
+        <article class="recorrido2">
+            <h2>Tours Guiados</h2>
+            <p>Únete a nuestros grupos de fin de semana para descubrir rutas históricas. <strong>Reserva con 24 horas de anticipación</strong> para asegurar tu cupo. <em>Los guías hablan español e inglés.</em></p>
+            <div><img src="img/tourguiado.png" alt="Grupo de personas en un tour guiado" width="200"></div>
+        </article>
+        
+        <article class="recorrido3">
+            <h2>Alquiler por Horas</h2>
+            <p>Experimenta la ciudad a tu ritmo con nuestro servicio de alquiler por horas.
+            <div><img src="img/reloj-bici-transparente.png" alt="Bicicleta urbana en forma de reloj" width="200"></div>
+        </article>
     </section>
+    
 
-    <section> <!-- ESTA ES LA CUARTA SECCIÓN -->
+    <section> <!-- ESTA ES LA 5 SECCIÓN -->
         <h2>¿Cómo alquilar?</h2>
         <p>Sigue estos cuatro sencillos pasos para empezar a rodar:</p>
         <ol>
@@ -71,6 +89,16 @@
     <section> <!-- ESTA ES LA QUINTA SECCIÓN -->
         <h2 id="encuentranos">Encuéntranos</h2>
         <p>Estamos ubicados en San Javier el Danubio. Puedes ver nuestra ubicación exacta en el <a href="https://www.google.com/maps/place/Cra.+90+%23+44B-58,+El+Danubio,+Medellín,+La+América,+Medellín,+Antioquia/data=!4m2!3m1!1s0x8e442977282c5b17:0x79a49101d5c8d92?sa=X&ved=1t:242&ictx=111" target="_blank">Mapa de Google</a>.</p>
+        <div class="contenedor-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15864.278281567436!2d-75.6208599932553!3d6.254564929816611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442979f4c74715%3A0x407c077a248f420e!2sEl%20Danubio%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1792980490652!5m2!1ses!2sco" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>>
+        </div>
         <p>¿Tienes dudas o sugerencias? Escríbenos directamente a nuestro correo electrónico: <a href="mailto:rueda@ruedalibre.com">rueda@ruedalibre.com</a></p>
     </section>
 
@@ -78,7 +106,7 @@
     <footer><!-- PIE DE PÁGINA -->
         <p><strong>Rueda Libre</strong></p>
         <p><a href="https://wa.me" target="_blank">Escríbenos por WhatsApp aquí para reservar</a></p>
-        <p>Recuerda que también contamos con un correo para sugerencias: <a href="mailto:hola@ruedalibre.ejemplo">hola@ruedalibre.ejemplo</a></p>
+        <p>Recuerda que también contamos con un correo para sugerencias: <a href="mailto:rueda@ruedalibre.com">rueda@ruedalibre.com</a></p>
         <p><a href="../index.html">Regresar al menú anterior</a></p>
         <p>&copy; 2024 Rueda Libre. Todos los derechos reservados.</p>
     </footer>
