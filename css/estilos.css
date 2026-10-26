@@ -1,12 +1,35 @@
+:root {
+    --color-verde: #1E7A4F;
+    --color-azul: #14213D;
+    --color-crema: #FAF6EF;
+    --color-naranja: #F39A2B;
+    --color-gris: #5B6470;
+
+    --fuente-titulos: 'Montserrat', sans-serif;
+    --fuente-textos: 'Open Sans', sans-serif;
+
+    --espacio-s: 0.5rem;
+    --espacio-m: 1rem;
+    --espacio-l: 2rem;
+}
+
 body {
-    background-color: #FAF6EF;
-    color: #5B6470;
-    font-family: sans-serif;
-    margin: 20px;
+    background-color: var(--color-crema);
+    color: var(--color-gris);
+    font-family: var(--fuente-textos); /* Vinculado a Open Sans */
+    margin: var(--espacio-l);         /* Aprovechando tus variables de espacio */
     line-height: 1.6;
 }
+
 h1, h2, h3, dt {
-    color: #14213D;
+    color: var(--color-azul);
+    font-family: var(--fuente-titulos); /* Vinculado a Montserrat */
+}
+
+#header-principal {
+    background-color: var(--color-crema);
+    color: var(--color-azul);
+    padding: var(--espacio-l);
 }
 
 /* Menú de Navegación */
@@ -15,67 +38,73 @@ nav ul {
     gap: 15px;
     list-style: none;
     padding: 0;
-}
-nav ul {
-    display: flex;
-    gap: 15px;
-    list-style: none;
-    padding: 0;
-}
+} /* Se eliminó el segundo bloque idéntico que tenías duplicado */
+
 nav a {
-    color: #14213D;            /* Azul Noche */
+    color: var(--color-azul);            /* Azul Noche */
     text-decoration: none;
     font-weight: bold;
 }
+
 nav a:hover {
-    color: #1E7A4F;            /* Verde Ruta al pasar el mouse */
+    color: var(--color-verde);           /* Verde Ruta al pasar el mouse */
 }
+
+/* Tablas */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: var(--espacio-l) 0;
     background-color: #ffffff;
 }
+
 caption {
     font-weight: bold;
-    margin-bottom: 10px;
-    color: #14213D;
+    margin-bottom: var(--espacio-m);
+    color: var(--color-azul);
 }
+
 th, td {
-    border: 1px solid #5B6470;
+    border: 1px solid var(--color-gris);
     padding: 10px;
     text-align: left;
 }
 
 th {
-    background-color: #14213D; /* Azul Noche */
-    color: #FAF6EF;            /* Texto Crema */
+    background-color: var(--color-azul); /* Azul Noche */
+    color: var(--color-crema);           /* Texto Crema */
 }
+
+/* Formularios */
 fieldset {
-    border: 2px solid #14213D;
-    padding: 15px;
-    margin-bottom: 20px;
+    border: 2px solid var(--color-azul);
+    padding: var(--espacio-m);
+    margin-bottom: var(--espacio-l);
     background-color: #ffffff;
 }
 
 legend {
     font-weight: bold;
     padding: 0 10px;
-    color: #14213D;
+    color: var(--color-azul);
 }
+
 button[type="submit"], input[type="submit"] {
-    background-color: #F39A2B; /* Naranja Pedal */
-    color: #14213D;            /* Azul Noche (Ratio 6.4:1 - Apto Texto Normal) */
+    background-color: var(--color-naranja); /* Naranja Pedal */
+    color: var(--color-azul);               /* Azul Noche */
     border: none;
     padding: 12px 24px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
 }
+
 button[type="submit"]:hover, input[type="submit"]:hover {
-    background-color: #14213D;
-    color: #FAF6EF;            /* Invierte colores al pasar el mouse */
+    background-color: var(--color-azul);
+    color: var(--color-crema);              /* Invierte colores al pasar el mouse */
 }
+
+/* Destacados */
 strong {
-    color: #1E7A4F;            /* Verde Ruta (Apto solo para texto grande/destacado) */
+    color: var(--color-verde);              /* Verde Ruta */
 }
