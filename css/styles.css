@@ -1,0 +1,241 @@
+/* ==========================================================================
+   RUEDA LIBRE v2.0 - IDENTIDAD DE MARCA SOBRE BOOTSTRAP 5.3
+   Este archivo se carga DESPUÉS de bootstrap.min.css y solo cambia lo que
+   Bootstrap no resuelve: variables de marca, botones, modo día/noche y
+   unas pocas clases propias. No se fuerza ninguna declaración y Bootstrap no se modifica.
+   Secciones: 1 Variables · 2 Marca sobre Bootstrap · 3 Modo noche
+              4 Tipografía · 5 Botones · 6 Navbar · 7 Clases propias · 8 Formulario
+   ========================================================================== */
+
+/* 1. VARIABLES GLOBALES: paleta, tipografías y escala de espaciado (únicos lugares con códigos de color) */
+:root {
+    --verde-ruta: #1E7A4F; /* Verde Ruta: botones y enlaces */
+    --naranja-pedal: #F39A2B; /* Naranja Pedal: destacados y botones secundarios */
+    --azul-noche: #14213D; /* Azul Noche: títulos y encabezado */
+    --crema: #FAF6EF; /* Crema: fondo general */
+    --gris-asfalto: #5B6470; /* Gris Asfalto: texto */
+    --blanco: #FFFFFF; /* Blanco: texto sobre verde y azul */
+    --verde-hover: #17613F; /* Verde Ruta más oscuro: estado hover */
+    --verde-active: #124F33; /* Verde Ruta aún más oscuro: estado active */
+    --verde-claro: #4AC88C; /* Verde claro: enlaces y botones sobre fondo oscuro */
+    --noche-fondo: #0b1120; /* Modo noche: fondo de la página */
+    --noche-tarjeta: #151f32; /* Modo noche: tarjetas y pie */
+    --noche-bloque: #1c2942; /* Modo noche: bloques del pie */
+    --noche-borde: #2c3e5d; /* Modo noche: bordes */
+    --noche-texto: #cbd5e1; /* Modo noche: texto */
+    --noche-titulo: #f8fafc; /* Modo noche: títulos */
+    --noche-secundario: #94a3b8; /* Modo noche: texto secundario */
+    --fuente-texto: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif; /* Textos, con respaldo */
+    --fuente-titulos: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif; /* Títulos, con respaldo */
+    --espacio-1: 0.5rem; /* Escala de espaciado: pequeño */
+    --espacio-2: 1rem; /* Escala de espaciado: mediano */
+    --espacio-3: 1.5rem; /* Escala de espaciado: grande */
+    --espacio-4: 3rem; /* Escala de espaciado: muy grande */
+}
+
+/* 2. MARCA SOBRE BOOTSTRAP: se sobrescriben las variables globales --bs-* (modo día) */
+:root {
+    --bs-primary: var(--verde-ruta); /* Color primario: text-primary y bg-primary salen verdes */
+    --bs-primary-rgb: 30, 122, 79; /* Verde Ruta en RGB (lo usan las utilidades de color) */
+    --bs-body-font-family: var(--fuente-texto); /* Tipografía de los textos */
+    --bs-body-bg: var(--crema); /* Fondo de la página */
+    --bs-body-bg-rgb: 250, 246, 239; /* Crema en RGB (clases bg-body) */
+    --bs-body-color: var(--gris-asfalto); /* Color del texto */
+    --bs-body-color-rgb: 91, 100, 112; /* Gris asfalto en RGB */
+    --bs-secondary-color: var(--gris-asfalto); /* Texto secundario (text-muted) */
+    --bs-secondary-rgb: 91, 100, 112; /* Gris asfalto en RGB (text-secondary) */
+    --bs-heading-color: var(--azul-noche); /* Color de los títulos */
+    --bs-emphasis-color: var(--azul-noche); /* Color de énfasis (tablas, texto fuerte) */
+    --bs-emphasis-color-rgb: 20, 33, 61; /* Azul noche en RGB */
+    --bs-tertiary-bg: var(--blanco); /* Fondo de tarjetas y pie (bg-body-tertiary) */
+    --bs-tertiary-bg-rgb: 255, 255, 255; /* Blanco en RGB */
+    --bs-secondary-bg: var(--crema); /* Fondo de los bloques del pie (bg-body-secondary) */
+    --bs-secondary-bg-rgb: 250, 246, 239; /* Crema en RGB */
+    --bs-dark-rgb: 20, 33, 61; /* "Dark" de Bootstrap pasa a ser el azul de marca */
+    --bs-warning-rgb: 243, 154, 43; /* "Warning" pasa a ser el naranja de marca */
+    --bs-success-rgb: 30, 122, 79; /* "Success" pasa a ser el verde de marca */
+    --bs-link-color-rgb: 30, 122, 79; /* Enlaces en verde de marca */
+    --bs-link-hover-color-rgb: 20, 33, 61; /* Enlaces en azul noche al pasar el mouse (contraste suficiente) */
+    --bs-border-radius: 0.625rem; /* Radio de los bordes de botones, campos y componentes */
+}
+
+/* 3. MODO NOCHE SIN JAVASCRIPT: si el checkbox está marcado, se cambian las variables */
+:root:has(#theme-toggle:checked) { /* Se activa cuando el checkbox oculto está marcado */
+    color-scheme: dark; /* Controles del navegador y barras de scroll en oscuro */
+    --bs-primary-rgb: 74, 200, 140; /* Verde claro para text-primary sobre fondo oscuro */
+    --bs-body-bg: var(--noche-fondo); /* Fondo de la página */
+    --bs-body-bg-rgb: 11, 17, 32; /* El mismo fondo en RGB */
+    --bs-body-color: var(--noche-texto); /* Texto claro */
+    --bs-body-color-rgb: 203, 213, 225; /* Texto claro en RGB */
+    --bs-heading-color: var(--noche-titulo); /* Títulos casi blancos */
+    --bs-emphasis-color: var(--noche-titulo); /* Énfasis casi blanco */
+    --bs-emphasis-color-rgb: 248, 250, 252; /* Énfasis en RGB */
+    --bs-secondary-color: var(--noche-secundario); /* Texto secundario */
+    --bs-secondary-rgb: 148, 163, 184; /* Gris azulado de text-secondary */
+    --bs-tertiary-bg: var(--noche-tarjeta); /* Tarjetas y pie oscuros */
+    --bs-tertiary-bg-rgb: 21, 31, 50; /* Tarjetas en RGB */
+    --bs-secondary-bg: var(--noche-bloque); /* Bloques del pie oscuros */
+    --bs-secondary-bg-rgb: 28, 41, 66; /* Bloques del pie en RGB */
+    --bs-border-color: var(--noche-borde); /* Bordes visibles sobre fondo oscuro */
+    --bs-link-color-rgb: 74, 200, 140; /* Enlaces verdes más claros para leerse en oscuro */
+    --bs-link-hover-color-rgb: 243, 154, 43; /* Enlaces naranja al pasar el mouse */
+}
+
+.modo-dia { /* Contenido "Modo Día" del botón */
+    display: none; /* Oculto mientras es de día */
+}
+
+:root:has(#theme-toggle:checked) .modo-noche { /* Contenido "Modo Noche" cuando ya es de noche */
+    display: none; /* Se oculta */
+}
+
+:root:has(#theme-toggle:checked) .modo-dia { /* Contenido "Modo Día" cuando es de noche */
+    display: inline; /* Se muestra */
+}
+
+/* 4. TIPOGRAFÍA DE TÍTULOS: Bootstrap solo permite una fuente en el body, los títulos se agrupan en un selector */
+h1, h2, h3, h4, h5, h6, .brand-title, .btn, .badge, legend { /* Elementos con fuente de títulos */
+    font-family: var(--fuente-titulos); /* Montserrat con respaldo */
+}
+
+/* 5. BOTONES: variables de los botones de Bootstrap con los colores de marca */
+.btn-primary { /* Botón principal (reservar): Verde Ruta */
+    --bs-btn-color: var(--blanco); /* Texto blanco (5,3:1 sobre el verde) */
+    --bs-btn-bg: var(--verde-ruta); /* Fondo verde */
+    --bs-btn-border-color: var(--verde-ruta); /* Borde verde */
+    --bs-btn-hover-color: var(--blanco); /* Texto blanco al pasar el mouse */
+    --bs-btn-hover-bg: var(--verde-hover); /* Verde más oscuro al pasar el mouse */
+    --bs-btn-hover-border-color: var(--verde-hover); /* Borde del mismo tono */
+    --bs-btn-active-color: var(--blanco); /* Texto blanco al presionar */
+    --bs-btn-active-bg: var(--verde-active); /* Verde aún más oscuro al presionar */
+    --bs-btn-active-border-color: var(--verde-active); /* Borde del mismo tono */
+    --bs-btn-focus-shadow-rgb: 30, 122, 79; /* Anillo de foco verde */
+}
+
+.btn-outline-primary { /* Botón de contorno (consultar): Verde Ruta */
+    --bs-btn-color: var(--verde-ruta); /* Texto verde */
+    --bs-btn-border-color: var(--verde-ruta); /* Borde verde */
+    --bs-btn-hover-color: var(--blanco); /* Texto blanco al pasar el mouse */
+    --bs-btn-hover-bg: var(--verde-ruta); /* Fondo verde al pasar el mouse */
+    --bs-btn-hover-border-color: var(--verde-ruta); /* Borde verde */
+    --bs-btn-active-color: var(--blanco); /* Texto blanco al presionar */
+    --bs-btn-active-bg: var(--verde-hover); /* Verde más oscuro al presionar */
+    --bs-btn-active-border-color: var(--verde-hover); /* Borde del mismo tono */
+    --bs-btn-focus-shadow-rgb: 30, 122, 79; /* Anillo de foco verde */
+}
+
+:root:has(#theme-toggle:checked) .btn-outline-primary { /* Botón de contorno en modo noche */
+    --bs-btn-color: var(--verde-claro); /* Texto verde claro (se lee sobre fondo oscuro) */
+    --bs-btn-border-color: var(--verde-claro); /* Borde verde claro */
+    --bs-btn-hover-color: var(--azul-noche); /* Texto azul sobre el verde claro */
+    --bs-btn-hover-bg: var(--verde-claro); /* Fondo verde claro al pasar el mouse */
+    --bs-btn-hover-border-color: var(--verde-claro); /* Borde verde claro */
+    --bs-btn-active-color: var(--azul-noche); /* Texto azul al presionar */
+    --bs-btn-active-bg: var(--verde-claro); /* Fondo verde claro al presionar */
+    --bs-btn-active-border-color: var(--verde-claro); /* Borde verde claro */
+}
+
+.btn-naranja { /* Variante propia: botón secundario con Naranja Pedal */
+    --bs-btn-color: var(--azul-noche); /* Texto azul noche (7:1 sobre el naranja) */
+    --bs-btn-bg: var(--naranja-pedal); /* Fondo naranja */
+    --bs-btn-border-color: var(--naranja-pedal); /* Borde naranja */
+    --bs-btn-hover-color: var(--azul-noche); /* Texto azul al pasar el mouse */
+    --bs-btn-hover-bg: var(--crema); /* Fondo crema al pasar el mouse */
+    --bs-btn-hover-border-color: var(--crema); /* Borde crema */
+    --bs-btn-active-color: var(--azul-noche); /* Texto azul al presionar */
+    --bs-btn-active-bg: var(--blanco); /* Fondo blanco al presionar */
+    --bs-btn-active-border-color: var(--blanco); /* Borde blanco */
+    --bs-btn-focus-shadow-rgb: 243, 154, 43; /* Anillo de foco naranja */
+}
+
+.btn-outline-warning { /* Botón de contorno naranja: solo se usa sobre la barra oscura (modo día/noche) */
+    --bs-btn-color: var(--naranja-pedal); /* Texto naranja */
+    --bs-btn-border-color: var(--naranja-pedal); /* Borde naranja */
+    --bs-btn-hover-color: var(--azul-noche); /* Texto azul al pasar el mouse */
+    --bs-btn-hover-bg: var(--naranja-pedal); /* Fondo naranja al pasar el mouse */
+    --bs-btn-hover-border-color: var(--naranja-pedal); /* Borde naranja */
+    --bs-btn-active-color: var(--azul-noche); /* Texto azul al presionar */
+    --bs-btn-active-bg: var(--naranja-pedal); /* Fondo naranja al presionar */
+    --bs-btn-active-border-color: var(--naranja-pedal); /* Borde naranja */
+}
+
+.btn-success { /* Botón de WhatsApp (verde de marca) */
+    --bs-btn-bg: var(--verde-ruta); /* Fondo verde de marca */
+    --bs-btn-border-color: var(--blanco); /* Borde blanco */
+    --bs-btn-hover-bg: var(--azul-noche); /* Fondo azul al pasar el mouse */
+    --bs-btn-hover-border-color: var(--blanco); /* Borde blanco al pasar el mouse */
+    --bs-btn-active-bg: var(--azul-noche); /* Fondo azul al presionar */
+    --bs-btn-active-border-color: var(--blanco); /* Borde blanco al presionar */
+}
+
+/* 6. BARRA DE NAVEGACIÓN: colores de los enlaces */
+.navbar { /* Barra superior */
+    --bs-navbar-color: var(--blanco); /* Enlaces blancos */
+    --bs-navbar-hover-color: var(--naranja-pedal); /* Enlaces naranja al pasar el mouse */
+    --bs-navbar-active-color: var(--naranja-pedal); /* Enlace de la página actual en naranja */
+}
+
+/* 7. CLASES PROPIAS: complementan a Bootstrap sin modificar sus clases */
+.portada { /* Portada de inicio */
+    border-bottom: 3px solid var(--naranja-pedal); /* Línea de marca al final de la portada */
+}
+
+.titulo-seccion::after { /* Detalle de marca bajo los títulos de sección */
+    content: ""; /* Pseudoelemento sin texto */
+    display: block; /* En su propia línea */
+    width: var(--espacio-4); /* Ancho de la línea */
+    height: 0.25rem; /* Grosor de la línea */
+    margin-top: var(--espacio-1); /* Separación del título */
+    border-radius: 1rem; /* Extremos redondeados */
+    background-color: var(--naranja-pedal); /* Naranja de marca */
+}
+
+.text-center .titulo-seccion::after, /* Títulos centrados dentro de un contenedor centrado */
+.titulo-seccion.text-center::after { /* Títulos que llevan text-center en sí mismos */
+    margin-inline: auto; /* La línea queda centrada */
+}
+
+.pie-sitio { /* Pie de página de las tres páginas */
+    padding-bottom: 6rem; /* Deja espacio para que el botón flotante de WhatsApp no tape el contenido */
+}
+
+.img-portada { /* Imagen de la portada de inicio */
+    max-height: 24rem; /* Altura máxima */
+    object-fit: cover; /* Recorta sin deformar */
+}
+
+.mapa-contenedor { /* Caja del mapa de Google */
+    min-height: 24rem; /* Altura mínima para que el mapa se vea completo */
+}
+
+.img-tarjeta { /* Imágenes de las tarjetas */
+    height: 11.25rem; /* Todas con la misma altura */
+}
+
+.img-carrusel { /* Imágenes del carrusel de promociones */
+    height: 22rem; /* Altura en celulares */
+}
+
+@media (min-width: 768px) { /* Desde tablet */
+    .img-carrusel { /* Imágenes del carrusel de promociones */
+        height: 26rem; /* Más altas en pantallas grandes */
+    }
+}
+
+.carrusel-promos .carousel-caption { /* Texto de cada promoción */
+    bottom: 2.75rem; /* Se sube para no tapar los indicadores del carrusel */
+}
+
+.tarjeta-hover { /* Tarjetas que reaccionan al mouse */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Anima el movimiento y la sombra */
+}
+
+.tarjeta-hover:hover { /* Tarjeta al pasar el mouse */
+    transform: translateY(-4px); /* Sube 4 píxeles */
+    box-shadow: 0 8px 20px rgba(20, 33, 61, 0.15); /* Sombra más marcada */
+}
+
+/* 8. FORMULARIO: mensaje de error para grupos de opciones (radios) */
+.was-validated .grupo-opciones:has(:invalid) + .invalid-feedback { /* Si el grupo no tiene opción elegida */
+    display: block; /* Se muestra el mensaje debajo del grupo */
+}
