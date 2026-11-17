@@ -1,115 +1,766 @@
-<!DOCTYPE html> 
+<!-- Declara que es un documento HTML5 -->
+<!DOCTYPE html>
+<!-- <html> raíz del documento -->
 <html lang="es">
+<!-- <head> información que no se ve en la página -->
 <head>
+    <!-- <meta> metadato · codificación -->
     <meta charset="UTF-8">
+    <!-- <meta> metadato · viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rueda libre | Alquiler de Bicicletas</title>
+    <!-- <meta> metadato · descripción del sitio para buscadores -->
+    <meta name="description" content="Rueda Libre: alquiler de bicicletas urbanas, de montaña y eléctricas, recorridos guiados y taller básico en Medellín. Reserva en línea.">
+    <!-- <title> título de la pestaña -->
+    <title>Rueda Libre | Alquiler de bicicletas en Medellín</title>
+    <!-- <link> enlace a un recurso externo · carga img/favicon.png -->
     <link rel="icon" href="img/favicon.png" type="image/png">
+    
+    <!-- Google Fonts -->
+    <!-- <link> enlace a un recurso externo · carga https://fonts.googleapis.com -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link> enlace a un recurso externo · carga https://fonts.gstatic.com -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilos.css">
+    <!-- <link> enlace a un recurso externo · carga https://fonts.googleapis.com/css2?family=Montserra -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <!-- <link> enlace a un recurso externo · carga https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/ -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <!-- <link> enlace a un recurso externo · carga https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11. -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Estilos propios mínimos: colores de marca y modo día/noche sin JavaScript -->
+    <!-- <link> enlace a un recurso externo · carga css/styles.css -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<!-- CUERPO DE LA PÁGINA, NO SE PUEDE PONER UNA SECCIÓN EN EL HEADER, ES PREFERIBLE UN HEADER DENTRO DE UNA SECCIÓN -->
+<!-- <body> contenido visible -->
 <body>
+    <!-- CONTROL DE TEMA (DÍA / NOCHE) SIN JS NATIVO: Checkbox en la raíz del body -->
+    <!-- <input> campo de entrada · clases: visually-hidden (oculto visualmente) · id «theme-toggle», tipo checkbox, aria-label: Alternar modo día y noche -->
+    <input type="checkbox" id="theme-toggle" class="visually-hidden" aria-label="Alternar modo día y noche">
 
-    <section> <!-- ESTA ES LA PRIMERA SECCIÓN -->
-        <header id="header-principal">
-        <h1>Rueda Libre</h1>
-        <div class="logo-principal">
-        <img src="img/logo.png" alt="Logo de Rueda Libre" width="100"> 
-        <p>Bienvenido a Rueda Libre, el compañero de tus verdaderas aventuras urbanas y naturales. Si deseas visitarnos directamente, puedes ir a nuestra sección de <a href="#encuentranos">Encuéntranos</a>.</p>
-        </div>
-        <nav>
-        
-    <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="paginas/nuestroservicios.html">Tarifas y rutas</a></li>
-        <li><a href="paginas/reserva.html">Reservas</a></li>
-    </ul>
-    
+    <!-- ENCABEZADO Y BARRA DE NAVEGACIÓN BOOTSTRAP -->
+    <!-- <header> encabezado · clases: sticky-top (se queda fija arriba al hacer scroll) -->
+    <header class="sticky-top">
+        <!-- <nav> bloque de navegación · clases: navbar (barra de navegación); navbar-expand-lg (barra de navegación); navbar-dark (barra de navegación); bg-dark (color de fondo); border-bottom (borde); border-warning (borde); border-3 (borde); shadow-sm (sombra); py-2 (espacio interior) -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-warning border-3 shadow-sm py-2">
+            <!-- <div> contenedor · clases: container (contenedor centrado con ancho máximo) -->
+            <div class="container">
+                <!-- Marca / Logotipo -->
+                <!-- <a> enlace · clases: navbar-brand (barra de navegación); d-flex (display flex); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos) · lleva a index.html -->
+                <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                    <!-- <img> imagen · clases: rounded-circle (forma circular); bg-light (color de fondo); p-1 (espacio interior) · muestra img/logo.png (alt: Logo de Rueda Libre) -->
+                    <img src="img/logo.png" alt="Logo de Rueda Libre" width="46" height="46" class="rounded-circle bg-light p-1">
+                    <!-- <span> texto en línea · clases: brand-title (fuente de títulos para el nombre); text-white (texto blanco); fw-bold (grosor de letra); fs-4 (tamaño de letra) -->
+                    <span class="brand-title text-white fw-bold fs-4">Rueda Libre</span>
+                </a>
+
+                <!-- Controles en la barra (Botón Día/Noche y hamburguesa responsive) -->
+                <!-- <div> contenedor · clases: d-flex (display flex); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos); order-lg-3 (orden visual); ms-auto (margen exterior); ms-lg-3 (margen exterior) -->
+                <div class="d-flex align-items-center gap-2 order-lg-3 ms-auto ms-lg-3">
+                    <!-- BOTÓN MODO DÍA / NOCHE (SIN JS NATIVO: Vinculado mediante label al checkbox) -->
+                    <!-- <label> etiqueta de un campo · clases: btn (botón Bootstrap); btn-outline-warning (botón Bootstrap); btn-sm (botón Bootstrap); rounded-pill (esquinas en forma de píldora) · asociada al campo «theme-toggle» -->
+                    <label for="theme-toggle" class="btn btn-outline-warning btn-sm rounded-pill" role="button" title="Alternar entre modo día y noche">
+                        <!-- <span> texto en línea · clases: modo-noche (contenido del botón en modo día) -->
+                        <span class="modo-noche"><i class="bi bi-moon-stars-fill" aria-hidden="true"></i> <span class="d-none d-sm-inline">Modo Noche</span></span>
+                        <!-- <span> texto en línea · clases: modo-dia (contenido del botón en modo noche) -->
+                        <span class="modo-dia"><i class="bi bi-sun-fill" aria-hidden="true"></i> <span class="d-none d-sm-inline">Modo Día</span></span>
+                    </label>
+
+                    <!-- Botón Hamburguesa oficial de Bootstrap -->
+                    <!-- <button> botón · clases: navbar-toggler (barra de navegación); border-0 (borde); p-2 (espacio interior) · aria-label: Abrir navegación, lo controla Bootstrap JS -->
+                    <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar" aria-controls="menuNavbar" aria-expanded="false" aria-label="Abrir navegación">
+                        <!-- <span> texto en línea · clases: navbar-toggler-icon (barra de navegación) -->
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
+                <!-- Enlaces de navegación -->
+                <!-- <div> contenedor · clases: collapse (se puede colapsar); navbar-collapse (barra de navegación); order-lg-2 (orden visual) · id «menuNavbar» -->
+                <div class="collapse navbar-collapse order-lg-2" id="menuNavbar">
+                    <!-- <ul> lista con viñetas · clases: navbar-nav (barra de navegación); ms-auto (margen exterior); mb-2 (margen exterior); mb-lg-0 (margen exterior); align-items-lg-center (alineación vertical de hijos) -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                        <!-- <li> elemento de lista · clases: nav-item (elemento del menú) -->
+                        <li class="nav-item">
+                            <!-- <a> enlace · clases: nav-link (elemento del menú); active (estado activo) · lleva a index.html -->
+                            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                        </li>
+                        <!-- <li> elemento de lista · clases: nav-item (elemento del menú) -->
+                        <li class="nav-item">
+                            <!-- <a> enlace · clases: nav-link (elemento del menú) · lleva a paginas/tarifas.html -->
+                            <a class="nav-link" href="paginas/tarifas.html">Tarifas y rutas</a>
+                        </li>
+                        <!-- <li> elemento de lista · clases: nav-item (elemento del menú) -->
+                        <li class="nav-item">
+                            <!-- <a> enlace · clases: nav-link (elemento del menú) · lleva a paginas/flota.html -->
+                            <a class="nav-link" href="paginas/flota.html">Flota</a>
+                        </li>
+                        <!-- <li> elemento de lista · clases: nav-item (elemento del menú) -->
+                        <li class="nav-item">
+                            <!-- <a> enlace · clases: nav-link (elemento del menú) · lleva a paginas/reservas.html -->
+                            <a class="nav-link" href="paginas/reservas.html">Reservas</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-        
     </header>
-    </section>
 
-</section>
-    <section> <!-- ESTA ES LA SEGUNDA SECCIÓN -->
-        <h2>¿Quiénes somos?</h2>
-        <p>Somos una empresa apasionada por la movilidad sostenible, brindando las mejores bicicletas para que explores la ciudad a tu propio ritmo.</p>
-        <img src="img/portada.jpg" alt="Fachada principal de la tienda Rueda Libre con bicicletas exhibidas" width="600">
-    </section>
+    <!-- <main> contenido principal · clases: container (contenedor centrado con ancho máximo); my-4 (margen exterior); my-lg-5 (margen exterior) -->
+    <main class="container my-4 my-lg-5">
+        <!-- PORTADA DE INICIO EN DOS COLUMNAS CON GRID DE BOOTSTRAP -->
+        <!-- <section> sección · clases: quienes-somos (nombre de la sección Quiénes somos); portada (portada de inicio); my-4 (margen exterior); pb-4 (espacio interior) -->
+        <section class="quienes-somos portada my-4 pb-4">
+            <!-- <div> contenedor · clases: row (fila de la cuadrícula Bootstrap); align-items-center (alineación vertical de hijos); g-4 (separación entre columnas/filas); g-lg-5 (separación entre columnas/filas) -->
+            <div class="row align-items-center g-4 g-lg-5">
+                <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-lg-7 (columna de 7/12 de ancho desde lg); portada-texto (columna de texto de la portada) -->
+                <div class="col-12 col-lg-7 portada-texto">
+                    <!-- <span> texto en línea · clases: badge (etiqueta pequeña); bg-warning (color de fondo); text-dark (color de texto); mb-2 (margen exterior); px-3 (espacio interior); py-2 (espacio interior); fw-bold (grosor de letra); text-uppercase (mayúsculas/minúsculas) -->
+                    <span class="badge bg-warning text-dark mb-2 px-3 py-2 fw-bold text-uppercase">Movilidad Sostenible</span>
+                    <!-- <h1> título principal · clases: display-5 (título grande); fw-bold (grosor de letra); mb-3 (margen exterior) -->
+                    <h1 class="display-5 fw-bold mb-3">Pedalea por tu ciudad con libertad y aventura</h1>
+                    <!-- <h2> título de la sección «¿Quiénes somos?» · clases: h4 (tamaño de título); fw-bold (grosor de letra); mb-3 (margen exterior) -->
+                    <h2 class="h4 fw-bold mb-3">¿Quiénes somos?</h2>
+                    <!-- <p> párrafo · clases: lead (párrafo destacado); mb-3 (margen exterior) -->
+                    <p class="lead mb-3">Bienvenido a <strong>Rueda Libre</strong>, el compañero de tus verdaderas aventuras urbanas y naturales. Si deseas visitarnos directamente, puedes ir a nuestra sección de <a href="#encuentranos" class="fw-semibold text-decoration-underline">Encuéntranos</a>.</p>
+                    <!-- <p> párrafo · clases: mb-4 (margen exterior) -->
+                    <p class="mb-4">Somos una empresa apasionada por la movilidad sostenible, brindando las mejores bicicletas para que explores la ciudad a tu propio ritmo.</p>
+                    <!-- <div> contenedor · clases: d-flex (display flex); flex-wrap (dirección/salto del flex); gap-3 (separación entre hijos) -->
+                    <div class="d-flex flex-wrap gap-3">
+                        <!-- <a> enlace · clases: btn (botón Bootstrap); btn-outline-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra) · salta a la sección #flota -->
+                        <a href="#flota" class="btn btn-outline-primary rounded-pill fw-bold">
+                            <!-- <i> ícono · clases: bi (ícono Bootstrap Icons); bi-bicycle (ícono) -->
+                            <i class="bi bi-bicycle" aria-hidden="true"></i> Conoce nuestra flota
+                        </a>
+                        <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra) · lleva a paginas/reservas.html -->
+                        <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold">
+                            <!-- <i> ícono · clases: bi (ícono Bootstrap Icons); bi-calendar2-check (ícono) -->
+                            <i class="bi bi-calendar2-check" aria-hidden="true"></i> Reservar ahora
+                        </a>
+                    </div>
+                </div>
+                <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-lg-5 (columna de 5/12 de ancho desde lg); text-center (alineación del texto); portada-imagen (columna de imagen de la portada) -->
+                <div class="col-12 col-lg-5 text-center portada-imagen">
+                    <!-- <div> contenedor · clases: position-relative (posición relativa) -->
+                    <div class="position-relative">
+                        <!-- <img> imagen · clases: img-fluid (imagen adaptable); rounded-4 (esquinas redondeadas); shadow-lg (sombra); w-100 (ancho 100%) · muestra img/portada.jpg (alt: Fachada principal de la tienda Rueda Libre con bicicletas exhibidas); img-portada limita la altura (css/styles.css) -->
+                        <img src="img/ruedalibre.jpg" alt="Fachada principal de la tienda Rueda Libre con bicicletas exhibidas" class="img-fluid rounded-4 shadow-lg w-100 img-portada">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section> <!-- ESTA ES LA TERCERA SECCIÓN -->
-        <h2>Nuestros servicios</h2>
-        <p>Descubre nuestras increíbles opciones de alquiler y tours guiados.</p>
-        <a href="paginas/nuestroservicios.html" target="_blank">Explora nuestras aventuras dinámicas aquí</a>
-    <section class="recorridos-servicios"> <!-- ESTA ES LA CUARTA SECCIÓN -->
-        
-        <article class="recorrido1">
-            <h2>Alquiler Diario</h2>
-            <p>Explora la ciudad a tu propio ritmo con nuestras bicicletas de alquiler diario.
-           <div> <img src="img/bicicletazul.png" alt="Bicicleta urbana de color azul lista para alquilar" width="200"></div>
-        </article>
-        
-        <article class="recorrido2">
-            <h2>Tours Guiados</h2>
-            <p>Únete a nuestros grupos de fin de semana para descubrir rutas históricas. <strong>Reserva con 24 horas de anticipación</strong> para asegurar tu cupo. <em>Los guías hablan español e inglés.</em></p>
-            <div><img src="img/tourguiado.png" alt="Grupo de personas en un tour guiado" width="200"></div>
-        </article>
-        
-        <article class="recorrido3">
-            <h2>Alquiler por Horas</h2>
-            <p>Experimenta la ciudad a tu ritmo con nuestro servicio de alquiler por horas.
-            <div><img src="img/reloj-bici-transparente.png" alt="Bicicleta urbana en forma de reloj" width="200"></div>
-        </article>
-    </section>
-    
+        <!-- PROMOCIONES DEL MES: CARRUSEL DE BOOTSTRAP (MiniReto 10, semana 2) -->
+        <!-- <section> sección · clases: promociones (nombre de la sección); my-5 (margen exterior); pt-3 (espacio interior) · su título se enlaza con aria-labelledby -->
+        <section class="promociones my-5 pt-3" aria-labelledby="titulo-promos">
+            <!-- <h2> título de sección · clases: titulo-seccion (título con detalle de marca); fw-bold (grosor de letra); text-center (alineación del texto); mb-4 (margen exterior) -->
+            <h2 class="titulo-seccion fw-bold text-center mb-4" id="titulo-promos">Promociones del mes</h2>
+            <!-- <div> carrusel · clases: carousel (carrusel Bootstrap); slide (animación de deslizamiento); carrusel-promos (ajuste propio de los textos); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); shadow-sm (sombra) · data-bs-ride="carousel" hace que avance solo -->
+            <div id="carruselPromos" class="carousel slide carrusel-promos rounded-4 overflow-hidden shadow-sm" data-bs-ride="carousel" aria-label="Promociones del mes">
+                <!-- <div> indicadores · uno por promoción, con texto para lectores de pantalla (aria-label) -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carruselPromos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Ir a la promoción 1: Martes 2x1"></button>
+                    <button type="button" data-bs-target="#carruselPromos" data-bs-slide-to="1" aria-label="Ir a la promoción 2: 20 % en eléctricas"></button>
+                    <button type="button" data-bs-target="#carruselPromos" data-bs-slide-to="2" aria-label="Ir a la promoción 3: recorrido gratis en tu cumpleaños"></button>
+                </div>
+                <!-- <div> diapositivas · clases: carousel-inner (contenedor de las diapositivas) -->
+                <div class="carousel-inner">
+                    <!-- Promoción 1 · clases: carousel-item (diapositiva); active (la que se muestra al cargar) -->
+                    <div class="carousel-item active">
+                        <img src="img/carrusel2.jpg" class="d-block w-100 img-carrusel object-fit-cover" alt="Bicicleta urbana azul de Rueda Libre, protagonista de la promoción Martes 2x1">
+                        <div class="carousel-caption bg-dark bg-opacity-75 rounded-3 px-3 py-2">
+                            <h3 class="h5 fw-bold text-white mb-1">Martes 2x1 en bicicletas urbanas</h3>
+                            <p class="small mb-0">Pedalea en pareja o con amigos aprovechando el martes.</p>
+                        </div>
+                    </div>
+                    <!-- Promoción 2 -->
 
-    <section> <!-- ESTA ES LA 5 SECCIÓN -->
-        <h2>¿Cómo alquilar?</h2>
-        <p>Sigue estos cuatro sencillos pasos para empezar a rodar:</p>
-        <ol>
-            <li>Elige tu bicicleta favorita en nuestro catálogo.</li>
-            <li>Presenta un documento de identidad válido.</li>
-            <li>Realiza el pago correspondiente al tiempo de uso.</li>
-            <li>¡Recibe tu equipo y comienza a explorar!</li>
-            <li>Para más detalles, visita nuestra sección de <a href="paginas/reserva.html" target="_blank">Reserva tu bicicleta</a>.</li>
-        </ol>
+                    <div class="carousel-item">
+                        <img src="img/carrusel1.jpg" class="d-block w-100 img-carrusel object-fit-cover" alt="Fachada de Rueda Libre, donde se alquilan las bicicletas eléctricas con descuento">
+                        <div class="carousel-caption bg-dark bg-opacity-75 rounded-3 px-3 py-2">
+                            <h3 class="h5 fw-bold text-white mb-1">20 % de descuento en eléctricas de lunes a jueves</h3>
+                            <p class="small mb-0">Sube las colinas de Medellín con asistencia eléctrica.</p>
+                        </div>
+                    </div>
+                    <!-- Promoción 3 -->
+                    <div class="carousel-item">
+                        <img src="img/tourguiado.png" class="d-block w-100 img-carrusel object-fit-cover" alt="Grupo de ciclistas en un recorrido guiado, gratis el día de tu cumpleaños">
+                        <div class="carousel-caption bg-dark bg-opacity-75 rounded-3 px-3 py-2">
+                            <h3 class="h5 fw-bold text-white mb-1">Si cumples años, el recorrido guiado es gratis</h3>
+                            <p class="small mb-0">Celebra tu cumpleaños recorriendo la ciudad con guía.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Controles anterior y siguiente: el texto visually-hidden lo leen los lectores de pantalla -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carruselPromos" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Promoción anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carruselPromos" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Promoción siguiente</span>
+                </button>
+            </div>
+        </section>
 
-        <p>Beneficios de nuestro servicio:</p>
-        <ul>
-            <li>Asistencia técnica en ruta gratuita.</li>
-            <li>Equipos desinfectados y revisados mecánicamente antes de cada entrega.</li>
-            <li>Flexibilidad en los horarios de devolución.</li>
-        </ul>
-        <!-- Imagen 3: Ruta -->
-          </section>
+        <!-- GALERÍA DE NUESTRAS RUTAS EN TRES COLUMNAS (BOOTSTRAP GRID) -->
+        <!-- <section> sección · clases: seccion-rutas (nombre de la sección de rutas); my-5 (margen exterior); pt-3 (espacio interior) · id «rutas» -->
+        <section class="seccion-rutas my-5 pt-3" id="rutas">
+            <!-- <div> contenedor · clases: text-center (alineación del texto); mb-4 (margen exterior) -->
+            <div class="text-center mb-4">
+                <!-- <h2> título de sección · clases: titulo-seccion (título con detalle de marca); fw-bold (grosor de letra) -->
+                <h2 class="titulo-seccion fw-bold">Nuestras rutas guiadas</h2>
+                <!-- <p> párrafo · clases: text-muted (color de texto) -->
+                <p class="text-muted">Descubre los mejores recorridos guiados por la ciudad y sus alrededores:</p>
+            </div>
 
-    <section> <!-- ESTA ES LA QUINTA SECCIÓN -->
-        <h2 id="encuentranos">Encuéntranos</h2>
-        <p>Estamos ubicados en San Javier el Danubio. Puedes ver nuestra ubicación exacta en el <a href="https://www.google.com/maps/place/Cra.+90+%23+44B-58,+El+Danubio,+Medellín,+La+América,+Medellín,+Antioquia/data=!4m2!3m1!1s0x8e442977282c5b17:0x79a49101d5c8d92?sa=X&ved=1t:242&ictx=111" target="_blank">Mapa de Google</a>.</p>
-        <div class="contenedor-mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15864.278281567436!2d-75.6208599932553!3d6.254564929816611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442979f4c74715%3A0x407c077a248f420e!2sEl%20Danubio%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1792980490652!5m2!1ses!2sco" 
-            width="600" 
-            height="450" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="strict-origin-when-cross-origin">
-            </iframe>>
+            <!-- <div> contenedor · clases: row (fila de la cuadrícula Bootstrap); g-4 (separación entre columnas/filas) -->
+            <div class="row g-4">
+                <!-- Ruta 1 -->
+                <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-md-6 (columna de 6/12 de ancho desde md); col-lg-4 (columna de 4/12 de ancho desde lg) -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); shadow-sm (sombra) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover shadow-sm">
+                        <!-- <img> imagen · clases: card-img-top (parte de la tarjeta); img-tarjeta (altura fija para imágenes de tarjeta); object-fit-cover (ajuste de la imagen en su caja) · muestra img/tourguiado.png (alt: Ruta Río y Parques) -->
+                        <img src="img/rios.jpg" alt="Ruta Río y Parques" class="card-img-top img-tarjeta object-fit-cover">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); d-flex (display flex); flex-column (dirección/salto del flex); text-center (alineación del texto); p-4 (espacio interior) -->
+                        <div class="card-body d-flex flex-column text-center p-4">
+                            <!-- <h3> subtítulo · clases: card-title (parte de la tarjeta); h4 (tamaño de título); fw-bold (grosor de letra) -->
+                            <h3 class="card-title h4 fw-bold">Río y Parques</h3>
+                            <!-- <p> párrafo · clases: mb-2 (margen exterior) -->
+                            <p class="mb-2"><span class="badge text-bg-success fw-bold px-2 py-1">Nivel: Fácil</span></p>
+                            <!-- <p> párrafo · clases: card-text (parte de la tarjeta); text-secondary (color de texto); mb-4 (margen exterior) -->
+                            <p class="card-text text-secondary mb-4">12 km · 2 h. Recorrido plano y relajante por los senderos verdes.</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (margen exterior) · lleva a paginas/reservas.html -->
+                            <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold mt-auto">Reservar ruta</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Ruta 2 -->
+                <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-md-6 (columna de 6/12 de ancho desde md); col-lg-4 (columna de 4/12 de ancho desde lg) -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); shadow-sm (sombra) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover shadow-sm">
+                        <!-- <img> imagen · clases: card-img-top (parte de la tarjeta); img-tarjeta (altura fija para imágenes de tarjeta); object-fit-cover (ajuste de la imagen en su caja) · muestra img/carreras.jpg (alt: Ruta Sabores de Barrio) -->
+                        <img src="img/barrio.jpg" alt="Ruta Sabores de Barrio" class="card-img-top img-tarjeta object-fit-cover">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); d-flex (display flex); flex-column (dirección/salto del flex); text-center (alineación del texto); p-4 (espacio interior) -->
+                        <div class="card-body d-flex flex-column text-center p-4">
+                            <!-- <h3> subtítulo · clases: card-title (parte de la tarjeta); h4 (tamaño de título); fw-bold (grosor de letra) -->
+                            <h3 class="card-title h4 fw-bold">Sabores de Barrio</h3>
+                            <!-- <p> párrafo · clases: mb-2 (margen exterior) -->
+                            <p class="mb-2"><span class="badge text-bg-warning fw-bold px-2 py-1">Nivel: Medio</span></p>
+                            <!-- <p> párrafo · clases: card-text (parte de la tarjeta); text-secondary (color de texto); mb-4 (margen exterior) -->
+                            <p class="card-text text-secondary mb-4">18 km · 3 h. Recorrido cultural y gastronómico por barrios tradicionales.</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (margen exterior) · lleva a paginas/reservas.html -->
+                            <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold mt-auto">Reservar ruta</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Ruta 3 -->
+                <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-md-6 (columna de 6/12 de ancho desde md); col-lg-4 (columna de 4/12 de ancho desde lg) -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); shadow-sm (sombra) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover shadow-sm">
+                        <!-- <img> imagen · clases: card-img-top (parte de la tarjeta); img-tarjeta (altura fija para imágenes de tarjeta); object-fit-cover (ajuste de la imagen en su caja) · muestra img/portada.jpg (alt: Ruta Reto Las Palmas) -->
+                        <img src="img/palmas.jpeg" alt="Ruta Reto Las Palmas" class="card-img-top img-tarjeta object-fit-cover">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); d-flex (display flex); flex-column (dirección/salto del flex); text-center (alineación del texto); p-4 (espacio interior) -->
+                        <div class="card-body d-flex flex-column text-center p-4">
+                            <!-- <h3> subtítulo · clases: card-title (parte de la tarjeta); h4 (tamaño de título); fw-bold (grosor de letra) -->
+                            <h3 class="card-title h4 fw-bold">Reto Las Palmas</h3>
+                            <!-- <p> párrafo · clases: mb-2 (margen exterior) -->
+                            <p class="mb-2"><span class="badge text-bg-danger fw-bold px-2 py-1">Nivel: Difícil</span></p>
+                            <!-- <p> párrafo · clases: card-text (parte de la tarjeta); text-secondary (color de texto); mb-4 (margen exterior) -->
+                            <p class="card-text text-secondary mb-4">25 km · 4 h. Ascenso exigente de montaña con vistas panorámicas únicas.</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (margen exterior) · lleva a paginas/reservas.html -->
+                            <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold mt-auto">Reservar ruta</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUESTROS SERVICIOS -->
+        <!-- <section> sección · clases: nuestros-servicios (nombre de la sección de servicios); my-5 (margen exterior); pt-3 (espacio interior) -->
+        <section class="nuestros-servicios my-5 pt-3">
+            <!-- <div> contenedor · clases: d-flex (display flex); flex-column (dirección/salto del flex); flex-md-row (dirección/salto del flex); justify-content-between (reparto horizontal de hijos); align-items-md-center (alineación vertical de hijos); gap-3 (separación entre hijos); mb-4 (margen exterior) -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+                <!-- <div> contenedor -->
+                <div>
+                    <!-- <h2> título de sección · clases: titulo-seccion (título con detalle de marca); fw-bold (grosor de letra); mb-1 (margen exterior) -->
+                    <h2 class="titulo-seccion fw-bold mb-1">Nuestros servicios</h2>
+                    <!-- <p> párrafo · clases: text-muted (color de texto); mb-0 (margen exterior) -->
+                    <p class="text-muted mb-0">Descubre nuestras increíbles opciones de alquiler y tours guiados.</p>
+                </div>
+                <!-- <div> contenedor -->
+                <div>
+                    <!-- <a> enlace · clases: btn (botón Bootstrap); btn-outline-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra) · lleva a paginas/tarifas.html -->
+                    <a href="paginas/tarifas.html" class="btn btn-outline-primary rounded-pill fw-bold">
+                        <!-- Texto visible del elemento anterior -->
+                        Explorar tarifas y rutas <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- <div> contenedor · clases: row (fila de la cuadrícula Bootstrap); g-4 (separación entre columnas/filas); row-cols-1 (1 columnas por fila); row-cols-sm-2 (2 columnas por fila desde sm); row-cols-lg-4 (4 columnas por fila desde lg) -->
+            <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
+                <!-- Servicio 1 -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); p-3 (espacio interior); text-center (alineación del texto) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover p-3 text-center">
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas); mb-3 (margen exterior) · muestra img/bicicletazul.png (alt: Bicicleta urbana de color azul lista para alquilar) -->
+                        <img src="img/diario.jpg" alt="Bicicleta urbana" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded mb-3">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); p-0 (espacio interior); d-flex (display flex); flex-column (dirección/salto del flex) -->
+                        <div class="card-body p-0 d-flex flex-column">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-2 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-2">Alquiler Diario</h3>
+                            <!-- <p> párrafo · clases: card-text (parte de la tarjeta); small (texto pequeño); text-secondary (color de texto) -->
+                            <p class="card-text small text-secondary">Explora la ciudad a tu propio ritmo con nuestras bicicletas urbanas de alquiler diario.</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-outline-primary (botón de contorno: consultar); btn-sm (botón pequeño); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (lo empuja al final de la tarjeta) · lleva a paginas/tarifas.html -->
+                            <a href="paginas/tarifas.html" class="btn btn-outline-primary btn-sm rounded-pill fw-bold mt-auto align-self-center">Ver tarifas</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Servicio 2 -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); p-3 (espacio interior); text-center (alineación del texto); position-relative (posición relativa) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover p-3 text-center position-relative">
+                        <!-- <span> texto en línea · clases: badge (etiqueta pequeña); text-bg-success (fondo y texto a juego); position-absolute (posición fija/absoluta); top-0 (distancia al borde); end-0 (distancia al borde); m-2 (margen exterior); text-uppercase (mayúsculas/minúsculas) -->
+                        <span class="badge text-bg-success position-absolute top-0 end-0 m-2 text-uppercase">Nuevo</span>
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas); mb-3 (margen exterior) · muestra img/reloj-bici-transparente.png (alt: Bicicleta eléctrica moderna lista para rodar) -->
+                        <img src="img/electrica.jpg" alt="Bicicleta eléctrica moderna lista para rodar" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded mb-3">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); p-0 (espacio interior); d-flex (display flex); flex-column (dirección/salto del flex) -->
+                        <div class="card-body p-0 d-flex flex-column">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-2 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-2">Bicicletas Eléctricas</h3>
+                            <!-- <p> párrafo · clases: card-text (parte de la tarjeta); small (texto pequeño); text-secondary (color de texto) -->
+                            <p class="card-text small text-secondary">Pedaleo asistido de última generación para subir colinas con mayor facilidad y comodidad.</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-outline-primary (botón de contorno: consultar); btn-sm (botón pequeño); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (lo empuja al final de la tarjeta) · lleva a paginas/tarifas.html -->
+                            <a href="paginas/tarifas.html" class="btn btn-outline-primary btn-sm rounded-pill fw-bold mt-auto align-self-center">Ver tarifas</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Servicio 3 -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); p-3 (espacio interior); text-center (alineación del texto) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover p-3 text-center">
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas); mb-3 (margen exterior) · muestra img/tourguiado.png (alt: Grupo de personas en un tour guiado) -->
+                        <img src="img/tourguiado.png" alt="Grupo de personas en un tour guiado" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded mb-3">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); p-0 (espacio interior); d-flex (display flex); flex-column (dirección/salto del flex) -->
+                        <div class="card-body p-0 d-flex flex-column">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-2 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-2">Tours Guiados</h3>
+                            <!-- <p> párrafo · clases: card-text (parte de la tarjeta); small (texto pequeño); text-secondary (color de texto) -->
+                            <p class="card-text small text-secondary">Únete a nuestros grupos de fin de semana para descubrir rutas históricas. <strong>Reserva con 24 h de anticipación</strong>.</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-outline-primary (botón de contorno: consultar); btn-sm (botón pequeño); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (lo empuja al final de la tarjeta) · lleva a paginas/tarifas.html#recorridos-guiados -->
+                            <a href="paginas/tarifas.html#recorridos-guiados" class="btn btn-outline-primary btn-sm rounded-pill fw-bold mt-auto align-self-center">Ver recorridos</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Servicio 4 -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); p-3 (espacio interior); text-center (alineación del texto) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover p-3 text-center">
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas); mb-3 (margen exterior) · muestra img/carreras.jpg (alt: Bicicleta deportiva en alquiler) -->
+                        <img src="img/reloj-bici-transparente.png" alt="Bicicleta deportiva en alquiler" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded mb-3">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); p-0 (espacio interior); d-flex (display flex); flex-column (dirección/salto del flex) -->
+                        <div class="card-body p-0 d-flex flex-column">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-2 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-2">Alquiler por Horas</h3>
+                            <!-- <p> párrafo · clases: card-text (parte de la tarjeta); small (texto pequeño); text-secondary (color de texto) -->
+                            <p class="card-text small text-secondary">Experimenta la ciudad a tu ritmo con nuestro servicio dinámico y flexible de alquiler por horas.</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-outline-primary (botón de contorno: consultar); btn-sm (botón pequeño); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (lo empuja al final de la tarjeta) · lleva a paginas/tarifas.html -->
+                            <a href="paginas/tarifas.html" class="btn btn-outline-primary btn-sm rounded-pill fw-bold mt-auto align-self-center">Ver tarifas</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE FLOTA EN CUADRÍCULA -->
+        <!-- <section> sección · clases: seccion-flota (nombre de la sección de flota); my-5 (margen exterior); pt-3 (espacio interior) · id «flota» -->
+        <section class="seccion-flota my-5 pt-3" id="flota">
+            <!-- <div> contenedor · clases: text-center (alineación del texto); mb-4 (margen exterior) -->
+            <div class="text-center mb-4">
+                <!-- <h2> título de sección · clases: titulo-seccion (título con detalle de marca); fw-bold (grosor de letra) -->
+                <h2 class="titulo-seccion fw-bold">Nuestra flota</h2>
+                <!-- <p> párrafo · clases: text-muted (color de texto) -->
+                <p class="text-muted">Conoce los modelos de bicicletas disponibles para alquiler por horas, días o recorridos:</p>
+            </div>
+
+            <!-- <div> contenedor · clases: row (fila de la cuadrícula Bootstrap); g-4 (separación entre columnas/filas); row-cols-1 (1 columnas por fila); row-cols-sm-2 (2 columnas por fila desde sm); row-cols-lg-3 (3 columnas por fila desde lg); row-cols-xl-4 (4 columnas por fila desde xl) -->
+            <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+                <!-- 1. Urbana Clásica -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); text-center (alineación del texto); p-3 (espacio interior) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover text-center p-3">
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas) · muestra img/bicicletazul.png (alt: Bicicleta Urbana Clásica) -->
+                        <img src="img/urbanaclasica.jpg" alt="Bicicleta Urbana Clásica" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); d-flex (display flex); flex-column (dirección/salto del flex); p-2 (espacio interior) -->
+                        <div class="card-body d-flex flex-column p-2">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-1 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-1">Urbana Clásica</h3>
+                            <!-- <p> párrafo · clases: small (texto pequeño); text-secondary (color de texto); mb-2 (margen exterior) -->
+                            <p class="small text-secondary mb-2">Cómoda y liviana para las ciclorrutas.</p>
+                            <!-- <p> párrafo · clases: text-primary (color de texto); fw-bold (grosor de letra); fs-5 (tamaño de letra); my-2 (margen exterior) -->
+                            <p class="text-primary fw-bold fs-5 my-2">$10.000 / hora</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (margen exterior) · lleva a paginas/reservas.html -->
+                            <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold mt-auto">Reservar</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 2. Urbana Plegable -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); text-center (alineación del texto); p-3 (espacio interior) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover text-center p-3">
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas) · muestra img/bicicletazul.png (alt: Bicicleta Urbana Plegable) -->
+                        <img src="img/urbanaplegable.png" alt="Bicicleta Urbana Plegable" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); d-flex (display flex); flex-column (dirección/salto del flex); p-2 (espacio interior) -->
+                        <div class="card-body d-flex flex-column p-2">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-1 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-1">Urbana Plegable</h3>
+                            <!-- <p> párrafo · clases: small (texto pequeño); text-secondary (color de texto); mb-2 (margen exterior) -->
+                            <p class="small text-secondary mb-2">Se dobla en segundos; ideal para combinar con el metro.</p>
+                            <!-- <p> párrafo · clases: text-primary (color de texto); fw-bold (grosor de letra); fs-5 (tamaño de letra); my-2 (margen exterior) -->
+                            <p class="text-primary fw-bold fs-5 my-2">$12.000 / hora</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (margen exterior) · lleva a paginas/reservas.html -->
+                            <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold mt-auto">Reservar</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 3. Montaña Trail -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); text-center (alineación del texto); p-3 (espacio interior) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover text-center p-3">
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas) · muestra img/carreras.jpg (alt: Bicicleta Montaña Trail) -->
+                        <img src="img/carreras.jpg" alt="Bicicleta Montaña Trail" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); d-flex (display flex); flex-column (dirección/salto del flex); p-2 (espacio interior) -->
+                        <div class="card-body d-flex flex-column p-2">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-1 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-1">Montaña Trail</h3>
+                            <!-- <p> párrafo · clases: small (texto pequeño); text-secondary (color de texto); mb-2 (margen exterior) -->
+                            <p class="small text-secondary mb-2">Suspensión delantera y 21 cambios para las subidas.</p>
+                            <!-- <p> párrafo · clases: text-primary (color de texto); fw-bold (grosor de letra); fs-5 (tamaño de letra); my-2 (margen exterior) -->
+                            <p class="text-primary fw-bold fs-5 my-2">$15.000 / hora</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (margen exterior) · lleva a paginas/reservas.html -->
+                            <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold mt-auto">Reservar</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 4. Gravel Aventura -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); text-center (alineación del texto); p-3 (espacio interior) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover text-center p-3">
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas) · muestra img/carreras.jpg (alt: Bicicleta Gravel Aventura) -->
+                        <img src="img/gravel.png" alt="Bicicleta Gravel Aventura" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); d-flex (display flex); flex-column (dirección/salto del flex); p-2 (espacio interior) -->
+                        <div class="card-body d-flex flex-column p-2">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-1 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-1">Gravel Aventura</h3>
+                            <!-- <p> párrafo · clases: small (texto pequeño); text-secondary (color de texto); mb-2 (margen exterior) -->
+                            <p class="small text-secondary mb-2">Para rutas mixtas de asfalto y destapado.</p>
+                            <!-- <p> párrafo · clases: text-primary (color de texto); fw-bold (grosor de letra); fs-5 (tamaño de letra); my-2 (margen exterior) -->
+                            <p class="text-primary fw-bold fs-5 my-2">$18.000 / hora</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (margen exterior) · lleva a paginas/reservas.html -->
+                            <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold mt-auto">Reservar</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 5. Eléctrica Urbana -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); text-center (alineación del texto); p-3 (espacio interior); position-relative (posición relativa) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover text-center p-3 position-relative">
+                        <!-- <span> texto en línea · clases: badge (etiqueta pequeña); text-bg-success (fondo y texto a juego); position-absolute (posición fija/absoluta); top-0 (distancia al borde); end-0 (distancia al borde); m-2 (margen exterior); text-uppercase (mayúsculas/minúsculas) -->
+                        <span class="badge text-bg-success position-absolute top-0 end-0 m-2 text-uppercase">Nuevo</span>
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas) · muestra img/reloj-bici-transparente.png (alt: Bicicleta Eléctrica Urbana) -->
+                        <img src="img/electricau.jpg" alt="Bicicleta Eléctrica Urbana" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); d-flex (display flex); flex-column (dirección/salto del flex); p-2 (espacio interior) -->
+                        <div class="card-body d-flex flex-column p-2">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-1 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-1">Eléctrica Urbana</h3>
+                            <!-- <p> párrafo · clases: small (texto pequeño); text-secondary (color de texto); mb-2 (margen exterior) -->
+                            <p class="small text-secondary mb-2">Asistencia eléctrica con 45 km de autonomía.</p>
+                            <!-- <p> párrafo · clases: text-primary (color de texto); fw-bold (grosor de letra); fs-5 (tamaño de letra); my-2 (margen exterior) -->
+                            <p class="text-primary fw-bold fs-5 my-2">$25.000 / hora</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (margen exterior) · lleva a paginas/reservas.html -->
+                            <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold mt-auto">Reservar</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 6. Infantil -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); text-center (alineación del texto); p-3 (espacio interior) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover text-center p-3">
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas) · muestra img/bicicletazul.png (alt: Bicicleta Infantil) -->
+                        <img src="img/bici4.jpg" alt="Bicicleta Infantil" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); d-flex (display flex); flex-column (dirección/salto del flex); p-2 (espacio interior) -->
+                        <div class="card-body d-flex flex-column p-2">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-1 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-1">Infantil</h3>
+                            <!-- <p> párrafo · clases: small (texto pequeño); text-secondary (color de texto); mb-2 (margen exterior) -->
+                            <p class="small text-secondary mb-2">Para niños de 6 a 10 años.</p>
+                            <!-- <p> párrafo · clases: text-primary (color de texto); fw-bold (grosor de letra); fs-5 (tamaño de letra); my-2 (margen exterior) -->
+                            <p class="text-primary fw-bold fs-5 my-2">$8.000 / hora</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (margen exterior) · lleva a paginas/reservas.html -->
+                            <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold mt-auto">Reservar</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 7. Tándem -->
+                <!-- <div> contenedor · clases: col (columna de ancho automático) -->
+                <div class="col">
+                    <!-- <article> artículo/tarjeta independiente · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); text-center (alineación del texto); p-3 (espacio interior) -->
+                    <article class="card h-100 border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover text-center p-3">
+                        <!-- <img> imagen · clases: img-tarjeta (altura fija para imágenes de tarjeta); object-fit-contain (ajuste de la imagen en su caja); w-100 (ancho 100%); p-3 (espacio interior); bg-body (color de fondo); rounded (esquinas redondeadas) · muestra img/tourguiado.png (alt: Bicicleta Tándem) -->
+                        <img src="img/ten.jpg" alt="Bicicleta Tándem" class="img-tarjeta object-fit-contain w-100 p-3 bg-body rounded">
+                        <!-- <div> contenedor · clases: card-body (parte de la tarjeta); d-flex (display flex); flex-column (dirección/salto del flex); p-2 (espacio interior) -->
+                        <div class="card-body d-flex flex-column p-2">
+                            <!-- <h3> subtítulo · clases: h5 (tamaño de título); fw-bold (grosor de letra); mb-1 (margen exterior) -->
+                            <h3 class="h5 fw-bold mb-1">Tándem</h3>
+                            <!-- <p> párrafo · clases: small (texto pequeño); text-secondary (color de texto); mb-2 (margen exterior) -->
+                            <p class="small text-secondary mb-2">Para dos personas; perfecta para pasear en pareja.</p>
+                            <!-- <p> párrafo · clases: text-primary (color de texto); fw-bold (grosor de letra); fs-5 (tamaño de letra); my-2 (margen exterior) -->
+                            <p class="text-primary fw-bold fs-5 my-2">$20.000 / hora</p>
+                            <!-- <a> enlace · clases: btn (botón Bootstrap); btn-primary (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); mt-auto (margen exterior) · lleva a paginas/reservas.html -->
+                            <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold mt-auto">Reservar</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ¿POR QUÉ RUEDA LIBRE? (MiniReto 6 integrado en inicio en el MiniReto 7) -->
+        <!-- <section> sección · clases: beneficios (nombre de la sección); my-5 (margen exterior); pt-3 (espacio interior) -->
+        <section class="beneficios my-5 pt-3" aria-labelledby="titulo-beneficios">
+            <!-- <h2> título de sección · clases: titulo-seccion; fw-bold; text-center; mb-4 -->
+            <h2 class="titulo-seccion fw-bold text-center mb-4" id="titulo-beneficios">¿Por qué Rueda Libre?</h2>
+            <!-- <div> fila · clases: row (fila Bootstrap); g-4 (separación); row-cols-1 / row-cols-sm-2 / row-cols-lg-4 (1, 2 y 4 columnas según el ancho) -->
+            <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
+                <!-- <div> columna · clases: col (ancho automático según row-cols) -->
+                <div class="col">
+                    <!-- <div> tarjeta · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2; rounded-4; bg-body-tertiary; tarjeta-hover; p-4; text-center -->
+                    <div class="card h-100 border-2 rounded-4 bg-body-tertiary tarjeta-hover p-4 text-center">
+                        <i class="bi bi-wrench-adjustable fs-1 text-primary mb-2" aria-hidden="true"></i>
+                        <h3 class="h5 fw-bold mb-2">Bicicletas revisadas</h3>
+                        <p class="text-secondary mb-3">Cada bicicleta pasa por una revisión antes de salir en cada alquiler.</p>
+                        <p class="mt-auto mb-0"><span class="badge text-bg-warning fs-6">Cada alquiler</span></p>
+                    </div>
+                </div>
+                <!-- <div> columna · clases: col (ancho automático según row-cols) -->
+                <div class="col">
+                    <!-- <div> tarjeta · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2; rounded-4; bg-body-tertiary; tarjeta-hover; p-4; text-center -->
+                    <div class="card h-100 border-2 rounded-4 bg-body-tertiary tarjeta-hover p-4 text-center">
+                        <i class="bi bi-shield-check fs-1 text-primary mb-2" aria-hidden="true"></i>
+                        <h3 class="h5 fw-bold mb-2">Casco y candado incluidos</h3>
+                        <p class="text-secondary mb-3">Sales seguro: el equipo de protección va incluido en la tarifa.</p>
+                        <p class="mt-auto mb-0"><span class="badge text-bg-warning fs-6">Incluidos</span></p>
+                    </div>
+                </div>
+                <!-- <div> columna · clases: col (ancho automático según row-cols) -->
+                <div class="col">
+                    <!-- <div> tarjeta · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2; rounded-4; bg-body-tertiary; tarjeta-hover; p-4; text-center -->
+                    <div class="card h-100 border-2 rounded-4 bg-body-tertiary tarjeta-hover p-4 text-center">
+                        <i class="bi bi-person-check fs-1 text-primary mb-2" aria-hidden="true"></i>
+                        <h3 class="h5 fw-bold mb-2">Guías certificados</h3>
+                        <p class="text-secondary mb-3">Los recorridos guiados los lideran personas con certificación.</p>
+                        <p class="mt-auto mb-0"><span class="badge text-bg-warning fs-6">Certificados</span></p>
+                    </div>
+                </div>
+                <!-- <div> columna · clases: col (ancho automático según row-cols) -->
+                <div class="col">
+                    <!-- <div> tarjeta · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2; rounded-4; bg-body-tertiary; tarjeta-hover; p-4; text-center -->
+                    <div class="card h-100 border-2 rounded-4 bg-body-tertiary tarjeta-hover p-4 text-center">
+                        <i class="bi bi-geo-alt fs-1 text-primary mb-2" aria-hidden="true"></i>
+                        <h3 class="h5 fw-bold mb-2">Devolución en tres sedes</h3>
+                        <p class="text-secondary mb-3">Devuelve la bicicleta en el punto que te quede más cómodo.</p>
+                        <p class="mt-auto mb-0"><span class="badge text-bg-warning fs-6">3 sedes</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FRANJA DE LLAMADA A LA ACCIÓN: columna en celulares y fila desde md (utilidades de flex) -->
+            <!-- <div> franja · clases: d-flex; flex-column (columna en celular); flex-md-row (fila desde md); align-items-center; justify-content-md-between; gap-3; mt-5; p-4; rounded-4; text-bg-dark (fondo azul noche con texto blanco) -->
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 mt-5 p-4 rounded-4 text-bg-dark">
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Imagen decorativa: alt vacío para que los lectores de pantalla la ignoren; d-none d-md-block la oculta en celulares -->
+                    <img src="img/reloj-bici-transparente.png" alt="" width="80" class="d-none d-md-block">
+                    <p class="h3 text-white fw-bold mb-0">¿Listo para rodar?</p>
+                </div>
+                <!-- <a> enlace · clases: btn btn-naranja (variante propia de botón con Naranja Pedal); btn-lg; fw-bold; rounded-pill · lleva a paginas/reservas.html -->
+                <a href="paginas/reservas.html" class="btn btn-naranja btn-lg rounded-pill fw-bold">Reservar ahora</a>
+            </div>
+        </section>
+
+        <!-- ¿CÓMO ALQUILAR? -->
+        <!-- <section> sección · clases: como-alquilar (nombre de la sección ¿Cómo alquilar?); my-5 (margen exterior); pt-3 (espacio interior) -->
+        <section class="como-alquilar my-5 pt-3">
+            <!-- <div> contenedor · clases: row (fila de la cuadrícula Bootstrap); g-4 (separación entre columnas/filas); align-items-center (alineación vertical de hijos) -->
+            <div class="row g-4 align-items-center">
+                <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-lg-7 (columna de 7/12 de ancho desde lg) -->
+                <div class="col-12 col-lg-7">
+                    <!-- <div> contenedor · clases: card (tarjeta Bootstrap); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); p-4 (espacio interior) -->
+                    <div class="card border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover p-4">
+                        <!-- <h2> título de sección · clases: titulo-seccion (título con detalle de marca); fw-bold (grosor de letra); mb-3 (margen exterior) -->
+                        <h2 class="titulo-seccion fw-bold mb-3"><i class="bi bi-list-check text-warning" aria-hidden="true"></i> ¿Cómo alquilar?</h2>
+                        <!-- <p> párrafo · clases: text-secondary (color de texto) -->
+                        <p class="text-secondary">Sigue estos cuatro sencillos pasos para empezar a rodar:</p>
+                        <!-- <ol> lista numerada · clases: list-group (lista estilo Bootstrap); list-group-numbered (lista estilo Bootstrap); mb-4 (margen exterior) -->
+                        <ol class="list-group list-group-numbered mb-4">
+                            <!-- <li> elemento de lista · clases: list-group-item (lista estilo Bootstrap); d-flex (display flex); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos); border-0 (borde); ps-0 (espacio interior) -->
+                            <li class="list-group-item d-flex align-items-center gap-2 border-0 ps-0">Elige tu bicicleta favorita en nuestro catálogo.</li>
+                            <!-- <li> elemento de lista · clases: list-group-item (lista estilo Bootstrap); d-flex (display flex); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos); border-0 (borde); ps-0 (espacio interior) -->
+                            <li class="list-group-item d-flex align-items-center gap-2 border-0 ps-0">Presenta un documento de identidad válido.</li>
+                            <!-- <li> elemento de lista · clases: list-group-item (lista estilo Bootstrap); d-flex (display flex); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos); border-0 (borde); ps-0 (espacio interior) -->
+                            <li class="list-group-item d-flex align-items-center gap-2 border-0 ps-0">Realiza el pago correspondiente al tiempo de uso.</li>
+                            <!-- <li> elemento de lista · clases: list-group-item (lista estilo Bootstrap); d-flex (display flex); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos); border-0 (borde); ps-0 (espacio interior) -->
+                            <li class="list-group-item d-flex align-items-center gap-2 border-0 ps-0">¡Recibe tu equipo y comienza a explorar!</li>
+                        </ol>
+                        <!-- <p> párrafo · clases: mb-0 (margen exterior) -->
+                        <p class="mb-0">Para más detalles, visita nuestra sección de <a href="paginas/reservas.html" class="fw-bold text-decoration-underline">Reserva tu bicicleta</a>.</p>
+                    </div>
+                </div>
+
+                <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-lg-5 (columna de 5/12 de ancho desde lg) -->
+                <div class="col-12 col-lg-5">
+                    <!-- <div> contenedor · clases: card (tarjeta Bootstrap); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); p-4 (espacio interior); border-success (borde) -->
+                    <div class="card border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover p-4 border-success">
+                        <!-- <h3> subtítulo · clases: h4 (tamaño de título); fw-bold (grosor de letra); text-primary (color de texto); mb-3 (margen exterior) -->
+                        <h3 class="h4 fw-bold text-primary mb-3"><i class="bi bi-shield-check" aria-hidden="true"></i> Beneficios de nuestro servicio</h3>
+                        <!-- <ul> lista con viñetas · clases: list-unstyled (lista sin viñetas); d-flex (display flex); flex-column (dirección/salto del flex); gap-2 (separación entre hijos); mb-0 (margen exterior) -->
+                        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                            <!-- <li> elemento de lista · clases: d-flex (display flex); align-items-start (alineación vertical de hijos); gap-2 (separación entre hijos) -->
+                            <li class="d-flex align-items-start gap-2">
+                                <!-- <i> ícono · clases: bi (ícono Bootstrap Icons); bi-check-circle-fill (ícono); text-primary (color de texto); mt-1 (margen exterior) -->
+                                <i class="bi bi-check-circle-fill text-primary mt-1" aria-hidden="true"></i>
+                                <!-- <span> texto en línea -->
+                                <span>Asistencia técnica en ruta gratuita.</span>
+                            </li>
+                            <!-- <li> elemento de lista · clases: d-flex (display flex); align-items-start (alineación vertical de hijos); gap-2 (separación entre hijos) -->
+                            <li class="d-flex align-items-start gap-2">
+                                <!-- <i> ícono · clases: bi (ícono Bootstrap Icons); bi-check-circle-fill (ícono); text-primary (color de texto); mt-1 (margen exterior) -->
+                                <i class="bi bi-check-circle-fill text-primary mt-1" aria-hidden="true"></i>
+                                <!-- <span> texto en línea -->
+                                <span>Equipos desinfectados y revisados mecánicamente antes de cada entrega.</span>
+                            </li>
+                            <!-- <li> elemento de lista · clases: d-flex (display flex); align-items-start (alineación vertical de hijos); gap-2 (separación entre hijos) -->
+                            <li class="d-flex align-items-start gap-2">
+                                <!-- <i> ícono · clases: bi (ícono Bootstrap Icons); bi-check-circle-fill (ícono); text-primary (color de texto); mt-1 (margen exterior) -->
+                                <i class="bi bi-check-circle-fill text-primary mt-1" aria-hidden="true"></i>
+                                <!-- <span> texto en línea -->
+                                <span>Flexibilidad en los horarios de devolución.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENCUÉNTRANOS -->
+        <!-- <section> sección · clases: encuentranos (nombre de la sección Encuéntranos); my-5 (margen exterior); pt-3 (espacio interior) · id «encuentranos» -->
+        <section class="encuentranos my-5 pt-3" id="encuentranos">
+            <!-- <div> contenedor · clases: text-center (alineación del texto); mb-4 (margen exterior) -->
+            <div class="text-center mb-4">
+                <!-- <h2> título de sección · clases: titulo-seccion (título con detalle de marca); fw-bold (grosor de letra) -->
+                <h2 class="titulo-seccion fw-bold">Encuéntranos</h2>
+                <!-- <p> párrafo · clases: text-secondary (color de texto) -->
+                <p class="text-secondary">Estamos ubicados en San Javier el Danubio. Puedes ver nuestra ubicación exacta en el <a href="https://www.google.com/maps/place/Cra.+90+%23+44B-58,+El+Danubio,+Medell%C3%ADn,+La+Am%C3%A9rica,+Medell%C3%ADn,+Antioquia/data=!4m2!3m1!1s0x8e442977282c5b17:0x79a49101d5c8d92?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener noreferrer" class="fw-bold text-decoration-underline">Mapa de Google</a>.</p>
+            </div>
+            
+            <!-- <div> contenedor · clases: card (tarjeta Bootstrap); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); shadow (sombra) -->
+            <div class="card border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover shadow">
+                <!-- <div> contenedor · clases: ratio (proporción fija); ratio-21x9 (proporción fija); mapa-contenedor (altura mínima, css/styles.css) -->
+                <div class="ratio ratio-21x9 mapa-contenedor">
+                    <!-- <iframe> página incrustada -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15864.278281567436!2d-75.6208599932553!3d6.254564929816611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442979f4c74715%3A0x407c077a248f420e!2sEl%20Danubio%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1792980490652!5m2!1ses!2sco" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="Ubicación de Rueda Libre en Medellín">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA RESPONSIVE CON BOOTSTRAP -->
+    <!-- <footer> pie de página · clases: pie-sitio (pie con detalle de marca); bg-body-tertiary (color de fondo); border-top (borde); border-warning (borde); border-3 (borde); mt-5 (margen exterior); pt-5 (espacio interior arriba) -->
+    <footer class="pie-sitio bg-body-tertiary border-top border-warning border-3 mt-5 pt-5">
+        <!-- <div> contenedor · clases: container (contenedor centrado con ancho máximo) -->
+        <div class="container">
+            <!-- <div> contenedor · clases: row (fila de la cuadrícula Bootstrap); g-4 (separación entre columnas/filas) -->
+            <div class="row g-4">
+                <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-md-4 (columna de 4/12 de ancho desde md) -->
+                <div class="col-12 col-md-4">
+                    <!-- <div> contenedor · clases: card (tarjeta Bootstrap); card-body (parte de la tarjeta); h-100 (alto 100%); bg-body-secondary (color de fondo) -->
+                    <div class="card card-body h-100 bg-body-secondary">
+                        <!-- <strong> texto importante · clases: d-block (display block); mb-2 (margen exterior) -->
+                        <strong class="d-block mb-2"><i class="bi bi-bicycle" aria-hidden="true"></i> Rueda Libre</strong>
+                        <!-- <p> párrafo · clases: mb-1 (margen exterior) -->
+                        <p class="mb-1">Medellín, Colombia</p>
+                        <!-- <p> párrafo · clases: text-secondary (color de texto); small (texto pequeño); mb-0 (margen exterior) -->
+                        <p class="text-secondary small mb-0">&copy; 2026 Rueda Libre · v2.0</p>
+                    </div>
+                </div>
+                <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-md-4 (columna de 4/12 de ancho desde md) -->
+                <div class="col-12 col-md-4">
+                    <!-- <div> contenedor · clases: card (tarjeta Bootstrap); card-body (parte de la tarjeta); h-100 (alto 100%); bg-body-secondary (color de fondo) -->
+                    <div class="card card-body h-100 bg-body-secondary">
+                        <!-- <strong> texto importante · clases: d-block (display block); mb-2 (margen exterior) -->
+                        <strong class="d-block mb-2"><i class="bi bi-chat-dots" aria-hidden="true"></i> Contacto</strong>
+                        <!-- <p> párrafo · clases: mb-1 (margen exterior) -->
+                        <p class="mb-1"><a href="mailto:hola@ruedalibre.example" class="text-decoration-underline">hola@ruedalibre.example</a></p>
+                        <!-- <p> párrafo · clases: mb-0 (margen exterior) -->
+                        <p class="mb-0"><a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" class="fw-semibold"><i class="bi bi-whatsapp text-primary" aria-hidden="true"></i> WhatsApp de Reservas</a></p>
+                    </div>
+                </div>
+                <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-md-4 (columna de 4/12 de ancho desde md) -->
+                <div class="col-12 col-md-4">
+                    <!-- <div> contenedor · clases: card (tarjeta Bootstrap); card-body (parte de la tarjeta); h-100 (alto 100%); bg-body-secondary (color de fondo) -->
+                    <div class="card card-body h-100 bg-body-secondary">
+                        <!-- <strong> texto importante · clases: d-block (display block); mb-2 (margen exterior) -->
+                        <strong class="d-block mb-2"><i class="bi bi-clock" aria-hidden="true"></i> Horario de atención:</strong>
+                        <!-- <p> párrafo · clases: mb-0 (margen exterior) -->
+                        <p class="mb-1">Lunes a viernes: 7:00 a. m. – 7:00 p. m.</p>
+                        <p class="mb-0">Sábados, domingos y festivos: 6:00 a. m. – 2:00 p. m.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p>¿Tienes dudas o sugerencias? Escríbenos directamente a nuestro correo electrónico: <a href="mailto:rueda@ruedalibre.com">rueda@ruedalibre.com</a></p>
-    </section>
-
-    <!-- PIE DE PÁGINA -->
-    <footer><!-- PIE DE PÁGINA -->
-        <p><strong>Rueda Libre</strong></p>
-        <p><a href="https://wa.me" target="_blank">Escríbenos por WhatsApp aquí para reservar</a></p>
-        <p>Recuerda que también contamos con un correo para sugerencias: <a href="mailto:rueda@ruedalibre.com">rueda@ruedalibre.com</a></p>
-        <p><a href="../index.html">Regresar al menú anterior</a></p>
-        <p>&copy; 2024 Rueda Libre. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- BOTÓN FLOTANTE PERMANENTE DE WHATSAPP -->
+    <!-- <a> enlace · clases: btn (botón Bootstrap); btn-success (botón Bootstrap); rounded-pill (esquinas en forma de píldora); fw-bold (grosor de letra); position-fixed (posición fija/absoluta); bottom-0 (distancia al borde); end-0 (distancia al borde); m-4 (margen exterior); shadow (sombra); d-inline-flex (display flex desde inline); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos) · lleva a https://wa.me/573000000000, abre en otra pestaña, aria-label: Contactar por WhatsApp -->
+    <a href="https://wa.me/573000000000" class="btn btn-success rounded-pill fw-bold position-fixed bottom-0 end-0 m-4 shadow d-inline-flex align-items-center gap-2" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <!-- <i> ícono · clases: bi (ícono Bootstrap Icons); bi-whatsapp (ícono); fs-5 (tamaño de letra) -->
+        <i class="bi bi-whatsapp fs-5" aria-hidden="true"></i>
+        <!-- <span> texto en línea -->
+        <span>WhatsApp</span>
+    </a>
+
+    <!-- BOOTSTRAP BUNDLE JS (Habilita el menú colapsable responsive sin código JS propio) -->
+    <!-- <script> script · carga https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
