@@ -1,0 +1,171 @@
+Semana 1
+
+} 1 - Inspección de petición HTTP (MiniReto 1)
+• URL completa: 127.0.0
+• Protocolo: http://
+• Host: 127.0.0.1
+• Puerto: 5500
+• Ruta: /index.html
+• Método de la petición: GET
+• Código de estado: 200 OK
+} 2 - Prueba de ruta inexistente (MiniReto 1)
+• Ruta probada: /promociones.html
+• Código que responde el servidor: 404 Not Found.
+• Significado: Ocurre cuando el servidor recibe la petición correctamente, pero no encuentra el archivo solicitado en esa ruta.
+} 3 - Rol de cada tecnología web con ejemplo (MiniReto 1)
+• HTML (Estructura): Crea el esqueleto semántico de la página (ejemplo: , , , , ).
+• CSS (Presentación): Define la apariencia visual, paleta de colores, tipografías y diseño responsivo (ejemplo: variables en :root, Flexbox, Grid y colores de botones).
+• JavaScript (Comportamiento): Añade interactividad dinámica y validación en el cliente (ejemplo: interceptar el evento submit del formulario para validar campos o alternar temas).
+} 4 - Tabla de rutas relativas (MiniReto 4)
+Archivo de origen      | Destino / Recurso     | Ruta escrita
+-----------------------|-----------------------|-------------------------
+index.html             | Inicio                | index.html
+index.html             | Tarifas y rutas       | paginas/tarifas.html
+index.html             | Flota                 | paginas/flota.html
+index.html             | Reservas              | paginas/reservas.html
+index.html             | Hoja de estilos       | css/styles.css
+index.html             | Logotipo              | img/logo.png
+paginas/tarifas.html   | Inicio                | ../index.html
+paginas/flota.html     | Reservas              | reservas.html
+paginas/reservas.html  | Hoja de estilos       | ../css/styles.css
+} 5 - Esquema de regiones y justificación de div / span (MiniReto 5)
+• Esquema común en las 4 páginas:(barra de navegación sticky) ->  (portada/hero, carrusel, secciones de catálogo, tablas o formulario) ->  (marca, contacto y horarios).
+• Justificación de  y :
+	• En la versión inicial de HTML puro se evitó su uso priorizando etiquetas semánticas.
+	• Tras migrar a Bootstrap 5, los  se utilizan exclusivamente como contenedores estructurales requeridos por el framework (.container, .row, .col-*, .card, .carousel-item, .modal-dialog).
+	• Los  se limitan a elementos en línea sin valor estructural: insignias (.badge), texto de marca (.brand-title) e íconos decorativos con aria-hidden="true".
+} 6 - Justificación de controles del formulario (MiniReto 6)
+1. : Despliega el calendario nativo del dispositivo y bloquea fechas anteriores a la actual sin requerir código JavaScript adicional.
+2. : Restringe la elección a las categorías reales de la flota (Urbana, Eléctrica, Montaña, etc.), evitando errores de escritura del usuario.
+3. : Activa el teclado numérico en celulares y valida que el número corresponda a un celular colombiano de 10 dígitos iniciado en 3.
+} 7 - Tabla de pruebas del formulario (MiniReto 7 - 8 casos)
+Campo              | Dato ingresado      | Resultado esperado                                | Resultado obtenido
+-------------------|---------------------|---------------------------------------------------|-------------------
+Nombre completo    | "" (vacío)          | Bloquea envío y muestra mensaje obligatorio       | Cumple
+Nombre completo    | "An" (2 letras)     | Bloquea envío por atributo minlength="3"          | Cumple
+Documento          | "929292929292"      | Error: el documento debe tener entre 6 y 12 díg.  | Cumple
+Celular            | "312555555555"      | Error: debe comenzar por 3 y tener 10 dígitos     | Cumple
+Correo electrónico | "usuario@correo"    | Error por formato de correo electrónico inválido  | Cumple
+Fecha de reserva   | "2025-02-21"        | Bloquea por ser anterior a la fecha mínima (min)  | Cumple
+Cantidad de bicis  | "" (en blanco)      | Solicita introducir un número válido (min/max)    | Cumple
+Todos los campos   | Datos válidos     | Validación exitosa y envío del formulario         | Cumple
+} 8 - Auditoría de accesibilidad, contraste y GitHub Pages (MiniReto 8)
+• 5 hallazgos corregidos:
+	1. Idioma del documento no declarado -> Se agregó lang="es" en la etiqueta  de las 4 páginas.
+	2. Imágenes sin texto alternativo -> Se añadieron atributos alt descriptivos en portada, carrusel y tarjetas de flota.
+	3. Íconos decorativos leídos como texto extraño -> Se agregó aria-hidden="true" en todos los íconos .
+	4. Enlace de página actual sin contexto -> Se añadió aria-current="page" al enlace activo de la navegación.
+	5. Controles de formulario sin asociación -> Se vinculó cada  con el atributo id de su input correspondiente.
+• Mapa de uso de color y contraste:
+	• Fondo crema (#FAF7F2) + Texto azul oscuro (#0F2537): Ratio > 13:1 (Nivel AAA - Aprobado).
+	• Navbar azul oscuro (#0F2537) + Texto blanco (#FFFFFF): Ratio > 14:1 (Nivel AAA - Aprobado).
+	• Botón verde bosque (#1E6B52) + Texto blanco (#FFFFFF): Ratio > 6.2:1 (Nivel AA - Aprobado).
+• Enlace público de GitHub Pages: github.io
+} 9 - Comprobación de herencia (MiniReto 9)
+En DevTools (Styles y Computed):
+• Propiedad que se hereda:
+	• font-family y color: El elemento  hereda la fuente 'Open Sans', sans-serif y el color de texto directamente desde el  por herencia tipográfica natural sin tener que redefinirlo en el selector p.
+• Propiedad que NO se hereda:
+	• margin, padding, border y background-color: Las propiedades del modelo de caja (box model) no son heredables; cada párrafo o tarjeta conserva sus propios márgenes y rellenos definidos explícitamente.
+} 10 - Conflicto de cascada y especificidad en la navegación (MiniReto 10)
+1. Reglas en conflicto:
+#menu a { color: var(--gris-asfalto); }
+.activo { color: var(--verde-ruta); font-weight: 600; }
+2. Cálculo de especificidad:
+	• #menu a:
+		• Estilos en línea: 0 | IDs (#menu): 1 | Clases: 0 | Elementos (a): 1 -> Puntuación: (0, 1, 0, 1)
+	• .activo:
+		• Estilos en línea: 0 | IDs: 0 | Clases (.activo): 1 | Elementos: 0 -> Puntuación: (0, 0, 1, 0)
+3. Causa del problema:
+El selector '#menu a' contiene un ID (#menu), lo cual le otorga mayor peso en la cascada CSS que un selector simple de clase (.activo), sin importar el orden en que estén escritos. Por lo tanto, '#menu a' anula la declaración de '.activo' y DevTools la muestra tachada.
+4. Solución aplicada sin !important ni estilos en línea:
+Se aumentó la especificidad combinando el ID con la clase en el elemento: '#menu a.activo' -> Puntuación: (0, 1, 1, 1), superando a '#menu a' y aplicando correctamente el color verde y font-weight: 600.
+} 11 - Medición del Box Model en Tarjeta de Servicios (MiniReto 11)
+Medición en DevTools (Computed) del ancho de una tarjeta con width base (250px), padding horizontal de 1rem (16px a cada lado) y borde de 2px a cada lado:
+1. Antes (box-sizing: content-box - comportamiento por defecto):
+	• Contenido (Content): 250px
+	• Relleno (Padding): 16px + 16px = 32px
+	• Borde (Border): 2px + 2px = 4px
+	• Ancho Total en Computed: 250px + 32px + 4px = 286px.
+	• Observación: El ancho declarado no incluía el relleno ni el borde, provocando desbordamientos en el contenedor.
+2. Después (box-sizing: border-box - regla global aplicada):
+	• Ancho Total asignado: 250px
+	• Borde (Border): 4px (incluido dentro del ancho)
+	• Relleno (Padding): 32px (incluido dentro del ancho)
+	• Contenido real (Content): 250px - 32px - 4px = 214px
+	• Ancho Total en Computed: Exactamente 250px.
+	• Observación: Las tarjetas mantienen su tamaño exacto sin desbordar la cuadrícula.
+} 12 - Resumen semanal y consolidación v1.0 (MiniReto 12)
+Resumen de lo construido durante la semana:
+• MiniReto 1 a 3: Inspección de protocolos HTTP (200 OK y 404 Not Found) y roles de HTML, CSS y JS.
+• MiniReto 4 y 5: Navegación entre páginas con rutas relativas y estructura semántica HTML5 sin divs innecesarios.
+• MiniReto 6 y 7: Formulario completo de reservas con validaciones nativas y tabla de pruebas.
+• MiniReto 8: Auditoría de accesibilidad (lang, alt, aria-current, labels) y contraste de color.
+• MiniReto 9 a 12: Hoja de estilos externa, herencia, especificidad sin !important, box-sizing: border-box, cabecera sticky y botón flotante de WhatsApp.
+¿Qué mejoraría a futuro?
+1. Menú responsivo hamburguesa para pantallas móviles menores a 480px.
+2. Modo oscuro (Dark Mode) alternable desde la barra superior.
+3. Optimización de imágenes a formatos modernos (WebP) para carga más rápida.
+4. Conexión del formulario con un backend real para registrar reservas.
+
+Semana 2
+
+} 13 - Encabezado y pie flexibles con Flexbox (MiniReto 1)
+1. Distribución del encabezado y menú:
+	• Se aplicó 'display: flex; justify-content: space-between; align-items: center;' en el encabezado para anclar la marca a la izquierda y el menú a la derecha, alineados verticalmente.
+	• La lista del menú se configuró con 'display: flex; gap: 1.5rem; flex-wrap: wrap;', eliminando 'inline-block' y márgenes manuales.
+2. Distribución del pie de página:
+	• Se organizó con 'display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap;' para mostrar los tres bloques (Marca, Contacto y Horarios) en fila en pantallas anchas.
+3. Comportamiento al estrechar la ventana:
+	• Al reducir el ancho por debajo de 768px, gracias a 'flex-wrap: wrap', los enlaces del menú bajan ordenadamente a una segunda línea en lugar de generar scroll horizontal, y las tres columnas del pie se apilan verticalmente ocupando todo el ancho.
+} 14 - La flota en cuadrícula con Grid y tarjetas con Flexbox (MiniReto 2)
+• Se implementó la sección "Nuestra flota" con los 7 modelos (Urbana Clásica, Urbana Plegable, Montaña Trail, Gravel Aventura, Eléctrica Urbana, Infantil y Tándem).
+• Cuadrícula adaptable: 'display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;' sin media queries.
+• Alineación interna: Cada tarjeta usa 'display: flex; flex-direction: column; justify-content: space-between;' para que el botón "Reservar" quede siempre alineado al final de la tarjeta.
+• Columnas registradas en DevTools (Modo dispositivo):
+	• A 1280 px (Escritorio): 4 columnas por fila.
+	• A 900 px (Tablet): 3 columnas por fila.
+	• A 500 px (Móvil): 1 columna por fila.
+} 15 - Combinación de Flexbox y Grid en el layout general (MiniReto 3)
+Justificación de 6 casos:
+1. Portada (Hero): Grid / Row de 2 columnas (texto a la izquierda, fachada a la derecha), ideal para dividir el espacio en dos bloques simétricos.
+2. Galería / Flota: Grid auto-adaptable (auto-fit / row-cols), porque organiza múltiples tarjetas bidimensionales de igual altura.
+3. Sección Reservas: Grid de 2 columnas (formulario + políticas/resumen) para aprovechar el ancho en escritorio.
+4. Fila del formulario: Flexbox / Row, para alinear campos cortos (fecha, hora, cantidad) en una misma línea horizontal.
+5. Encabezado (Navbar): Flexbox (justify-content-between), porque distribuye elementos en una sola dimensión (logo a la izquierda, menú a la derecha).
+6. Pie de página (Footer): Grid de 3 columnas en escritorio, para mantener alineados los bloques de Marca, Contacto y Horarios.
+} 16 - Diseño Mobile-First y problemas responsive resueltos en v1.5 (MiniReto 4)
+1. Problema: Desbordamiento horizontal de las tablas de tarifas en pantallas móviles de 360px.
+Solución: Contenedor con scroll horizontal controlado (.table-responsive / overflow-x: auto).
+2. Problema: Imagen de fachada en portada demasiado alta en pantallas pequeñas.
+Solución: Imágenes fluidas (max-width: 100%; height: auto;) con ajuste de altura por breakpoint.
+3. Problema: Botones de acción en portada se pegaban al apilarse en móvil.
+Solución: Contenedor flexible con flex-wrap: wrap y gap: 0.75rem.
+• URL GitHub Pages v1.5: github.io
+} 17 - Balance tras migrar a Bootstrap 5 (MiniReto 5)
+• Tiempo invertido: ~6 horas entre reestructuración HTML, componentes interactivos y ajuste de modo noche.
+• Líneas de CSS frente a clases usadas: Se redujo css/styles.css de ~380 líneas en v1.5 a menos de 90 líneas en la versión con Bootstrap, reemplazando reglas manuales por clases utilitarias (.container, .row, .col-*, .d-flex, .gap-2).
+• Qué me dio Bootstrap: Grilla responsiva de 12 columnas, navbar colapsable con menú hamburguesa, carrusel, modal, alertas cerrables y validación visual de formularios.
+• Qué control perdí: El HTML tiene muchas más clases y fue necesario sobreescribir variables de Bootstrap para conservar los colores propios de Rueda Libre.
+} 18 - Cinco clases consultadas en la documentación de Bootstrap (MiniReto 6)
+1. .navbar-expand-lg: Expande el menú horizontalmente en pantallas grandes (>= 992px) y lo colapsa en botón hamburguesa en móviles y tablets.
+2. .sticky-top: Fija el encabezado en la parte superior de la ventana al desplazarse sin tapar el contenido inicial.
+3. .alert-dismissible: Habilita el espacio y comportamiento para cerrar una alerta mediante el botón .btn-close y data-bs-dismiss="alert".
+4. .needs-validation: Prepara el formulario (junto con novalidate) para mostrar mensajes .invalid-feedback personalizados con JavaScript.
+5. .visually-hidden: Oculta visualmente el checkbox del modo noche (#theme-toggle) manteniendo su accesibilidad para teclado y lectores de pantalla.
+} 19 - Tres conflictos entre estilos propios y Bootstrap y su solución (MiniReto 7)
+1. Conflicto: Los estilos por defecto de Bootstrap (.bg-dark, botones y enlaces) reemplazaban la paleta cálida y verde bosque de la marca.
+Solución: Sobreescribir variables CSS de Bootstrap (--bs-body-bg, --bs-primary) y cargar css/styles.css después del CDN de Bootstrap, sin usar !important.
+2. Conflicto: El Modo Noche no cambiaba los colores internos de tarjetas (.card), tablas (.table) y modales (.modal-content) de Bootstrap.
+Solución: Vincular #theme-toggle:checked con la redefinición de las variables internas de Bootstrap para modo oscuro.
+3. Conflicto: Las imágenes del carrusel tenían distintas alturas y movían el contenido inferior al cambiar de slide.
+Solución: Aplicar altura fija controlada y object-fit: cover en las imágenes de .carousel-item.
+} 20 - Comparativa final: v1.5 (CSS propio) vs Actual (Bootstrap 5) (MiniReto 8)
+• Líneas de styles.css: ~380 líneas en v1.5 frente a ~85 líneas en la versión actual con Bootstrap.
+• Tiempo de desarrollo: ~10 horas en v1.5 (CSS puro) frente a ~6 horas en v2.0 (Bootstrap).
+• Ventajas de Bootstrap: Rapidez de desarrollo, componentes JS accesibles listos (modal, carrusel, colapso) y consistencia visual.
+• Desventajas de Bootstrap: Dependencia de archivos externos (CDN), mayor peso de carga y código HTML más extenso.
+• Conclusión: CSS puro (Flexbox/Grid) es ideal cuando se busca control total y código ligero; Bootstrap es la mejor opción cuando se necesita construir rápido una interfaz multipágina profesional con componentes interactivos probados.
+} 21 - Cierre de Semana 2 y evidencias visuales (MiniReto 12)
+• Resumen de la semana: Se evolucionó Rueda Libre desde una página estática hacia un sitio multipágina mobile-first con Flexbox y Grid (v1.5), y luego se migró a Bootstrap 5.3.3 incorporando carrusel de 3 promociones, alerta cerrable, modal de políticas de alquiler, validación interactiva de formulario y modo día/noche accesible.
+• Capturas "antes y después" guardadas en: img/capturas/ (antes-v1.png y despues-bootstrap.png).
