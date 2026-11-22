@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rueda Nocturna · Medellín en bici</title>
+  <link rel="icon" href="../img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/output.css">
+  <script>
+    (function () {
+      var saved = localStorage.getItem('rueda-tema') || localStorage.getItem('rueda-nocturna-tema');
+      if (saved === 'dark' || saved === 'light') {
+        document.documentElement.classList.add(saved);
+      }
+    })();
+  </script>
+</head>
+<body class="font-sans antialiased bg-crema text-gris-asfalto dark:bg-azul-noche-fondo dark:text-gris-asfalto-claro">
+  <!-- 1. Header (estructura equivalente al navbar de Rueda Libre; menú hamburguesa solo en mobile-first) -->
+  <header class="sticky top-0 z-40 border-b backdrop-blur-sm bg-white/95 border-crema-borde dark:bg-azul-noche-fondo/95 dark:border-azul-noche-borde/40">
+    <div class="flex flex-wrap items-center justify-between max-w-6xl mx-auto px-4 py-2.5 gap-2 sm:px-6 lg:flex-nowrap lg:gap-4 lg:px-8">
+      <!-- Marca / Logotipo -->
+      <a href="#inicio" class="flex items-center shrink-0 rounded-lg gap-2.5 focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:focus:ring-amarillo-farol">
+        <img src="../img/logo.png" alt="Logo de Rueda Nocturna" width="44" height="44" class="shrink-0 w-11 h-11 rounded-full object-cover p-0.5 bg-white border border-crema-borde dark:border-amarillo-farol/50">
+        <div>
+          <span class="block font-display text-base font-bold leading-tight tracking-tight text-azul-noche sm:text-lg dark:text-crema">Rueda Nocturna</span>
+          <span class="hidden text-xs text-gris-asfalto sm:block dark:text-gris-asfalto-claro">Una campaña de Rueda Libre</span>
+        </div>
+      </a>
+
+      <!-- Enlaces de navegación en línea (visibles en escritorio, ocultos en mobile-first) -->
+      <nav aria-label="Navegación principal" class="hidden lg:flex lg:items-center lg:gap-1 lg:ml-auto">
+        <a href="#inicio" class="rounded-lg transition px-3 py-2 text-sm font-semibold text-azul-noche hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Inicio</a>
+        <a href="#rutas" class="rounded-lg transition px-3 py-2 text-sm font-semibold text-azul-noche hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Rutas</a>
+        <a href="#como-funciona" class="rounded-lg transition px-3 py-2 text-sm font-semibold text-azul-noche hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">¿Cómo funciona?</a>
+        <a href="#inscripcion" class="rounded-lg transition px-3 py-2 text-sm font-semibold text-azul-noche hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Inscripción</a>
+      </nav>
+
+      <!-- Controles de la barra: acceso a Rueda Libre, interruptor sol/luna, Inscríbete y hamburguesa (solo móvil) -->
+      <div class="flex items-center gap-2 ml-auto lg:ml-2">
+        <a href="../index.html" class="btn-secundario shrink-0 whitespace-nowrap px-3 py-1.5 text-xs sm:px-3.5 sm:py-2 dark:focus:ring-offset-azul-noche-fondo">
+          <span class="hidden sm:inline">Regresar a&nbsp;</span>Rueda Libre
+        </a>
+
+        <button id="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Cambiar entre tema claro y tema oscuro" class="theme-switch" title="Alternar entre tema claro y tema oscuro">
+          <span class="theme-switch__label theme-switch__label--light" aria-hidden="true">
+            <svg class="theme-switch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="4" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
+            </svg>
+          </span>
+          <span class="theme-switch__track" aria-hidden="true">
+            <span class="theme-switch__thumb"></span>
+          </span>
+          <span class="theme-switch__label theme-switch__label--dark" aria-hidden="true">
+            <svg class="theme-switch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+            </svg>
+          </span>
+        </button>
+
+        <a href="#inscripcion" class="btn-primario hidden shrink-0 whitespace-nowrap px-4 py-2 text-xs sm:inline-flex sm:text-sm dark:focus:ring-offset-azul-noche-fondo">Inscríbete</a>
+
+        <!-- Botón de las tres rayitas: visible únicamente en mobile-first (< lg) -->
+        <button id="menu-toggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menu-desplegable" class="inline-flex items-center justify-center shrink-0 w-10 h-10 rounded-xl transition cursor-pointer text-azul-noche hover:bg-crema focus:outline-hidden focus:ring-2 focus:ring-verde-ruta lg:hidden dark:text-crema dark:hover:bg-azul-noche-elevado dark:focus:ring-amarillo-farol">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Fondo translúcido del menú lateral izquierdo (solo mobile-first) -->
+  <div id="menu-backdrop" class="hidden fixed inset-0 z-50 bg-azul-noche-fondo/60 backdrop-blur-xs lg:hidden" aria-hidden="true"></div>
+
+  <!-- Menú de opciones en el lateral izquierdo (solo mobile-first) -->
+  <aside id="menu-desplegable" aria-label="Menú lateral de navegación" aria-hidden="true" class="fixed inset-y-0 left-0 z-50 flex flex-col w-72 max-w-[85vw] -translate-x-full border-r shadow-2xl transition-transform duration-300 ease-out bg-white border-crema-borde lg:hidden dark:bg-azul-noche dark:border-azul-noche-borde/40">
+    <div class="flex items-center justify-between border-b px-5 py-4 border-crema-borde dark:border-azul-noche-borde/40">
+      <div class="flex items-center gap-2.5">
+        <img src="../img/logo.png" alt="Logo de Rueda Nocturna" width="36" height="36" class="w-9 h-9 rounded-full object-cover p-0.5 bg-white border border-crema-borde dark:border-amarillo-farol/50">
+        <div>
+          <span class="block font-display text-sm font-bold leading-tight text-azul-noche dark:text-crema">Rueda Nocturna</span>
+          <span class="block text-xs text-gris-asfalto dark:text-gris-asfalto-claro">Navegación</span>
+        </div>
+      </div>
+      <button id="menu-close" type="button" aria-label="Cerrar menú lateral" class="inline-flex items-center justify-center w-9 h-9 rounded-full border transition cursor-pointer bg-crema border-crema-borde text-azul-noche hover:bg-crema-borde/60 focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:bg-azul-noche-elevado dark:border-azul-noche-borde/40 dark:text-crema dark:hover:bg-azul-noche-borde/40 dark:focus:ring-amarillo-farol">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <nav aria-label="Navegación principal" class="flex-1 overflow-y-auto p-4 space-y-1.5">
+      <a href="#inicio" class="block rounded-xl transition px-4 py-2.5 text-sm font-semibold text-azul-noche hover:bg-crema hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:bg-azul-noche-elevado dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Inicio</a>
+      <a href="#rutas" class="block rounded-xl transition px-4 py-2.5 text-sm font-semibold text-azul-noche hover:bg-crema hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:bg-azul-noche-elevado dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Rutas</a>
+      <a href="#como-funciona" class="block rounded-xl transition px-4 py-2.5 text-sm font-semibold text-azul-noche hover:bg-crema hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:bg-azul-noche-elevado dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">¿Cómo funciona?</a>
+      <a href="#inscripcion" class="block rounded-xl transition px-4 py-2.5 text-sm font-semibold text-azul-noche hover:bg-crema hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:bg-azul-noche-elevado dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Inscripción</a>
+      <a href="./componentes.html" class="block rounded-xl transition px-4 py-2.5 text-sm font-semibold text-azul-noche hover:bg-crema hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:bg-azul-noche-elevado dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Catálogo de componentes</a>
+    </nav>
+
+    <div class="border-t p-4 space-y-2.5 border-crema-borde dark:border-azul-noche-borde/40">
+      <a href="#inscripcion" class="btn-primario w-full text-sm py-2.5">Inscríbete</a>
+      <a href="../index.html" class="btn-secundario w-full text-sm py-2.5">Regresar a Rueda Libre</a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- 2. Hero -->
+    <section id="inicio" aria-labelledby="titulo-hero" class="py-8 sm:py-12 lg:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="overflow-hidden rounded-2xl border shadow-2xl bg-white border-crema-borde text-azul-noche sm:rounded-3xl dark:bg-azul-noche dark:border-azul-noche-borde/40 dark:text-crema">
+          <img src="./img/rodada-nocturna.jpg" alt="Grupo de ciclistas urbanos rodando de noche con luces encendidas y chalecos reflectivos" class="w-full h-52 object-cover sm:h-72 lg:h-80">
+          <div class="px-5 py-8 space-y-5 text-center sm:px-8 sm:py-12 sm:space-y-6 lg:px-10 lg:py-16">
+            <p class="text-xs font-semibold uppercase tracking-widest text-verde-ruta sm:text-sm dark:text-amarillo-farol">Nuevo · Jueves a sábado</p>
+            <h1 id="titulo-hero" class="font-display text-3xl font-bold tracking-tight text-azul-noche sm:text-5xl lg:text-6xl dark:text-crema">Rueda Nocturna</h1>
+            <p class="max-w-xl mx-auto text-base leading-relaxed text-gris-asfalto sm:text-lg dark:text-gris-asfalto-claro">Descubre Medellín en bici cuando se encienden las luces</p>
+            <ul class="flex flex-wrap justify-center pt-2 gap-3 text-sm font-semibold text-azul-noche sm:gap-4 sm:text-base dark:text-amarillo-farol">
+              <li class="rounded-full border px-4 py-2 bg-crema border-crema-borde dark:bg-azul-noche-elevado dark:border-azul-noche-borde/40">3 rutas</li>
+              <li class="rounded-full border px-4 py-2 bg-crema border-crema-borde dark:bg-azul-noche-elevado dark:border-azul-noche-borde/40">Desde $55.000</li>
+            </ul>
+            <div class="flex flex-col justify-center pt-4 gap-3 sm:flex-row sm:gap-4">
+              <a href="#inscripcion" class="btn-primario w-full sm:w-auto">Inscríbete</a>
+              <a href="#rutas" class="btn-secundario w-full sm:w-auto">Ver rutas</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Rutas (cards mantenidas con utilidades directamente en el HTML) -->
+    <section id="rutas" aria-labelledby="titulo-rutas" class="py-10 sm:py-12 lg:py-16">
+      <div class="max-w-6xl mx-auto px-4 space-y-8 sm:px-6 sm:space-y-10 lg:px-8">
+        <div class="space-y-2">
+          <p class="text-xs font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol">Rutas nocturnas</p>
+          <h2 id="titulo-rutas" class="font-display text-2xl font-bold text-azul-noche sm:text-3xl dark:text-crema">Tres recorridos iluminados por Medellín</h2>
+          <p class="max-w-2xl text-sm leading-relaxed text-gris-asfalto sm:text-base dark:text-gris-asfalto-claro">Elige la distancia y el ritmo que mejor se ajusten a tu experiencia. Todas las salidas incluyen guía certificado, bicicleta urbana, luces y chaleco reflectivo.</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Card 1 -->
+          <article class="w-full overflow-hidden rounded-2xl border shadow-xl bg-white border-crema-borde dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <img src="./img/luces-centro-medellin.jpg" alt="Edificio Carré iluminado de noche en el centro histórico de Medellín" loading="lazy" class="w-full h-44 object-cover sm:h-48">
+            <div class="p-5 space-y-4 sm:p-6">
+              <div class="flex items-center justify-between gap-2">
+                <span class="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-verde-ruta/10 text-verde-ruta dark:bg-verde-ruta-claro/15 dark:text-verde-ruta-claro">Fácil</span>
+                <p class="font-display text-lg font-bold text-verde-ruta sm:text-xl dark:text-amarillo-farol">$55.000</p>
+              </div>
+              <h3 class="font-display text-xl font-bold text-azul-noche sm:text-2xl dark:text-crema">Luces del Centro</h3>
+              <dl class="border-t pt-4 space-y-2 text-sm border-crema-borde dark:border-azul-noche-borde/40">
+                <div class="flex justify-between gap-3">
+                  <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Distancia</dt>
+                  <dd class="font-semibold text-azul-noche dark:text-crema">10 km</dd>
+                </div>
+                <div class="flex justify-between gap-3">
+                  <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Duración</dt>
+                  <dd class="font-semibold text-azul-noche dark:text-crema">2 h</dd>
+                </div>
+                <div class="flex justify-between gap-3">
+                  <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Punto de encuentro</dt>
+                  <dd class="font-semibold text-right text-azul-noche dark:text-crema">Sede de Rueda Libre</dd>
+                </div>
+              </dl>
+              <a href="#inscripcion" class="btn-primario w-full">Inscríbete</a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="w-full overflow-hidden rounded-2xl border shadow-xl bg-white border-crema-borde dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <img src="./img/parques-del-rio.jpg" alt="Parques del Río Medellín iluminado de noche sobre el río" loading="lazy" class="w-full h-44 object-cover sm:h-48">
+            <div class="p-5 space-y-4 sm:p-6">
+              <div class="flex items-center justify-between gap-2">
+                <span class="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-amarillo-farol/35 text-azul-noche dark:bg-amarillo-farol/15 dark:text-amarillo-farol">Intermedia</span>
+                <p class="font-display text-lg font-bold text-verde-ruta sm:text-xl dark:text-amarillo-farol">$65.000</p>
+              </div>
+              <h3 class="font-display text-xl font-bold text-azul-noche sm:text-2xl dark:text-crema">Parques del Río</h3>
+              <dl class="border-t pt-4 space-y-2 text-sm border-crema-borde dark:border-azul-noche-borde/40">
+                <div class="flex justify-between gap-3">
+                  <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Distancia</dt>
+                  <dd class="font-semibold text-azul-noche dark:text-crema">16 km</dd>
+                </div>
+                <div class="flex justify-between gap-3">
+                  <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Duración</dt>
+                  <dd class="font-semibold text-azul-noche dark:text-crema">2.5 h</dd>
+                </div>
+                <div class="flex justify-between gap-3">
+                  <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Punto de encuentro</dt>
+                  <dd class="font-semibold text-right text-azul-noche dark:text-crema">Sede de Rueda Libre</dd>
+                </div>
+              </dl>
+              <a href="#inscripcion" class="btn-primario w-full">Inscríbete</a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="w-full overflow-hidden rounded-2xl border shadow-xl bg-white border-crema-borde dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <img src="./img/cerro-nutibara.jpg" alt="Vista nocturna de Medellín y sus montañas iluminadas desde el Cerro Nutibara" loading="lazy" class="w-full h-44 object-cover sm:h-48">
+            <div class="p-5 space-y-4 sm:p-6">
+              <div class="flex items-center justify-between gap-2">
+                <span class="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-naranja-pedal/25 text-azul-noche dark:bg-naranja-pedal/15 dark:text-naranja-pedal">Exigente</span>
+                <p class="font-display text-lg font-bold text-verde-ruta sm:text-xl dark:text-amarillo-farol">$75.000</p>
+              </div>
+              <h3 class="font-display text-xl font-bold text-azul-noche sm:text-2xl dark:text-crema">Cerro Nutibara</h3>
+              <dl class="border-t pt-4 space-y-2 text-sm border-crema-borde dark:border-azul-noche-borde/40">
+                <div class="flex justify-between gap-3">
+                  <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Distancia</dt>
+                  <dd class="font-semibold text-azul-noche dark:text-crema">22 km</dd>
+                </div>
+                <div class="flex justify-between gap-3">
+                  <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Duración</dt>
+                  <dd class="font-semibold text-azul-noche dark:text-crema">3 h</dd>
+                </div>
+                <div class="flex justify-between gap-3">
+                  <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Punto de encuentro</dt>
+                  <dd class="font-semibold text-right text-azul-noche dark:text-crema">Sede de Rueda Libre</dd>
+                </div>
+              </dl>
+              <a href="#inscripcion" class="btn-primario w-full">Inscríbete</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ¿Cómo funciona? -->
+    <section id="como-funciona" aria-labelledby="titulo-pasos" class="py-10 sm:py-12 lg:py-16">
+      <div class="max-w-6xl mx-auto px-4 space-y-8 sm:px-6 sm:space-y-10 lg:px-8">
+        <div class="space-y-2">
+          <p class="text-xs font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol">Paso a paso</p>
+          <h2 id="titulo-pasos" class="font-display text-2xl font-bold text-azul-noche sm:text-3xl dark:text-crema">¿Cómo funciona?</h2>
+          <p class="max-w-2xl text-sm leading-relaxed text-gris-asfalto sm:text-base dark:text-gris-asfalto-claro">En cuatro pasos sencillos te unes a nuestras rodadas nocturnas con todo el equipo de seguridad incluido.</p>
+        </div>
+
+        <ol class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          <li class="rounded-2xl border shadow-lg p-5 space-y-3 bg-white border-crema-borde sm:p-6 dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-display text-sm font-bold bg-verde-ruta/10 text-verde-ruta dark:bg-amarillo-farol/15 dark:text-amarillo-farol">01</span>
+            <h3 class="font-display text-lg font-bold text-azul-noche sm:text-xl dark:text-crema">Elige tu ruta</h3>
+            <p class="text-sm leading-relaxed text-gris-asfalto dark:text-gris-asfalto-claro">Selecciona el recorrido nocturno que mejor se ajuste a tu nivel, distancia y horario preferido.</p>
+          </li>
+
+          <li class="rounded-2xl border shadow-lg p-5 space-y-3 bg-white border-crema-borde sm:p-6 dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-display text-sm font-bold bg-verde-ruta/10 text-verde-ruta dark:bg-amarillo-farol/15 dark:text-amarillo-farol">02</span>
+            <h3 class="font-display text-lg font-bold text-azul-noche sm:text-xl dark:text-crema">Inscríbete</h3>
+            <p class="text-sm leading-relaxed text-gris-asfalto dark:text-gris-asfalto-claro">Reserva tu cupo en línea en menos de dos minutos y recibe la confirmación por correo.</p>
+          </li>
+
+          <li class="rounded-2xl border shadow-lg p-5 space-y-3 bg-white border-crema-borde sm:p-6 dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-display text-sm font-bold bg-verde-ruta/10 text-verde-ruta dark:bg-amarillo-farol/15 dark:text-amarillo-farol">03</span>
+            <h3 class="font-display text-lg font-bold text-azul-noche sm:text-xl dark:text-crema">Recoge tu equipo</h3>
+            <p class="text-sm leading-relaxed text-gris-asfalto dark:text-gris-asfalto-claro">Llega 20 minutos antes a la sede para recibir bici ajustada, casco, luces y chaleco reflectivo.</p>
+          </li>
+
+          <li class="rounded-2xl border shadow-lg p-5 space-y-3 bg-white border-crema-borde sm:p-6 dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-display text-sm font-bold bg-verde-ruta/10 text-verde-ruta dark:bg-amarillo-farol/15 dark:text-amarillo-farol">04</span>
+            <h3 class="font-display text-lg font-bold text-azul-noche sm:text-xl dark:text-crema">Rueda</h3>
+            <p class="text-sm leading-relaxed text-gris-asfalto dark:text-gris-asfalto-claro">Pedalea en grupo por las ciclorrutas iluminadas de Medellín acompañado por guías expertos.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5. Franja de inscripción -->
+    <section id="inscripcion" aria-labelledby="titulo-inscripcion" class="py-10 sm:py-12 lg:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border shadow-2xl p-6 space-y-6 bg-white border-crema-borde sm:rounded-3xl sm:p-8 sm:space-y-8 lg:p-10 dark:bg-azul-noche dark:border-azul-noche-borde/40">
+          <div class="max-w-2xl mx-auto space-y-3 text-center">
+            <p class="text-xs font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol">Cupos limitados por salida</p>
+            <h2 id="titulo-inscripcion" class="font-display text-2xl font-bold text-azul-noche sm:text-3xl dark:text-crema">¿Listo para rodar de noche?</h2>
+            <p class="text-sm leading-relaxed text-gris-asfalto sm:text-base dark:text-gris-asfalto-claro">Salidas todos los jueves, viernes y sábados desde la Sede de Rueda Libre. Incluye guía, luces y chaleco reflectivo.</p>
+          </div>
+
+          <form action="#" method="post" class="grid grid-cols-1 max-w-4xl mx-auto gap-4 md:grid-cols-3">
+            <div class="space-y-2">
+              <label for="nombre" class="block text-sm font-semibold text-azul-noche dark:text-crema">Nombre completo</label>
+              <input id="nombre" name="nombre" type="text" required placeholder="Ej. Camila Restrepo" class="w-full rounded-xl border px-4 py-3 text-sm bg-crema border-gris-asfalto text-azul-noche placeholder:text-gris-asfalto focus:outline-hidden focus:ring-2 focus:ring-verde-ruta focus:border-verde-ruta dark:bg-azul-noche-fondo dark:border-azul-noche-borde dark:text-crema dark:placeholder:text-gris-asfalto-claro dark:focus:ring-amarillo-farol dark:focus:border-amarillo-farol">
+            </div>
+
+            <div class="space-y-2">
+              <label for="correo" class="block text-sm font-semibold text-azul-noche dark:text-crema">Correo electrónico</label>
+              <input id="correo" name="correo" type="email" required placeholder="camila@correo.com" class="w-full rounded-xl border px-4 py-3 text-sm bg-crema border-gris-asfalto text-azul-noche placeholder:text-gris-asfalto focus:outline-hidden focus:ring-2 focus:ring-verde-ruta focus:border-verde-ruta dark:bg-azul-noche-fondo dark:border-azul-noche-borde dark:text-crema dark:placeholder:text-gris-asfalto-claro dark:focus:ring-amarillo-farol dark:focus:border-amarillo-farol">
+            </div>
+
+            <div class="space-y-2">
+              <label for="ruta" class="block text-sm font-semibold text-azul-noche dark:text-crema">Ruta preferida</label>
+              <select id="ruta" name="ruta" class="w-full rounded-xl border px-4 py-3 text-sm bg-crema border-gris-asfalto text-azul-noche focus:outline-hidden focus:ring-2 focus:ring-verde-ruta focus:border-verde-ruta dark:bg-azul-noche-fondo dark:border-azul-noche-borde dark:text-crema dark:focus:ring-amarillo-farol dark:focus:border-amarillo-farol">
+                <option value="luces">Luces del Centro · $55.000</option>
+                <option value="parques">Parques del Río · $65.000</option>
+                <option value="nutibara">Cerro Nutibara · $75.000</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col items-stretch justify-center pt-2 gap-3 sm:flex-row sm:items-center sm:gap-4 md:col-span-3">
+              <button type="submit" class="btn-primario">
+                Confirmar inscripción
+              </button>
+              <a href="#rutas" class="btn-terciario">
+                Comparar rutas
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 6. Footer -->
+  <footer class="border-t bg-white border-crema-borde dark:bg-azul-noche-fondo dark:border-azul-noche-borde/40">
+    <div class="max-w-6xl mx-auto px-4 py-10 space-y-8 sm:px-6 sm:py-12 lg:px-8">
+      <div class="flex flex-col items-start gap-8 md:flex-row md:justify-between">
+        <!-- Bloque 1: Marca -->
+        <div class="max-w-xs space-y-3">
+          <p class="font-display text-lg font-bold text-azul-noche dark:text-crema">Rueda Nocturna</p>
+          <p class="text-sm leading-relaxed text-gris-asfalto dark:text-gris-asfalto-claro">Recorridos nocturnos guiados en bicicleta por Medellín. Una campaña de movilidad sostenible de Rueda Libre.</p>
+        </div>
+
+        <!-- Bloque 2: Navegación -->
+        <div class="space-y-3">
+          <h2 class="font-display text-sm font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol">Explora</h2>
+          <ul class="space-y-2 text-sm text-gris-asfalto dark:text-gris-asfalto-claro">
+            <li><a href="#rutas" class="transition hover:text-verde-ruta dark:hover:text-amarillo-farol">Rutas nocturnas</a></li>
+            <li><a href="#como-funciona" class="transition hover:text-verde-ruta dark:hover:text-amarillo-farol">¿Cómo funciona?</a></li>
+            <li><a href="#inscripcion" class="transition hover:text-verde-ruta dark:hover:text-amarillo-farol">Inscripción</a></li>
+            <li><a href="./componentes.html" class="transition hover:text-verde-ruta dark:hover:text-amarillo-farol">Catálogo de componentes</a></li>
+          </ul>
+        </div>
+
+        <!-- Bloque 3: Contacto y horarios -->
+        <div class="space-y-3">
+          <h2 class="font-display text-sm font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol">Encuentro y contacto</h2>
+          <ul class="space-y-2 text-sm text-gris-asfalto dark:text-gris-asfalto-claro">
+            <li>Sede de Rueda Libre · Medellín</li>
+            <li>Jueves a sábado · 7:00 p. m.</li>
+            <li><a href="mailto:hola@ruedanocturna.co" class="transition hover:text-verde-ruta dark:hover:text-amarillo-farol">hola@ruedanocturna.co</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-start justify-between border-t pt-6 gap-2 text-xs border-crema-borde text-gris-asfalto sm:flex-row sm:items-center dark:border-azul-noche-borde/40 dark:text-gris-asfalto-claro">
+        <p>&copy; 2026 Rueda Libre · Campaña Rueda Nocturna.</p>
+        <p>Pedalea seguro: luces y chaleco reflectivo incluidos en cada salida.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script compartido que gestiona el interruptor de tema claro y oscuro -->
+  <script src="../js/tema.js"></script>
+  <!-- Script que controla la apertura y cierre del menú lateral izquierdo en vista móvil -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* Referencias a los elementos del menú lateral móvil */
+      var menuBtn = document.getElementById('menu-toggle');
+      var menuClose = document.getElementById('menu-close');
+      var menuPanel = document.getElementById('menu-desplegable');
+      var menuBackdrop = document.getElementById('menu-backdrop');
+      if (!menuBtn || !menuPanel || !menuBackdrop) return;
+
+      /* Abre o cierra el panel lateral y actualiza los atributos de accesibilidad */
+      function setMenuOpen(open) {
+        menuPanel.classList.toggle('-translate-x-full', !open);
+        menuPanel.classList.toggle('translate-x-0', open);
+        menuBackdrop.classList.toggle('hidden', !open);
+        menuBtn.setAttribute('aria-expanded', String(open));
+        menuPanel.setAttribute('aria-hidden', String(!open));
+        document.body.classList.toggle('overflow-hidden', open);
+      }
+
+      /* Alterna el menú al pulsar el botón de las tres rayitas */
+      menuBtn.addEventListener('click', function () {
+        setMenuOpen(menuPanel.classList.contains('-translate-x-full'));
+      });
+
+      /* Cierra el menú con el botón X y devuelve el foco al botón principal */
+      if (menuClose) {
+        menuClose.addEventListener('click', function () {
+          setMenuOpen(false);
+          menuBtn.focus();
+        });
+      }
+
+      /* Cierra el menú al hacer clic en el fondo oscuro translúcido */
+      menuBackdrop.addEventListener('click', function () {
+        setMenuOpen(false);
+      });
+
+      /* Cierra el menú automáticamente cuando se elige cualquier enlace */
+      menuPanel.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          setMenuOpen(false);
+        });
+      });
+
+      /* Permite cerrar el menú presionando la tecla Escape */
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !menuPanel.classList.contains('-translate-x-full')) {
+          setMenuOpen(false);
+          menuBtn.focus();
+        }
+      });
+
+      /* Si la pantalla se agranda a escritorio (>= 1024px), cierra el menú móvil */
+      var desktopMq = window.matchMedia('(min-width: 1024px)');
+      if (desktopMq && typeof desktopMq.addEventListener === 'function') {
+        desktopMq.addEventListener('change', function (e) {
+          if (e.matches) {
+            setMenuOpen(false);
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,241 +1,537 @@
 /* ==========================================================================
-   RUEDA LIBRE v2.0 - IDENTIDAD DE MARCA SOBRE BOOTSTRAP 5.3
-   Este archivo se carga DESPUÉS de bootstrap.min.css y solo cambia lo que
-   Bootstrap no resuelve: variables de marca, botones, modo día/noche y
-   unas pocas clases propias. No se fuerza ninguna declaración y Bootstrap no se modifica.
-   Secciones: 1 Variables · 2 Marca sobre Bootstrap · 3 Modo noche
-              4 Tipografía · 5 Botones · 6 Navbar · 7 Clases propias · 8 Formulario
+   RUEDA LIBRE v2.1 - HOJA DE ESTILOS OPTIMIZADA SOBRE BOOTSTRAP 5.3
+   Se carga DESPUÉS de bootstrap.min.css. Usa variables CSS semánticas para
+   definir cada componente una sola vez y cambiar automáticamente entre
+   tema claro y tema oscuro (idéntico a Rueda Nocturna, auditoría WCAG AA).
    ========================================================================== */
 
-/* 1. VARIABLES GLOBALES: paleta, tipografías y escala de espaciado (únicos lugares con códigos de color) */
+/* --------------------------------------------------------------------------
+   1. VARIABLES DE MARCA (paleta base, tipografías y escala de espaciado)
+   -------------------------------------------------------------------------- */
 :root {
-    --verde-ruta: #1E7A4F; /* Verde Ruta: botones y enlaces */
-    --naranja-pedal: #F39A2B; /* Naranja Pedal: destacados y botones secundarios */
-    --azul-noche: #14213D; /* Azul Noche: títulos y encabezado */
-    --crema: #FAF6EF; /* Crema: fondo general */
-    --gris-asfalto: #5B6470; /* Gris Asfalto: texto */
-    --blanco: #FFFFFF; /* Blanco: texto sobre verde y azul */
-    --verde-hover: #17613F; /* Verde Ruta más oscuro: estado hover */
-    --verde-active: #124F33; /* Verde Ruta aún más oscuro: estado active */
-    --verde-claro: #4AC88C; /* Verde claro: enlaces y botones sobre fondo oscuro */
-    --noche-fondo: #0b1120; /* Modo noche: fondo de la página */
-    --noche-tarjeta: #151f32; /* Modo noche: tarjetas y pie */
-    --noche-bloque: #1c2942; /* Modo noche: bloques del pie */
-    --noche-borde: #2c3e5d; /* Modo noche: bordes */
-    --noche-texto: #cbd5e1; /* Modo noche: texto */
-    --noche-titulo: #f8fafc; /* Modo noche: títulos */
-    --noche-secundario: #94a3b8; /* Modo noche: texto secundario */
-    --fuente-texto: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif; /* Textos, con respaldo */
-    --fuente-titulos: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif; /* Títulos, con respaldo */
-    --espacio-1: 0.5rem; /* Escala de espaciado: pequeño */
-    --espacio-2: 1rem; /* Escala de espaciado: mediano */
-    --espacio-3: 1.5rem; /* Escala de espaciado: grande */
-    --espacio-4: 3rem; /* Escala de espaciado: muy grande */
+    /* Colores principales de la identidad de marca */
+    --verde-ruta: #1E7A4F;
+    --verde-hover: #17613F;
+    --verde-active: #124F33;
+    --verde-claro: #4AC88C;
+    --naranja-pedal: #F39A2B;
+    --amarillo-farol: #FFD166;
+    --amarillo-farol-hover: #FFE08F;
+
+    /* Tonos neutros y de tema oscuro compartidos con Rueda Nocturna */
+    --azul-noche: #14213D;
+    --azul-noche-fondo: #0B1324;
+    --azul-noche-elevado: #1D2D4E;
+    --azul-noche-borde: #647BA6;
+    --azul-noche-borde-suave: rgba(100, 123, 166, 0.4);
+    --crema: #FAF6EF;
+    --crema-borde: #DDD5C7;
+    --gris-asfalto: #5B6470;
+    --gris-asfalto-claro: #B8C2D0;
+    --blanco: #FFFFFF;
+
+    /* Tipografías cargadas desde Google Fonts con respaldo del sistema */
+    --fuente-texto: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    --fuente-titulos: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+
+    /* Escala de espaciado reutilizable */
+    --espacio-1: 0.5rem;
+    --espacio-2: 1rem;
+    --espacio-3: 1.5rem;
+    --espacio-4: 3rem;
 }
 
-/* 2. MARCA SOBRE BOOTSTRAP: se sobrescriben las variables globales --bs-* (modo día) */
-:root {
-    --bs-primary: var(--verde-ruta); /* Color primario: text-primary y bg-primary salen verdes */
-    --bs-primary-rgb: 30, 122, 79; /* Verde Ruta en RGB (lo usan las utilidades de color) */
-    --bs-body-font-family: var(--fuente-texto); /* Tipografía de los textos */
-    --bs-body-bg: var(--crema); /* Fondo de la página */
-    --bs-body-bg-rgb: 250, 246, 239; /* Crema en RGB (clases bg-body) */
-    --bs-body-color: var(--gris-asfalto); /* Color del texto */
-    --bs-body-color-rgb: 91, 100, 112; /* Gris asfalto en RGB */
-    --bs-secondary-color: var(--gris-asfalto); /* Texto secundario (text-muted) */
-    --bs-secondary-rgb: 91, 100, 112; /* Gris asfalto en RGB (text-secondary) */
-    --bs-heading-color: var(--azul-noche); /* Color de los títulos */
-    --bs-emphasis-color: var(--azul-noche); /* Color de énfasis (tablas, texto fuerte) */
-    --bs-emphasis-color-rgb: 20, 33, 61; /* Azul noche en RGB */
-    --bs-tertiary-bg: var(--blanco); /* Fondo de tarjetas y pie (bg-body-tertiary) */
-    --bs-tertiary-bg-rgb: 255, 255, 255; /* Blanco en RGB */
-    --bs-secondary-bg: var(--crema); /* Fondo de los bloques del pie (bg-body-secondary) */
-    --bs-secondary-bg-rgb: 250, 246, 239; /* Crema en RGB */
-    --bs-dark-rgb: 20, 33, 61; /* "Dark" de Bootstrap pasa a ser el azul de marca */
-    --bs-warning-rgb: 243, 154, 43; /* "Warning" pasa a ser el naranja de marca */
-    --bs-success-rgb: 30, 122, 79; /* "Success" pasa a ser el verde de marca */
-    --bs-link-color-rgb: 30, 122, 79; /* Enlaces en verde de marca */
-    --bs-link-hover-color-rgb: 20, 33, 61; /* Enlaces en azul noche al pasar el mouse (contraste suficiente) */
-    --bs-border-radius: 0.625rem; /* Radio de los bordes de botones, campos y componentes */
+/* --------------------------------------------------------------------------
+   2. TEMA CLARO (valores por defecto y cuando <html> tiene la clase .light)
+   -------------------------------------------------------------------------- */
+:root,
+html.light {
+    color-scheme: light;
+
+    /* Variables de Bootstrap 5.3 adaptadas a la marca */
+    --bs-primary: var(--verde-ruta);
+    --bs-primary-rgb: 30, 122, 79;
+    --bs-body-font-family: var(--fuente-texto);
+    --bs-body-bg: var(--crema);
+    --bs-body-bg-rgb: 250, 246, 239;
+    --bs-body-color: var(--gris-asfalto);
+    --bs-body-color-rgb: 91, 100, 112;
+    --bs-secondary-color: var(--gris-asfalto);
+    --bs-secondary-rgb: 91, 100, 112;
+    --bs-heading-color: var(--azul-noche);
+    --bs-emphasis-color: var(--azul-noche);
+    --bs-emphasis-color-rgb: 20, 33, 61;
+    --bs-tertiary-bg: var(--blanco);
+    --bs-tertiary-bg-rgb: 255, 255, 255;
+    --bs-secondary-bg: var(--crema);
+    --bs-secondary-bg-rgb: 250, 246, 239;
+    --bs-border-color: var(--crema-borde);
+    --bs-dark-rgb: 20, 33, 61;
+    --bs-warning-rgb: 243, 154, 43;
+    --bs-success-rgb: 30, 122, 79;
+    --bs-link-color-rgb: 30, 122, 79;
+    --bs-link-hover-color-rgb: 20, 33, 61;
+    --bs-border-radius: 0.625rem;
+
+    /* Variables semánticas de componentes propios (evitan duplicar reglas CSS) */
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --nav-border: var(--crema-borde);
+    --nav-text: var(--azul-noche);
+    --nav-accent: var(--verde-ruta);
+    --nav-logo-border: var(--crema-borde);
+
+    --switch-bg: var(--crema);
+    --switch-border: var(--crema-borde);
+    --switch-hover-border: var(--verde-ruta);
+    --switch-light-color: var(--azul-noche);
+    --switch-light-opacity: 1;
+    --switch-dark-color: var(--gris-asfalto);
+    --switch-dark-opacity: 0.85;
+    --switch-track-bg: var(--verde-ruta);
+    --switch-thumb-bg: var(--blanco);
+    --switch-thumb-x: 0;
+
+    --outline-primary-color: var(--verde-ruta);
+    --outline-primary-hover-text: var(--blanco);
+    --outline-primary-hover-bg: var(--verde-ruta);
+    --outline-primary-active-bg: var(--verde-hover);
+
+    --input-bg: var(--crema);
+    --input-border: var(--gris-asfalto);
+    --input-color: var(--azul-noche);
+    --input-placeholder: var(--gris-asfalto);
+    --input-focus-border: var(--verde-ruta);
+    --input-focus-shadow: rgba(30, 122, 79, 0.25);
+
+    --footer-bg: var(--blanco);
+    --footer-border: var(--crema-borde);
+
+    --campana-border: var(--verde-ruta);
+    --campana-shadow: 0 0 0 4px rgba(30, 122, 79, 0.14), 0 10px 24px rgba(20, 33, 61, 0.12);
+    --campana-shadow-hover: 0 0 0 5px rgba(30, 122, 79, 0.22), 0 14px 28px rgba(20, 33, 61, 0.18);
+    --campana-badge-bg: var(--verde-ruta);
+    --campana-badge-color: var(--blanco);
 }
 
-/* 3. MODO NOCHE SIN JAVASCRIPT: si el checkbox está marcado, se cambian las variables */
-:root:has(#theme-toggle:checked) { /* Se activa cuando el checkbox oculto está marcado */
-    color-scheme: dark; /* Controles del navegador y barras de scroll en oscuro */
-    --bs-primary-rgb: 74, 200, 140; /* Verde claro para text-primary sobre fondo oscuro */
-    --bs-body-bg: var(--noche-fondo); /* Fondo de la página */
-    --bs-body-bg-rgb: 11, 17, 32; /* El mismo fondo en RGB */
-    --bs-body-color: var(--noche-texto); /* Texto claro */
-    --bs-body-color-rgb: 203, 213, 225; /* Texto claro en RGB */
-    --bs-heading-color: var(--noche-titulo); /* Títulos casi blancos */
-    --bs-emphasis-color: var(--noche-titulo); /* Énfasis casi blanco */
-    --bs-emphasis-color-rgb: 248, 250, 252; /* Énfasis en RGB */
-    --bs-secondary-color: var(--noche-secundario); /* Texto secundario */
-    --bs-secondary-rgb: 148, 163, 184; /* Gris azulado de text-secondary */
-    --bs-tertiary-bg: var(--noche-tarjeta); /* Tarjetas y pie oscuros */
-    --bs-tertiary-bg-rgb: 21, 31, 50; /* Tarjetas en RGB */
-    --bs-secondary-bg: var(--noche-bloque); /* Bloques del pie oscuros */
-    --bs-secondary-bg-rgb: 28, 41, 66; /* Bloques del pie en RGB */
-    --bs-border-color: var(--noche-borde); /* Bordes visibles sobre fondo oscuro */
-    --bs-link-color-rgb: 74, 200, 140; /* Enlaces verdes más claros para leerse en oscuro */
-    --bs-link-hover-color-rgb: 243, 154, 43; /* Enlaces naranja al pasar el mouse */
+/* --------------------------------------------------------------------------
+   3. TEMA OSCURO (se activa con html.dark o con la preferencia del sistema)
+   -------------------------------------------------------------------------- */
+html.dark {
+    color-scheme: dark;
+
+    /* Variables de Bootstrap 5.3 para modo oscuro (paleta Rueda Nocturna) */
+    --bs-primary: var(--verde-claro);
+    --bs-primary-rgb: 74, 200, 140;
+    --bs-body-bg: var(--azul-noche-fondo);
+    --bs-body-bg-rgb: 11, 19, 36;
+    --bs-body-color: var(--gris-asfalto-claro);
+    --bs-body-color-rgb: 184, 194, 208;
+    --bs-heading-color: var(--crema);
+    --bs-emphasis-color: var(--crema);
+    --bs-emphasis-color-rgb: 250, 246, 239;
+    --bs-secondary-color: var(--gris-asfalto-claro);
+    --bs-secondary-rgb: 184, 194, 208;
+    --bs-tertiary-bg: var(--azul-noche);
+    --bs-tertiary-bg-rgb: 20, 33, 61;
+    --bs-secondary-bg: var(--azul-noche-elevado);
+    --bs-secondary-bg-rgb: 29, 45, 78;
+    --bs-border-color: var(--azul-noche-borde-suave);
+    --bs-link-color-rgb: 74, 200, 140;
+    --bs-link-hover-color-rgb: 255, 209, 102;
+
+    /* Variables semánticas de componentes en modo oscuro */
+    --nav-bg: rgba(11, 19, 36, 0.95);
+    --nav-border: var(--azul-noche-borde-suave);
+    --nav-text: var(--crema);
+    --nav-accent: var(--amarillo-farol);
+    --nav-logo-border: rgba(255, 209, 102, 0.5);
+
+    --switch-bg: var(--azul-noche-elevado);
+    --switch-border: rgba(100, 123, 166, 0.55);
+    --switch-hover-border: var(--amarillo-farol);
+    --switch-light-color: var(--gris-asfalto-claro);
+    --switch-light-opacity: 0.85;
+    --switch-dark-color: var(--amarillo-farol);
+    --switch-dark-opacity: 1;
+    --switch-track-bg: var(--amarillo-farol);
+    --switch-thumb-bg: var(--azul-noche);
+    --switch-thumb-x: 1.1rem;
+
+    --outline-primary-color: var(--amarillo-farol);
+    --outline-primary-hover-text: var(--azul-noche);
+    --outline-primary-hover-bg: var(--amarillo-farol);
+    --outline-primary-active-bg: var(--amarillo-farol-hover);
+
+    --input-bg: var(--azul-noche-fondo);
+    --input-border: var(--azul-noche-borde);
+    --input-color: var(--crema);
+    --input-placeholder: var(--gris-asfalto-claro);
+    --input-focus-border: var(--amarillo-farol);
+    --input-focus-shadow: rgba(255, 209, 102, 0.25);
+
+    --footer-bg: var(--azul-noche-fondo);
+    --footer-border: var(--azul-noche-borde-suave);
+
+    --campana-border: var(--amarillo-farol);
+    --campana-shadow: 0 0 0 4px rgba(255, 209, 102, 0.18), 0 12px 28px rgba(0, 0, 0, 0.45);
+    --campana-shadow-hover: 0 0 0 5px rgba(255, 209, 102, 0.28), 0 16px 32px rgba(0, 0, 0, 0.55);
+    --campana-badge-bg: var(--amarillo-farol);
+    --campana-badge-color: var(--azul-noche);
 }
 
-.modo-dia { /* Contenido "Modo Día" del botón */
-    display: none; /* Oculto mientras es de día */
-}
-
-:root:has(#theme-toggle:checked) .modo-noche { /* Contenido "Modo Noche" cuando ya es de noche */
-    display: none; /* Se oculta */
-}
-
-:root:has(#theme-toggle:checked) .modo-dia { /* Contenido "Modo Día" cuando es de noche */
-    display: inline; /* Se muestra */
-}
-
-/* 4. TIPOGRAFÍA DE TÍTULOS: Bootstrap solo permite una fuente en el body, los títulos se agrupan en un selector */
-h1, h2, h3, h4, h5, h6, .brand-title, .btn, .badge, legend { /* Elementos con fuente de títulos */
-    font-family: var(--fuente-titulos); /* Montserrat con respaldo */
-}
-
-/* 5. BOTONES: variables de los botones de Bootstrap con los colores de marca */
-.btn-primary { /* Botón principal (reservar): Verde Ruta */
-    --bs-btn-color: var(--blanco); /* Texto blanco (5,3:1 sobre el verde) */
-    --bs-btn-bg: var(--verde-ruta); /* Fondo verde */
-    --bs-btn-border-color: var(--verde-ruta); /* Borde verde */
-    --bs-btn-hover-color: var(--blanco); /* Texto blanco al pasar el mouse */
-    --bs-btn-hover-bg: var(--verde-hover); /* Verde más oscuro al pasar el mouse */
-    --bs-btn-hover-border-color: var(--verde-hover); /* Borde del mismo tono */
-    --bs-btn-active-color: var(--blanco); /* Texto blanco al presionar */
-    --bs-btn-active-bg: var(--verde-active); /* Verde aún más oscuro al presionar */
-    --bs-btn-active-border-color: var(--verde-active); /* Borde del mismo tono */
-    --bs-btn-focus-shadow-rgb: 30, 122, 79; /* Anillo de foco verde */
-}
-
-.btn-outline-primary { /* Botón de contorno (consultar): Verde Ruta */
-    --bs-btn-color: var(--verde-ruta); /* Texto verde */
-    --bs-btn-border-color: var(--verde-ruta); /* Borde verde */
-    --bs-btn-hover-color: var(--blanco); /* Texto blanco al pasar el mouse */
-    --bs-btn-hover-bg: var(--verde-ruta); /* Fondo verde al pasar el mouse */
-    --bs-btn-hover-border-color: var(--verde-ruta); /* Borde verde */
-    --bs-btn-active-color: var(--blanco); /* Texto blanco al presionar */
-    --bs-btn-active-bg: var(--verde-hover); /* Verde más oscuro al presionar */
-    --bs-btn-active-border-color: var(--verde-hover); /* Borde del mismo tono */
-    --bs-btn-focus-shadow-rgb: 30, 122, 79; /* Anillo de foco verde */
-}
-
-:root:has(#theme-toggle:checked) .btn-outline-primary { /* Botón de contorno en modo noche */
-    --bs-btn-color: var(--verde-claro); /* Texto verde claro (se lee sobre fondo oscuro) */
-    --bs-btn-border-color: var(--verde-claro); /* Borde verde claro */
-    --bs-btn-hover-color: var(--azul-noche); /* Texto azul sobre el verde claro */
-    --bs-btn-hover-bg: var(--verde-claro); /* Fondo verde claro al pasar el mouse */
-    --bs-btn-hover-border-color: var(--verde-claro); /* Borde verde claro */
-    --bs-btn-active-color: var(--azul-noche); /* Texto azul al presionar */
-    --bs-btn-active-bg: var(--verde-claro); /* Fondo verde claro al presionar */
-    --bs-btn-active-border-color: var(--verde-claro); /* Borde verde claro */
-}
-
-.btn-naranja { /* Variante propia: botón secundario con Naranja Pedal */
-    --bs-btn-color: var(--azul-noche); /* Texto azul noche (7:1 sobre el naranja) */
-    --bs-btn-bg: var(--naranja-pedal); /* Fondo naranja */
-    --bs-btn-border-color: var(--naranja-pedal); /* Borde naranja */
-    --bs-btn-hover-color: var(--azul-noche); /* Texto azul al pasar el mouse */
-    --bs-btn-hover-bg: var(--crema); /* Fondo crema al pasar el mouse */
-    --bs-btn-hover-border-color: var(--crema); /* Borde crema */
-    --bs-btn-active-color: var(--azul-noche); /* Texto azul al presionar */
-    --bs-btn-active-bg: var(--blanco); /* Fondo blanco al presionar */
-    --bs-btn-active-border-color: var(--blanco); /* Borde blanco */
-    --bs-btn-focus-shadow-rgb: 243, 154, 43; /* Anillo de foco naranja */
-}
-
-.btn-outline-warning { /* Botón de contorno naranja: solo se usa sobre la barra oscura (modo día/noche) */
-    --bs-btn-color: var(--naranja-pedal); /* Texto naranja */
-    --bs-btn-border-color: var(--naranja-pedal); /* Borde naranja */
-    --bs-btn-hover-color: var(--azul-noche); /* Texto azul al pasar el mouse */
-    --bs-btn-hover-bg: var(--naranja-pedal); /* Fondo naranja al pasar el mouse */
-    --bs-btn-hover-border-color: var(--naranja-pedal); /* Borde naranja */
-    --bs-btn-active-color: var(--azul-noche); /* Texto azul al presionar */
-    --bs-btn-active-bg: var(--naranja-pedal); /* Fondo naranja al presionar */
-    --bs-btn-active-border-color: var(--naranja-pedal); /* Borde naranja */
-}
-
-.btn-success { /* Botón de WhatsApp (verde de marca) */
-    --bs-btn-bg: var(--verde-ruta); /* Fondo verde de marca */
-    --bs-btn-border-color: var(--blanco); /* Borde blanco */
-    --bs-btn-hover-bg: var(--azul-noche); /* Fondo azul al pasar el mouse */
-    --bs-btn-hover-border-color: var(--blanco); /* Borde blanco al pasar el mouse */
-    --bs-btn-active-bg: var(--azul-noche); /* Fondo azul al presionar */
-    --bs-btn-active-border-color: var(--blanco); /* Borde blanco al presionar */
-}
-
-/* 6. BARRA DE NAVEGACIÓN: colores de los enlaces */
-.navbar { /* Barra superior */
-    --bs-navbar-color: var(--blanco); /* Enlaces blancos */
-    --bs-navbar-hover-color: var(--naranja-pedal); /* Enlaces naranja al pasar el mouse */
-    --bs-navbar-active-color: var(--naranja-pedal); /* Enlace de la página actual en naranja */
-}
-
-/* 7. CLASES PROPIAS: complementan a Bootstrap sin modificar sus clases */
-.portada { /* Portada de inicio */
-    border-bottom: 3px solid var(--naranja-pedal); /* Línea de marca al final de la portada */
-}
-
-.titulo-seccion::after { /* Detalle de marca bajo los títulos de sección */
-    content: ""; /* Pseudoelemento sin texto */
-    display: block; /* En su propia línea */
-    width: var(--espacio-4); /* Ancho de la línea */
-    height: 0.25rem; /* Grosor de la línea */
-    margin-top: var(--espacio-1); /* Separación del título */
-    border-radius: 1rem; /* Extremos redondeados */
-    background-color: var(--naranja-pedal); /* Naranja de marca */
-}
-
-.text-center .titulo-seccion::after, /* Títulos centrados dentro de un contenedor centrado */
-.titulo-seccion.text-center::after { /* Títulos que llevan text-center en sí mismos */
-    margin-inline: auto; /* La línea queda centrada */
-}
-
-.pie-sitio { /* Pie de página de las tres páginas */
-    padding-bottom: 6rem; /* Deja espacio para que el botón flotante de WhatsApp no tape el contenido */
-}
-
-.img-portada { /* Imagen de la portada de inicio */
-    max-height: 24rem; /* Altura máxima */
-    object-fit: cover; /* Recorta sin deformar */
-}
-
-.mapa-contenedor { /* Caja del mapa de Google */
-    min-height: 24rem; /* Altura mínima para que el mapa se vea completo */
-}
-
-.img-tarjeta { /* Imágenes de las tarjetas */
-    height: 11.25rem; /* Todas con la misma altura */
-}
-
-.img-carrusel { /* Imágenes del carrusel de promociones */
-    height: 22rem; /* Altura en celulares */
-}
-
-@media (min-width: 768px) { /* Desde tablet */
-    .img-carrusel { /* Imágenes del carrusel de promociones */
-        height: 26rem; /* Más altas en pantallas grandes */
+/* Respaldo automático si el sistema operativo está en modo oscuro y el usuario no eligió tema manual */
+@media (prefers-color-scheme: dark) {
+    html:not(.light) {
+        color-scheme: dark;
+        --bs-primary: var(--verde-claro);
+        --bs-primary-rgb: 74, 200, 140;
+        --bs-body-bg: var(--azul-noche-fondo);
+        --bs-body-bg-rgb: 11, 19, 36;
+        --bs-body-color: var(--gris-asfalto-claro);
+        --bs-body-color-rgb: 184, 194, 208;
+        --bs-heading-color: var(--crema);
+        --bs-emphasis-color: var(--crema);
+        --bs-emphasis-color-rgb: 250, 246, 239;
+        --bs-secondary-color: var(--gris-asfalto-claro);
+        --bs-secondary-rgb: 184, 194, 208;
+        --bs-tertiary-bg: var(--azul-noche);
+        --bs-tertiary-bg-rgb: 20, 33, 61;
+        --bs-secondary-bg: var(--azul-noche-elevado);
+        --bs-secondary-bg-rgb: 29, 45, 78;
+        --bs-border-color: var(--azul-noche-borde-suave);
+        --bs-link-color-rgb: 74, 200, 140;
+        --bs-link-hover-color-rgb: 255, 209, 102;
+        --nav-bg: rgba(11, 19, 36, 0.95);
+        --nav-border: var(--azul-noche-borde-suave);
+        --nav-text: var(--crema);
+        --nav-accent: var(--amarillo-farol);
+        --nav-logo-border: rgba(255, 209, 102, 0.5);
+        --switch-bg: var(--azul-noche-elevado);
+        --switch-border: rgba(100, 123, 166, 0.55);
+        --switch-hover-border: var(--amarillo-farol);
+        --switch-light-color: var(--gris-asfalto-claro);
+        --switch-light-opacity: 0.85;
+        --switch-dark-color: var(--amarillo-farol);
+        --switch-dark-opacity: 1;
+        --switch-track-bg: var(--amarillo-farol);
+        --switch-thumb-bg: var(--azul-noche);
+        --switch-thumb-x: 1.1rem;
+        --outline-primary-color: var(--amarillo-farol);
+        --outline-primary-hover-text: var(--azul-noche);
+        --outline-primary-hover-bg: var(--amarillo-farol);
+        --outline-primary-active-bg: var(--amarillo-farol-hover);
+        --input-bg: var(--azul-noche-fondo);
+        --input-border: var(--azul-noche-borde);
+        --input-color: var(--crema);
+        --input-placeholder: var(--gris-asfalto-claro);
+        --input-focus-border: var(--amarillo-farol);
+        --input-focus-shadow: rgba(255, 209, 102, 0.25);
+        --footer-bg: var(--azul-noche-fondo);
+        --footer-border: var(--azul-noche-borde-suave);
+        --campana-border: var(--amarillo-farol);
+        --campana-shadow: 0 0 0 4px rgba(255, 209, 102, 0.18), 0 12px 28px rgba(0, 0, 0, 0.45);
+        --campana-shadow-hover: 0 0 0 5px rgba(255, 209, 102, 0.28), 0 16px 32px rgba(0, 0, 0, 0.55);
+        --campana-badge-bg: var(--amarillo-farol);
+        --campana-badge-color: var(--azul-noche);
     }
 }
 
-.carrusel-promos .carousel-caption { /* Texto de cada promoción */
-    bottom: 2.75rem; /* Se sube para no tapar los indicadores del carrusel */
+/* --------------------------------------------------------------------------
+   4. BASE Y TIPOGRAFÍA
+   -------------------------------------------------------------------------- */
+
+/* Transición suave al cambiar de tema claro a oscuro */
+body {
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.tarjeta-hover { /* Tarjetas que reaccionan al mouse */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Anima el movimiento y la sombra */
+/* Aplica la tipografía Montserrat a encabezados, botones, etiquetas y leyendas */
+h1, h2, h3, h4, h5, h6, .brand-title, .btn, .badge, legend {
+    font-family: var(--fuente-titulos);
 }
 
-.tarjeta-hover:hover { /* Tarjeta al pasar el mouse */
-    transform: translateY(-4px); /* Sube 4 píxeles */
-    box-shadow: 0 8px 20px rgba(20, 33, 61, 0.15); /* Sombra más marcada */
+/* --------------------------------------------------------------------------
+   5. BOTONES DE MARCA (personalizan las variables de botones de Bootstrap)
+   -------------------------------------------------------------------------- */
+
+/* Botón principal de acción (Verde Ruta) */
+.btn-primary {
+    --bs-btn-color: var(--blanco);
+    --bs-btn-bg: var(--verde-ruta);
+    --bs-btn-border-color: var(--verde-ruta);
+    --bs-btn-hover-color: var(--blanco);
+    --bs-btn-hover-bg: var(--verde-hover);
+    --bs-btn-hover-border-color: var(--verde-hover);
+    --bs-btn-active-color: var(--blanco);
+    --bs-btn-active-bg: var(--verde-active);
+    --bs-btn-active-border-color: var(--verde-active);
+    --bs-btn-focus-shadow-rgb: 30, 122, 79;
 }
 
-/* 8. FORMULARIO: mensaje de error para grupos de opciones (radios) */
-.was-validated .grupo-opciones:has(:invalid) + .invalid-feedback { /* Si el grupo no tiene opción elegida */
-    display: block; /* Se muestra el mensaje debajo del grupo */
+/* Botón de contorno: usa variables semánticas para adaptarse a claro/oscuro */
+.btn-outline-primary {
+    --bs-btn-color: var(--outline-primary-color);
+    --bs-btn-border-color: var(--outline-primary-color);
+    --bs-btn-hover-color: var(--outline-primary-hover-text);
+    --bs-btn-hover-bg: var(--outline-primary-hover-bg);
+    --bs-btn-hover-border-color: var(--outline-primary-hover-bg);
+    --bs-btn-active-color: var(--outline-primary-hover-text);
+    --bs-btn-active-bg: var(--outline-primary-active-bg);
+    --bs-btn-active-border-color: var(--outline-primary-active-bg);
+    --bs-btn-focus-shadow-rgb: 30, 122, 79;
+}
+
+/* Botones destacados de campaña y llamada a la acción (Amarillo Farol) */
+.btn-naranja,
+.btn-campana {
+    --bs-btn-color: var(--azul-noche);
+    --bs-btn-bg: var(--amarillo-farol);
+    --bs-btn-border-color: var(--amarillo-farol);
+    --bs-btn-hover-color: var(--azul-noche);
+    --bs-btn-hover-bg: var(--amarillo-farol-hover);
+    --bs-btn-hover-border-color: var(--amarillo-farol-hover);
+    --bs-btn-active-color: var(--azul-noche);
+    --bs-btn-active-bg: var(--naranja-pedal);
+    --bs-btn-active-border-color: var(--naranja-pedal);
+    --bs-btn-focus-shadow-rgb: 255, 209, 102;
+}
+
+/* Botón flotante de WhatsApp */
+.btn-success {
+    --bs-btn-bg: var(--verde-ruta);
+    --bs-btn-border-color: var(--blanco);
+    --bs-btn-hover-bg: var(--azul-noche);
+    --bs-btn-hover-border-color: var(--blanco);
+    --bs-btn-active-bg: var(--azul-noche);
+    --bs-btn-active-border-color: var(--blanco);
+}
+
+/* --------------------------------------------------------------------------
+   6. BARRA DE NAVEGACIÓN (adaptable a tema claro y tema oscuro)
+   -------------------------------------------------------------------------- */
+.navbar-rueda {
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--nav-border);
+    --bs-navbar-color: var(--nav-text);
+    --bs-navbar-hover-color: var(--nav-accent);
+    --bs-navbar-active-color: var(--nav-accent);
+    --bs-navbar-brand-color: var(--nav-text);
+    --bs-navbar-brand-hover-color: var(--nav-accent);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Nombre de la marca dentro del navbar */
+.navbar-rueda .brand-title {
+    color: var(--nav-text);
+}
+
+/* Enlaces del menú principal en seminegrita */
+.navbar-rueda .nav-link {
+    font-weight: 600;
+}
+
+/* Borde circular del logotipo en el navbar */
+.navbar-rueda .navbar-logo {
+    border: 1px solid var(--nav-logo-border);
+    background-color: var(--blanco);
+}
+
+/* --------------------------------------------------------------------------
+   7. INTERRUPTOR DE TEMA EN LÍNEA (solo íconos de Sol y Luna)
+   -------------------------------------------------------------------------- */
+.theme-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.55rem;
+    border-radius: 9999px;
+    border: 1px solid var(--switch-border);
+    background-color: var(--switch-bg);
+    font-family: var(--fuente-texto);
+    font-size: 0.75rem;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-switch:hover {
+    border-color: var(--switch-hover-border);
+}
+
+.theme-switch:focus-visible {
+    outline: 2px solid var(--switch-hover-border);
+    outline-offset: 2px;
+}
+
+/* Contenedor de cada ícono (sol o luna) */
+.theme-switch__label {
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Color del sol según el tema activo */
+.theme-switch__label--light {
+    color: var(--switch-light-color);
+    opacity: var(--switch-light-opacity);
+}
+
+/* Color de la luna según el tema activo */
+.theme-switch__label--dark {
+    color: var(--switch-dark-color);
+    opacity: var(--switch-dark-opacity);
+}
+
+/* Tamaño uniforme para los íconos SVG */
+.theme-switch__icon {
+    width: 0.9rem;
+    height: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* Pista horizontal del interruptor */
+.theme-switch__track {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 2.35rem;
+    height: 1.25rem;
+    padding: 0.125rem;
+    border-radius: 9999px;
+    background-color: var(--switch-track-bg);
+    transition: background-color 0.25s ease;
+    flex-shrink: 0;
+}
+
+/* Círculo deslizante interno del interruptor */
+.theme-switch__thumb {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 9999px;
+    background-color: var(--switch-thumb-bg);
+    box-shadow: 0 1px 3px rgba(11, 19, 36, 0.3);
+    transform: translateX(var(--switch-thumb-x));
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   8. FORMULARIOS Y PIE DE PÁGINA
+   -------------------------------------------------------------------------- */
+
+/* Campos de texto y selectores adaptados al tema activo */
+.form-control,
+.form-select {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--input-color);
+}
+
+.form-control::placeholder {
+    color: var(--input-placeholder);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 0.2rem var(--input-focus-shadow);
+}
+
+/* Pie de página con espacio inferior libre para el botón flotante de WhatsApp */
+.pie-sitio {
+    background-color: var(--footer-bg) !important;
+    border-top: 1px solid var(--footer-border) !important;
+    padding-bottom: 6rem;
+}
+
+/* Muestra el mensaje de error cuando ningún radio del grupo ha sido marcado */
+.was-validated .grupo-opciones:has(:invalid) + .invalid-feedback {
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   9. COMPONENTES VISUALES DE SECCIONES (portada, carrusel, tarjetas y mapa)
+   -------------------------------------------------------------------------- */
+
+/* Línea inferior decorativa de la sección de portada */
+.portada {
+    border-bottom: 3px solid var(--naranja-pedal);
+}
+
+/* Barra decorativa naranja bajo los títulos principales de cada sección */
+.titulo-seccion::after {
+    content: "";
+    display: block;
+    width: var(--espacio-4);
+    height: 0.25rem;
+    margin-top: var(--espacio-1);
+    border-radius: 1rem;
+    background-color: var(--naranja-pedal);
+}
+
+/* Centra la barra decorativa cuando el título está centrado */
+.text-center .titulo-seccion::after,
+.titulo-seccion.text-center::after {
+    margin-inline: auto;
+}
+
+/* Altura máxima y recorte proporcional de la foto principal de portada */
+.img-portada {
+    max-height: 24rem;
+    object-fit: cover;
+}
+
+/* Altura mínima del contenedor del mapa de Google */
+.mapa-contenedor {
+    min-height: 24rem;
+}
+
+/* Altura fija para mantener alineadas todas las fotos de tarjetas */
+.img-tarjeta {
+    height: 11.25rem;
+}
+
+/* Altura de las imágenes del carrusel en celulares y pantallas grandes */
+.img-carrusel {
+    height: 22rem;
+}
+
+@media (min-width: 768px) {
+    .img-carrusel {
+        height: 26rem;
+    }
+}
+
+/* Eleva el texto del carrusel para no superponerse con los indicadores */
+.carrusel-promos .carousel-caption {
+    bottom: 2.75rem;
+}
+
+/* Animación sutil al pasar el puntero sobre una tarjeta */
+.tarjeta-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(20, 33, 61, 0.15);
+}
+
+/* Tarjeta destacada de la campaña Rueda Nocturna con borde adaptable al tema */
+.tarjeta-campana {
+    border: 3px solid var(--campana-border);
+    box-shadow: var(--campana-shadow);
+}
+
+.tarjeta-campana:hover {
+    box-shadow: var(--campana-shadow-hover);
+}
+
+/* Etiqueta "Campaña" dentro de la tarjeta destacada */
+.badge-campana {
+    background-color: var(--campana-badge-bg);
+    color: var(--campana-badge-color);
 }

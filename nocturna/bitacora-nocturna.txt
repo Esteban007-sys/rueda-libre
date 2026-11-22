@@ -1,0 +1,91 @@
+Semana 3 · Rueda Nocturna (Tailwind CSS)
+
+} 1 - Prototipo nocturno con Play CDN: Bootstrap vs. Tailwind CSS (MiniReto 1)
+• Cómo construí el botón "Inscríbete" en Semana 2 con Bootstrap:
+	• Se usaron clases de componente predefinidas del framework:
+	  <a href="paginas/reservas.html" class="btn btn-primary rounded-pill fw-bold">
+	• Bootstrap aplica automáticamente el relleno, el color de fondo, los bordes, la tipografía y los estados hover/focus a través de la clase base .btn y la variante .btn-primary.
+
+• Cómo construí el botón "Inscríbete" hoy con Tailwind CSS:
+	• Se compuso el aspecto visual pieza por pieza combinando utilidades atómicas directamente en el HTML:
+	  <a href="#inscripcion" class="inline-block bg-amber-400 text-slate-950 font-semibold px-8 py-3 rounded-full hover:bg-amber-300 focus:outline-hidden focus:ring-2 focus:ring-amber-200 focus:ring-offset-2 focus:ring-offset-slate-900">
+	• Cada utilidad controla una única propiedad CSS: visualización (inline-block), fondo (bg-amber-400), texto (text-slate-950, font-semibold), espaciado (px-8 py-3), forma (rounded-full) y estados interactivos (hover:, focus:ring-*).
+
+• Diferencia clave entre un framework de componentes y uno utility-first:
+	• Un framework de componentes (como Bootstrap) entrega piezas completas con diseño predefinido (.btn, .card, .navbar); permite avanzar rápido, pero personalizar la identidad visual suele requerir sobreescribir estilos o variables del framework.
+	• Un framework utility-first (como Tailwind CSS) no impone componentes cerrados, sino utilidades de bajo nivel que se combinan en el HTML para construir diseños propios desde cero sin pelear con reglas heredadas ni escribir CSS extra.
+
+
+} 2 - Maquetación Desktop de la landing (Fase 1 · Día 2)
+• Arquitectura semántica y contenedor único:
+	• Se construyó nocturna/index.html con regiones semánticas (<header>, <main>, <section id="inicio|rutas|como-funciona|inscripcion">, <footer>) y se extrajo el catálogo previo a nocturna/componentes.html para no perder trabajo anterior.
+	• Se aplicó un único patrón de contenedor centrado (max-w-6xl mx-auto px-*) en todas las secciones para conservar un eje vertical uniforme de lectura.
+	• Bloques implementados: Header con flex (logo, anclas #rutas, #como-funciona, #inscripcion y CTA "Inscríbete" centrados con items-center), Hero, 3 cards de rutas (Luces del Centro, Parques del Río y Cerro Nutibara), sección "¿Cómo funciona?" (4 pasos: Elige tu ruta, Inscríbete, Recoge tu equipo, Rueda), franja de inscripción con formulario accesible y Footer de 3 bloques con flex.
+• Justificación técnica: ¿Por qué grid y no flex en "¿Cómo funciona?"?
+	• Se eligió CSS Grid (<ol class="grid ...">) sobre Flexbox porque garantiza 4 columnas estrictamente simétricas (1fr por pista) sin que la longitud del texto descompense el ancho, mantiene igual altura de fila automáticamente y facilita escalar de 1 -> 2 -> 4 columnas en mobile-first sin cálculos manuales ni basis-*.
+
+} 3 - Adaptación Responsive Mobile-First (Fase 2 · Día 2)
+• Enfoque mobile-first aplicado en nocturna/index.html:
+	• Clases base sin prefijo pensadas para móvil (360px) y escalado progresivo con sm: (640px), md: (768px) y lg: (1024px).
+	• Header apilado en móvil (flex-col) y en fila desde md: (md:flex-row); navegación oculta en móvil (hidden md:flex) manteniendo siempre visible el botón "Inscríbete".
+	• Rutas: grid-cols-1 -> sm:grid-cols-2 -> lg:grid-cols-3.
+	• Pasos: grid-cols-1 -> sm:grid-cols-2 -> lg:grid-cols-4.
+	• Formulario de inscripción (grid-cols-1 md:grid-cols-3) y Footer (flex-col md:flex-row) adaptados para garantizar 0 px de scroll horizontal a 360px sin depender de overflow-x-hidden.
+• Tabla de fallos iniciales a 360px y validación por breakpoint:
+
+Bloque            | Fallo inicial a 360px (Fase 1)                  | 360px (Base móvil)                           | 768px (md:)                                  | 1024px (lg:)                                | 1280px (max-w-6xl)
+------------------|-------------------------------------------------|----------------------------------------------|----------------------------------------------|---------------------------------------------|--------------------------------------------
+Header            | Fila única desbordaba 360px (scroll lateral).   | Apilado (flex-col), nav oculta, CTA visible. | Fila (md:flex-row), nav visible (md:flex).   | Más aire horizontal (lg:px-8, lg:gap-6).    | Centrado en 1152px con márgenes simétricos.
+Hero              | h1 text-6xl y paddings grandes apretaban texto. | h1 text-3xl, px-5 py-10, CTAs apilados w-full| h1 text-5xl, CTAs en fila (sm:flex-row).     | h1 text-6xl, padding amplio lg:px-10 lg:py-20| Proporción editorial equilibrada (max-w-xl).
+Rutas (#rutas)    | grid-cols-3 comprimía cards a ~95px con overflow| 1 columna (grid-cols-1), cards legibles.     | 2 columnas (sm:grid-cols-2 desde 640px).     | 3 columnas (lg:grid-cols-3) en una fila.    | 3 columnas amplias (~340px cada card).
+¿Cómo funciona?   | grid-cols-4 colapsaba pasos en tiras ilegibles. | 1 columna (grid-cols-1 gap-4).               | 2 columnas (sm:grid-cols-2 gap-6, 2x2).      | 4 columnas (lg:grid-cols-4) en una línea.   | 4 columnas simétricas de igual altura.
+Inscripción       | Formulario grid-cols-3 comprimía inputs/select. | 1 columna (grid-cols-1), botones apilados.   | 3 columnas (md:grid-cols-3), botones en fila.| Formulario max-w-4xl con lg:p-10.           | Retícula equilibrada sin estiramiento.
+Footer            | 3 bloques en flex horizontal generaban overflow.| Apilado vertical (flex-col), 0 scroll lateral| 3 bloques en fila (md:flex-row).             | 3 columnas con padding lg:px-8.             | Alineado al eje vertical max-w-6xl.
+
+} 4 - Tema de Marca (@theme), Modo Oscuro (dark:) y Auditoría WCAG AA (Fase 3 · Día 3)
+• Configuración de @theme en nocturna/src/input.css:
+	• 5 colores base de Rueda Libre: --color-verde-ruta (#1E7A4F), --color-naranja-pedal (#F39A2B), --color-azul-noche (#14213D), --color-crema (#FAF6EF), --color-gris-asfalto (#5B6470).
+	• Color de campaña agregado: --color-amarillo-farol (#FFD166).
+	• Tipografías de marca: --font-display (Montserrat) y --font-sans (Open Sans), cargadas desde Google Fonts en index.html y componentes.html.
+	• Reemplazo del 100 % de colores genéricos de Tailwind (slate-*, amber-*, emerald-*, rose-*, sky-*) por utilidades de @theme (conservando únicamente white en superficies claras).
+• Modo oscuro híbrido accesible:
+	• Variante dark: configurada en input.css con soporte automático para prefers-color-scheme: dark más botón interactivo (#theme-toggle) con persistencia en localStorage, aria-pressed y color-scheme nativo.
+• Auditoría matemática de contraste WCAG 2.1 AA (texto >= 4.5:1 | bordes UI >= 3.0:1):
+
+Combinación (Elemento / Fondo)                | Hexálogo            | Ratio inicial | Estado inicial      | Ajuste aplicado                         | Ratio final
+----------------------------------------------|---------------------|---------------|---------------------|-----------------------------------------|------------
+Verde Ruta sobre Azul Noche                   | #1E7A4F / #14213D   | 3.01:1        | FALLA AA (< 4.5:1)  | --color-verde-ruta-claro (#4AC88C)      | 7.55:1 (AAA)
+Verde Ruta sobre Azul Noche Fondo             | #1E7A4F / #0B1324   | 3.49:1        | FALLA AA (< 4.5:1)  | --color-verde-ruta-claro (#4AC88C)      | 8.77:1 (AAA)
+Gris Asfalto sobre Azul Noche                 | #5B6470 / #14213D   | 2.66:1        | FALLA AA (< 4.5:1)  | --color-gris-asfalto-claro (#B8C2D0)    | 8.87:1 (AAA)
+Amarillo Farol sobre Azul Noche               | #FFD166 / #14213D   | 11.08:1       | Cumple AAA          | Aprobado sin cambios                    | 11.08:1 (AAA)
+Azul Noche sobre Amarillo Farol (CTA primario)| #14213D / #FFD166   | 11.08:1       | Cumple AAA          | Hover --color-amarillo-farol-hover      | 12.41:1 (AAA)
+Crema sobre Azul Noche / Azul Noche Fondo     | #FAF6EF / #14213D   | 14.83:1       | Cumple AAA          | Sobre fondo #0B1324 alcanza 17.21:1     | 14.83-17.21:1
+Naranja Pedal sobre pill 15% en Azul Noche    | #F39A2B / #35333A   | 5.62:1        | Cumple AA           | Aprobado para badge "Exigente" dark:    | 5.62:1 (AA)
+Verde Ruta Claro sobre pill 15% en Azul Noche | #4AC88C / #1C3A49   | 5.67:1        | Cumple AA           | Aprobado para badge "Fácil" dark:       | 5.67:1 (AA)
+Borde de inputs en modo oscuro                | #2C3E5D / #14213D   | 1.49:1        | FALLA UI (< 3.0:1)  | --color-azul-noche-borde (#647BA6)      | 4.35:1 (AA UI)
+Modo claro: Verde Ruta sobre Crema / Blanco   | #1E7A4F / #FAF6EF   | 4.93:1        | Cumple AA           | Sobre blanco (#FFFFFF): 5.31:1          | 4.93-5.31:1
+Modo claro: Gris Asfalto sobre Crema / Blanco | #5B6470 / #FAF6EF   | 5.57:1        | Cumple AA           | Sobre blanco (#FFFFFF): 6.00:1          | 5.57-6.00:1
+
+} 5 - Refactorización, Minificación y Comparativa Bootstrap vs. Tailwind (Fase 4 · Cierre Día 3)
+• Refactorización controlada (@layer components + @apply):
+	• Conteo de repeticiones en index.html: Botón Primario (6 veces, ~88 utilidades repetidas), Botón Secundario (1 vez + catálogo), Botón Terciario (2 veces + catálogo).
+	• Se crearon exactamente 3 clases de botón (.btn-primario, .btn-secundario, .btn-terciario) en @layer components de src/input.css; las cards de rutas mantuvieron sus utilidades directamente en el HTML.
+	• Todas las clases de index.html y componentes.html se ordenaron estrictamente bajo: 1. Layout -> 2. Espaciado -> 3. Tipografía -> 4. Color -> 5. Estados/Responsive.
+• Compilación con Tailwind CLI (--minify):
+	• Comando: npx tailwindcss -i ./src/input.css -o ./src/output.css --minify
+	• Tamaño medido en disco de nocturna/src/output.css: 36,81 KB minificado (5,69 KB estimado con Gzip).
+• Comparativa técnica: Bootstrap 5.3 (rueda-libre) vs. Tailwind CSS v4 (rueda_nocturna):
+	1. Curva de aprendizaje:
+		• Bootstrap: Baja al inicio gracias a componentes prearmados (.navbar, .card, .btn), pero exige aprender sus variables --bs-* al salir de su estética estándar.
+		• Tailwind: Media al inicio (requiere dominio de CSS y memorizar utilidades), pero muy rápida y predecible al dominar su sistema atómico.
+	2. Personalización:
+		• Bootstrap: Por sobrescritura (~240 líneas en rueda-libre/css/styles.css para adaptar colores, botones y modo noche sobre los estilos base).
+		• Tailwind: Nativa por diseño mediante @theme en src/input.css, convirtiendo colores y tipografías de marca directamente en utilidades sin conflictos de especificidad.
+	3. Tamaño final (medición real en DevTools -> Network -> CSS con Disable cache):
+		• Bootstrap 5.3 + styles.css (rueda-libre): Transferencia [ ___ KB ] | Recurso sin comprimir [ ___ KB ]
+		• Tailwind CSS v4 --minify (rueda_nocturna/nocturna/src/output.css): Transferencia [ ___ KB ] | Recurso sin comprimir [ ___ KB ] (en disco: 36,81 KB minificado / 5,69 KB gzip)
+	4. Casos de uso:
+		• Bootstrap: Prototipos rápidos, paneles internos o proyectos donde la estética estándar del framework y sus componentes JS listos son prioridad.
+		• Tailwind: Landings de campaña, productos con identidad visual propia, sitios orientados a rendimiento web y arquitecturas basadas en componentes reutilizables.
+• Recomendación técnica para el sitio principal de Rueda Libre:
+	• Mantener Bootstrap 5.3 en la versión estable actual de Rueda Libre mientras siga siendo HTML estático multipágina, y adoptar Tailwind CSS v4 para nuevas campañas (como Rueda Nocturna) y para una futura v3.0 cuando el sitio incorpore plantillas o componentes (Astro/React), aprovechando así el sistema @theme validado con WCAG AA y el menor peso en producción sin duplicar HTML manualmente.

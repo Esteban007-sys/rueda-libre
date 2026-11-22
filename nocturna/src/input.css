@@ -1,0 +1,110 @@
+/* ==========================================================================
+   RUEDA NOCTURNA - ARCHIVO FUENTE DE TAILWIND CSS v4
+   A partir de este archivo Tailwind CLI genera src/output.css minificado.
+   ========================================================================== */
+
+/* Importa el motor principal de utilidades de Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* Variante dark personalizada: activa estilos dark: con .dark o preferencia del sistema */
+@custom-variant dark {
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:not(.light, .light *)) {
+      @slot;
+    }
+  }
+}
+
+/* Reglas base: indica al navegador el esquema nativo para scrollbars y controles */
+@layer base {
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html.light {
+    color-scheme: light;
+  }
+}
+
+/* Tokens de diseño (@theme): colores de marca auditados WCAG AA y tipografías */
+@theme {
+  /* 5 colores base de la marca Rueda Libre */
+  --color-verde-ruta: #1E7A4F;
+  --color-naranja-pedal: #F39A2B;
+  --color-azul-noche: #14213D;
+  --color-crema: #FAF6EF;
+  --color-gris-asfalto: #5B6470;
+
+  /* Color distintivo de la campaña Rueda Nocturna */
+  --color-amarillo-farol: #FFD166;
+
+  /* Variantes derivadas para estados hover, bordes y contraste en modo oscuro */
+  --color-verde-ruta-hover: #17613F;
+  --color-verde-ruta-claro: #4AC88C;
+  --color-amarillo-farol-hover: #FFE08F;
+  --color-azul-noche-fondo: #0B1324;
+  --color-azul-noche-elevado: #1D2D4E;
+  --color-azul-noche-borde: #647BA6;
+  --color-crema-borde: #DDD5C7;
+  --color-gris-asfalto-claro: #B8C2D0;
+
+  /* Tipografías de marca (títulos y texto general) */
+  --font-display: "Montserrat", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-sans: "Open Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+/* Componentes reutilizables para evitar repetir largas listas de utilidades */
+@layer components {
+  /* Botón primario: acción principal (Inscríbete / Confirmar) */
+  .btn-primario {
+    @apply inline-flex items-center justify-center rounded-full shadow-lg transition cursor-pointer px-6 py-3 font-semibold text-center bg-amarillo-farol text-azul-noche hover:bg-amarillo-farol-hover focus:outline-hidden focus:ring-2 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-amarillo-farol dark:focus:ring-offset-azul-noche;
+  }
+
+  /* Botón secundario: contorno de marca para navegación o acciones alternas */
+  .btn-secundario {
+    @apply inline-flex items-center justify-center rounded-full border-2 shadow-md transition cursor-pointer px-6 py-3 font-semibold text-center bg-transparent border-verde-ruta text-verde-ruta hover:bg-verde-ruta/10 focus:outline-hidden focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:border-amarillo-farol dark:text-amarillo-farol dark:hover:bg-amarillo-farol/15 dark:focus:ring-amarillo-farol dark:focus:ring-offset-azul-noche;
+  }
+
+  /* Botón terciario: estilo sutil sobre fondo crema o azul elevado */
+  .btn-terciario {
+    @apply inline-flex items-center justify-center rounded-full border shadow-md transition cursor-pointer px-6 py-3 font-semibold text-center bg-crema border-crema-borde text-azul-noche hover:bg-crema-borde/60 focus:outline-hidden focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:bg-azul-noche-elevado dark:border-azul-noche-borde/40 dark:text-crema dark:hover:bg-azul-noche-borde/40 dark:focus:ring-verde-ruta-claro dark:focus:ring-offset-azul-noche;
+  }
+
+  /* Interruptor de tema en línea (íconos de sol y luna con pista deslizante) */
+  .theme-switch {
+    @apply inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2 py-1.5 text-xs leading-none whitespace-nowrap cursor-pointer transition bg-crema border-crema-borde text-gris-asfalto hover:border-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:bg-azul-noche-elevado dark:border-azul-noche-borde/60 dark:text-gris-asfalto-claro dark:hover:border-amarillo-farol dark:focus:ring-amarillo-farol dark:focus:ring-offset-azul-noche-fondo;
+  }
+
+  /* Contenedor interno de cada ícono del interruptor */
+  .theme-switch__label {
+    @apply inline-flex items-center gap-1 font-semibold transition;
+  }
+
+  /* Ícono de sol: resaltado cuando está activo el tema claro */
+  .theme-switch__label--light {
+    @apply font-bold text-azul-noche dark:font-semibold dark:text-gris-asfalto-claro dark:opacity-85;
+  }
+
+  /* Ícono de luna: resaltado cuando está activo el tema oscuro */
+  .theme-switch__label--dark {
+    @apply text-gris-asfalto opacity-85 dark:font-bold dark:text-amarillo-farol dark:opacity-100;
+  }
+
+  /* Tamaño fijo de los íconos SVG de sol y luna */
+  .theme-switch__icon {
+    @apply w-3.5 h-3.5 shrink-0;
+  }
+
+  /* Pista del interruptor que cambia de Verde Ruta a Amarillo Farol */
+  .theme-switch__track {
+    @apply relative inline-flex shrink-0 items-center w-9 h-5 p-0.5 rounded-full transition-colors bg-verde-ruta dark:bg-amarillo-farol;
+  }
+
+  /* Círculo deslizante que se mueve a la derecha en tema oscuro */
+  .theme-switch__thumb {
+    @apply block w-4 h-4 rounded-full shadow-sm transition-transform duration-200 bg-white translate-x-0 dark:bg-azul-noche dark:translate-x-4;
+  }
+}

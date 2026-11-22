@@ -31,43 +31,63 @@
     <!-- <link> enlace a un recurso externo · carga https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11. -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
-    <!-- Estilos propios mínimos: colores de marca y modo día/noche sin JavaScript -->
+    <!-- Estilos propios: paleta y tema claro/oscuro unificados con Rueda Nocturna -->
     <!-- <link> enlace a un recurso externo · carga ../css/styles.css -->
     <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        (function () {
+            var saved = localStorage.getItem('rueda-tema') || localStorage.getItem('rueda-nocturna-tema');
+            var dark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            if (saved === 'dark' || saved === 'light') {
+                document.documentElement.classList.add(saved);
+            }
+            document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
+        })();
+    </script>
 </head>
 <!-- <body> contenido visible -->
 <body>
-    <!-- CONTROL DE TEMA (DÍA / NOCHE) SIN JS NATIVO: Checkbox en la raíz del body -->
-    <!-- <input> campo de entrada · clases: visually-hidden (oculto visualmente) · id «theme-toggle», tipo checkbox, aria-label: Alternar modo día y noche -->
-    <input type="checkbox" id="theme-toggle" class="visually-hidden" aria-label="Alternar modo día y noche">
-
     <!-- ENCABEZADO Y BARRA DE NAVEGACIÓN BOOTSTRAP -->
     <!-- <header> encabezado · clases: sticky-top (se queda fija arriba al hacer scroll) -->
     <header class="sticky-top">
-        <!-- <nav> bloque de navegación · clases: navbar (barra de navegación); navbar-expand-lg (barra de navegación); navbar-dark (barra de navegación); bg-dark (color de fondo); border-bottom (borde); border-warning (borde); border-3 (borde); shadow-sm (sombra); py-2 (espacio interior) -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-warning border-3 shadow-sm py-2">
+        <!-- <nav> bloque de navegación · adaptada a tema claro y tema oscuro como Rueda Nocturna -->
+        <nav class="navbar navbar-expand-lg navbar-rueda shadow-sm py-2">
             <!-- <div> contenedor · clases: container (contenedor centrado con ancho máximo) -->
             <div class="container">
                 <!-- Marca / Logotipo -->
                 <!-- <a> enlace · clases: navbar-brand (barra de navegación); d-flex (display flex); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos) · lleva a ../index.html -->
                 <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
-                    <!-- <img> imagen · clases: rounded-circle (forma circular); bg-light (color de fondo); p-1 (espacio interior) · muestra ../img/logo.png (alt: Logo de Rueda Libre) -->
-                    <img src="../img/logo.png" alt="Logo de Rueda Libre" width="46" height="46" class="rounded-circle bg-light p-1">
-                    <!-- <span> texto en línea · clases: brand-title (fuente de títulos para el nombre); text-white (texto blanco); fw-bold (grosor de letra); fs-4 (tamaño de letra) -->
-                    <span class="brand-title text-white fw-bold fs-4">Rueda Libre</span>
+                    <!-- <img> imagen · clases: rounded-circle (forma circular); navbar-logo; p-1 (espacio interior) · muestra ../img/logo.png (alt: Logo de Rueda Libre) -->
+                    <img src="../img/logo.png" alt="Logo de Rueda Libre" width="44" height="44" class="rounded-circle navbar-logo p-1">
+                    <!-- <span> texto en línea · clases: brand-title (fuente de títulos para el nombre); fw-bold (grosor de letra); fs-4 (tamaño de letra) -->
+                    <span class="brand-title fw-bold fs-4">Rueda Libre</span>
                 </a>
 
-                <!-- Controles en la barra (Botón Día/Noche y hamburguesa responsive) -->
-                <!-- <div> contenedor · clases: d-flex (display flex); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos); order-lg-3 (orden visual); ms-auto (margen exterior); ms-lg-3 (margen exterior) -->
-                <div class="d-flex align-items-center gap-2 order-lg-3 ms-auto ms-lg-3">
-                    <!-- BOTÓN MODO DÍA / NOCHE (SIN JS NATIVO) -->
-                    <!-- <label> etiqueta de un campo · clases: btn (botón Bootstrap); btn-outline-warning (botón Bootstrap); btn-sm (botón Bootstrap); rounded-pill (esquinas en forma de píldora) · asociada al campo «theme-toggle» -->
-                    <label for="theme-toggle" class="btn btn-outline-warning btn-sm rounded-pill" role="button" title="Alternar entre modo día y noche">
-                        <!-- <span> texto en línea · clases: modo-noche (contenido del botón en modo día) -->
-                        <span class="modo-noche"><i class="bi bi-moon-stars-fill" aria-hidden="true"></i> <span class="d-none d-sm-inline">Modo Noche</span></span>
-                        <!-- <span> texto en línea · clases: modo-dia (contenido del botón en modo noche) -->
-                        <span class="modo-dia"><i class="bi bi-sun-fill" aria-hidden="true"></i> <span class="d-none d-sm-inline">Modo Día</span></span>
-                    </label>
+                <!-- Controles en la barra (Botón Rueda en la noche, interruptor Tema claro/oscuro y hamburguesa responsive) -->
+                <!-- <div> contenedor · clases: d-flex (display flex); flex-wrap (permite salto en pantallas muy estrechas); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos); order-lg-3 (orden visual); ms-auto (margen exterior); ms-lg-3 (margen exterior) -->
+                <div class="d-flex flex-wrap align-items-center gap-2 order-lg-3 ms-auto ms-lg-3">
+                    <!-- BOTÓN CAMPAÑA RUEDA NOCTURNA (siempre visible sin abrir el menú) -->
+                    <a href="../nocturna/index.html" class="btn btn-campana btn-sm rounded-pill fw-bold">
+                        <i class="bi bi-moon-stars" aria-hidden="true"></i> Rueda en la noche
+                    </a>
+
+                    <!-- INTERRUPTOR DE TEMA EN LÍNEA (Sol / Luna) -->
+                    <button id="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Cambiar entre tema claro y tema oscuro" class="theme-switch" title="Alternar entre tema claro y tema oscuro">
+                        <span class="theme-switch__label theme-switch__label--light" aria-hidden="true">
+                            <svg class="theme-switch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
+                            </svg>
+                        </span>
+                        <span class="theme-switch__track" aria-hidden="true">
+                            <span class="theme-switch__thumb"></span>
+                        </span>
+                        <span class="theme-switch__label theme-switch__label--dark" aria-hidden="true">
+                            <svg class="theme-switch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+                            </svg>
+                        </span>
+                    </button>
 
                     <!-- Botón Hamburguesa oficial de Bootstrap -->
                     <!-- <button> botón · clases: navbar-toggler (barra de navegación); border-0 (borde); p-2 (espacio interior) · aria-label: Abrir navegación, lo controla Bootstrap JS -->
@@ -437,6 +457,7 @@
     <!-- BOOTSTRAP BUNDLE JS -->
     <!-- <script> script · carga https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../js/tema.js"></script>
 
     <!-- VALIDACIÓN VISUAL DE BOOTSTRAP: script oficial de la documentación (Forms > Validation), copiado sin cambios -->
     <script>
