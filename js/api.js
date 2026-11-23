@@ -1,13 +1,18 @@
 /* ==========================================================================
    CLIENTE API Y TIEMPO REAL (SSE) - RUEDA LIBRE
    Conecta las vistas estáticas (catálogo, flota, tarifas y reservas) con el
-   backend en http://localhost:3000/api respetando los estilos de Bootstrap.
+   backend en https://rueda-libre-api.duckdns.org (o localhost:3000 en local)
+   respetando los estilos de Bootstrap.
    ========================================================================== */
 (function (window) {
     'use strict';
 
-    /* URL base de la API REST de Rueda Libre */
-    var API_BASE = 'http://localhost:3000/api';
+    /* URL base de la API REST de Rueda Libre (producción HTTPS y fallback local) */
+    var isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+    var API_ORIGIN = isLocal
+        ? 'http://localhost:3000'
+        : 'https://rueda-libre-api.duckdns.org';
+    var API_BASE = API_ORIGIN + '/api';
 
     /* Metadatos visuales locales por slug para conservar las imágenes y descripciones de marca */
     var BICI_META = {
