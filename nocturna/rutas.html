@@ -1,35 +1,60 @@
+<!-- <!DOCTYPE html>: declara que el documento usa el estándar HTML5 -->
 <!DOCTYPE html>
+<!-- <html>: Etiqueta raíz que envuelve todo el documento HTML -->
 <html lang="es">
+<!-- <head>: Cabecera técnica con metadatos, fuentes, estilos y scripts iniciales (no visible) -->
 <head>
+  <!-- <meta>: Metadato de configuración del documento · codificación UTF-8 -->
   <meta charset="UTF-8">
+  <!-- <meta>: Metadato de configuración del documento · ajusta la escala para diseño responsive en móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <title>: Título que aparece en la pestaña del navegador -->
   <title>Rueda Nocturna · Rutas</title>
   <!-- Play CDN de Tailwind: solo para prototipar -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+<!-- <body>: Cuerpo principal que contiene todo el contenido visible -->
 <body class="bg-slate-950 text-white antialiased min-h-screen flex items-center justify-center p-6">
+  <!-- <article>: Tarjeta o bloque de contenido independiente y reutilizable -->
   <article class="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+    <!-- <img>: Imagen visual del contenido · muestra https://picsum.photos/seed/luces/640/320 · texto alternativo: "Ciclistas recorriendo el centro de Medellín de noche" -->
     <img src="https://picsum.photos/seed/luces/640/320" alt="Ciclistas recorriendo el centro de Medellín de noche" class="w-full h-48 object-cover">
+    <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
     <div class="p-6 space-y-4">
+      <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
       <div class="flex items-center justify-between gap-2">
+        <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
         <span class="inline-block bg-emerald-500/15 text-emerald-300 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">Fácil</span>
+        <!-- <p>: Párrafo de texto -->
         <p class="text-xl font-bold text-amber-300">$55.000</p>
       </div>
+      <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
       <h3 class="text-2xl font-bold text-white">Luces del Centro</h3>
+      <!-- <dl>: Lista de definiciones (pares etiqueta/valor) -->
       <dl class="space-y-2 text-sm border-t border-slate-800 pt-4">
+        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
         <div class="flex justify-between gap-4">
+          <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
           <dt class="text-slate-400">Distancia</dt>
+          <!-- <dd>: Valor o descripción correspondiente al término anterior -->
           <dd class="font-semibold text-slate-100">10 km</dd>
         </div>
+        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
         <div class="flex justify-between gap-4">
+          <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
           <dt class="text-slate-400">Duración</dt>
+          <!-- <dd>: Valor o descripción correspondiente al término anterior -->
           <dd class="font-semibold text-slate-100">2 h</dd>
         </div>
+        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
         <div class="flex justify-between gap-4">
+          <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
           <dt class="text-slate-400">Punto de encuentro</dt>
+          <!-- <dd>: Valor o descripción correspondiente al término anterior -->
           <dd class="font-semibold text-slate-100 text-right">Sede de Rueda Libre</dd>
         </div>
       </dl>
+      <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inscripcion -->
       <a href="#inscripcion" class="block w-full text-center bg-amber-400 text-slate-950 font-semibold px-6 py-3 rounded-full shadow-md hover:bg-amber-300 focus:outline-hidden focus:ring-2 focus:ring-amber-200 focus:ring-offset-2 focus:ring-offset-slate-900 transition">Inscríbete</a>
     </div>
   </article>

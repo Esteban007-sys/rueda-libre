@@ -14,7 +14,7 @@
     <title>Rueda Libre | Alquiler de bicicletas en Medellín</title>
     <!-- <link> enlace a un recurso externo · carga img/favicon.png -->
     <link rel="icon" href="img/favicon.png" type="image/png">
-    
+
     <!-- Google Fonts -->
     <!-- <link> enlace a un recurso externo · carga https://fonts.googleapis.com -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,18 +22,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- <link> enlace a un recurso externo · carga https://fonts.googleapis.com/css2?family=Montserra -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Bootstrap 5 CSS -->
     <!-- <link> enlace a un recurso externo · carga https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/ -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
+
     <!-- Bootstrap Icons -->
     <!-- <link> enlace a un recurso externo · carga https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11. -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+
     <!-- Estilos propios: paleta y tema claro/oscuro unificados con Rueda Nocturna -->
     <!-- <link> enlace a un recurso externo · carga css/styles.css -->
     <link rel="stylesheet" href="css/styles.css">
+    <!-- <script>: Bloque o archivo JavaScript para la interactividad de la página · código JavaScript en línea -->
     <script>
         (function () {
             var saved = localStorage.getItem('rueda-tema') || localStorage.getItem('rueda-nocturna-tema');
@@ -68,22 +69,32 @@
                 <div class="d-flex flex-wrap align-items-center gap-2 order-lg-3 ms-auto ms-lg-3">
                     <!-- BOTÓN CAMPAÑA RUEDA NOCTURNA (siempre visible sin abrir el menú) -->
                     <a href="nocturna/index.html" class="btn btn-campana btn-sm rounded-pill fw-bold">
+                        <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                         <i class="bi bi-moon-stars" aria-hidden="true"></i> Rueda en la noche
                     </a>
 
                     <!-- INTERRUPTOR DE TEMA EN LÍNEA (Sol / Luna) -->
                     <button id="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Cambiar entre tema claro y tema oscuro" class="theme-switch" title="Alternar entre tema claro y tema oscuro">
+                        <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · contiene el ícono de sol (tema claro) -->
                         <span class="theme-switch__label theme-switch__label--light" aria-hidden="true">
+                            <!-- <svg>: Gráfico vectorial escalable (ícono SVG) -->
                             <svg class="theme-switch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <!-- <circle>: Trazo circular dentro del ícono SVG -->
                                 <circle cx="12" cy="12" r="4" />
+                                <!-- <path>: Trazado vectorial que dibuja la forma del ícono SVG -->
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
                             </svg>
                         </span>
+                        <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · pista horizontal del interruptor de tema -->
                         <span class="theme-switch__track" aria-hidden="true">
+                            <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · indicador circular deslizante del interruptor -->
                             <span class="theme-switch__thumb"></span>
                         </span>
+                        <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · contiene el ícono de luna (tema oscuro) -->
                         <span class="theme-switch__label theme-switch__label--dark" aria-hidden="true">
+                            <!-- <svg>: Gráfico vectorial escalable (ícono SVG) -->
                             <svg class="theme-switch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <!-- <path>: Trazado vectorial que dibuja la forma del ícono SVG -->
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
                             </svg>
                         </span>
@@ -181,45 +192,67 @@
             <div id="carruselPromos" class="carousel slide carrusel-promos rounded-4 overflow-hidden shadow-sm" data-bs-ride="carousel" aria-label="Promociones del mes">
                 <!-- <div> indicadores · uno por promoción, con texto para lectores de pantalla (aria-label) -->
                 <div class="carousel-indicators">
+                    <!-- <button>: Botón interactivo que ejecuta una acción · tipo "button" · salta a la diapositiva 1 del carrusel · etiqueta accesible: "Ir a la promoción 1: Martes 2x1" -->
                     <button type="button" data-bs-target="#carruselPromos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Ir a la promoción 1: Martes 2x1"></button>
+                    <!-- <button>: Botón interactivo que ejecuta una acción · tipo "button" · salta a la diapositiva 2 del carrusel · etiqueta accesible: "Ir a la promoción 2: 20 % en eléctricas" -->
                     <button type="button" data-bs-target="#carruselPromos" data-bs-slide-to="1" aria-label="Ir a la promoción 2: 20 % en eléctricas"></button>
+                    <!-- <button>: Botón interactivo que ejecuta una acción · tipo "button" · salta a la diapositiva 3 del carrusel · etiqueta accesible: "Ir a la promoción 3: recorrido gratis en tu cumpleaños" -->
                     <button type="button" data-bs-target="#carruselPromos" data-bs-slide-to="2" aria-label="Ir a la promoción 3: recorrido gratis en tu cumpleaños"></button>
+                    <!-- <button>: Botón interactivo que ejecuta una acción · tipo "button" · salta a la diapositiva 4 del carrusel · etiqueta accesible: "Ir a la promoción 4: campaña Rueda Nocturna" -->
                     <button type="button" data-bs-target="#carruselPromos" data-bs-slide-to="3" aria-label="Ir a la promoción 4: campaña Rueda Nocturna"></button>
                 </div>
                 <!-- <div> diapositivas · clases: carousel-inner (contenedor de las diapositivas) -->
                 <div class="carousel-inner">
                     <!-- Promoción 1 · clases: carousel-item (diapositiva); active (la que se muestra al cargar) -->
                     <div class="carousel-item active">
+                        <!-- <img>: Imagen visual del contenido · muestra img/carrusel2.jpg · texto alternativo: "Bicicleta urbana azul de Rueda Libre, protagonista de la promoció…" -->
                         <img src="img/carrusel2.jpg" class="d-block w-100 img-carrusel object-fit-cover" alt="Bicicleta urbana azul de Rueda Libre, protagonista de la promoción Martes 2x1">
+                        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · caja de texto superpuesta sobre la imagen del carrusel -->
                         <div class="carousel-caption bg-dark bg-opacity-75 rounded-3 px-3 py-2">
+                            <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
                             <h3 class="h5 fw-bold text-white mb-1">Martes 2x1 en bicicletas urbanas</h3>
+                            <!-- <p>: Párrafo de texto -->
                             <p class="small mb-0">Pedalea en pareja o con amigos aprovechando el martes.</p>
                         </div>
                     </div>
                     <!-- Promoción 2 -->
 
                     <div class="carousel-item">
+                        <!-- <img>: Imagen visual del contenido · muestra img/carrusel1.jpg · texto alternativo: "Fachada de Rueda Libre, donde se alquilan las bicicletas eléctric…" -->
                         <img src="img/carrusel1.jpg" class="d-block w-100 img-carrusel object-fit-cover" alt="Fachada de Rueda Libre, donde se alquilan las bicicletas eléctricas con descuento">
+                        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · caja de texto superpuesta sobre la imagen del carrusel -->
                         <div class="carousel-caption bg-dark bg-opacity-75 rounded-3 px-3 py-2">
+                            <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
                             <h3 class="h5 fw-bold text-white mb-1">20 % de descuento en eléctricas de lunes a jueves</h3>
+                            <!-- <p>: Párrafo de texto -->
                             <p class="small mb-0">Sube las colinas de Medellín con asistencia eléctrica.</p>
                         </div>
                     </div>
                     <!-- Promoción 3 -->
                     <div class="carousel-item">
+                        <!-- <img>: Imagen visual del contenido · muestra img/tourguiado.png · texto alternativo: "Grupo de ciclistas en un recorrido guiado, gratis el día de tu cu…" -->
                         <img src="img/tourguiado.png" class="d-block w-100 img-carrusel object-fit-cover" alt="Grupo de ciclistas en un recorrido guiado, gratis el día de tu cumpleaños">
+                        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · caja de texto superpuesta sobre la imagen del carrusel -->
                         <div class="carousel-caption bg-dark bg-opacity-75 rounded-3 px-3 py-2">
+                            <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
                             <h3 class="h5 fw-bold text-white mb-1">Si cumples años, el recorrido guiado es gratis</h3>
+                            <!-- <p>: Párrafo de texto -->
                             <p class="small mb-0">Celebra tu cumpleaños recorriendo la ciudad con guía.</p>
                         </div>
                     </div>
                     <!-- Promoción 4 · Publicidad campaña Rueda Nocturna -->
                     <div class="carousel-item">
+                        <!-- <img>: Imagen visual del contenido · muestra nocturna/img/parques-del-rio.jpg · texto alternativo: "Parques del Río Medellín iluminado de noche, imagen promocional d…" -->
                         <img src="nocturna/img/parques-del-rio.jpg" class="d-block w-100 img-carrusel object-fit-cover" alt="Parques del Río Medellín iluminado de noche, imagen promocional de la campaña Rueda Nocturna">
+                        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · caja de texto superpuesta sobre la imagen del carrusel -->
                         <div class="carousel-caption bg-dark bg-opacity-75 rounded-3 px-3 py-2">
+                            <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
                             <h3 class="h5 fw-bold text-white mb-1">Nueva campaña: Rueda Nocturna</h3>
+                            <!-- <p>: Párrafo de texto -->
                             <p class="small mb-2"><strong>Salidas de jueves a sábado desde $55.000: vive la ciudad bajo las estrellas en 3 rutas exclusivas.</strong></p>
+                            <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a nocturna/index.html -->
                             <a href="nocturna/index.html" class="btn btn-campana btn-sm rounded-pill fw-bold">
+                                <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                                 <i class="bi bi-moon-stars-fill" aria-hidden="true"></i> Conoce Rueda Nocturna
                             </a>
                         </div>
@@ -227,11 +260,16 @@
                 </div>
                 <!-- Controles anterior y siguiente: el texto visually-hidden lo leen los lectores de pantalla -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#carruselPromos" data-bs-slide="prev">
+                    <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · ícono de flecha del carrusel -->
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · texto solo para lectores de pantalla -->
                     <span class="visually-hidden">Promoción anterior</span>
                 </button>
+                <!-- <button>: Botón interactivo que ejecuta una acción · tipo "button" · avanza a la siguiente diapositiva del carrusel -->
                 <button class="carousel-control-next" type="button" data-bs-target="#carruselPromos" data-bs-slide="next">
+                    <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · ícono de flecha del carrusel -->
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · texto solo para lectores de pantalla -->
                     <span class="visually-hidden">Promoción siguiente</span>
                 </button>
             </div>
@@ -248,8 +286,8 @@
                 <p class="text-muted">Descubre los mejores recorridos guiados por la ciudad y sus alrededores:</p>
             </div>
 
-            <!-- <div> contenedor · clases: row (fila de la cuadrícula Bootstrap); g-4 (separación entre columnas/filas) -->
-            <div class="row g-4">
+            <!-- <div> contenedor · clases: row (fila de la cuadrícula Bootstrap); g-4 (separación entre columnas/filas) · id «grid-rutas» cargado desde /api/catalogo -->
+            <div class="row g-4" id="grid-rutas">
                 <!-- Ruta 1 -->
                 <!-- <div> contenedor · clases: col-12 (columna de 12/12 de ancho); col-md-6 (columna de 6/12 de ancho desde md); col-lg-3 (columna de 3/12 de ancho desde lg) -->
                 <div class="col-12 col-md-6 col-lg-3">
@@ -330,6 +368,7 @@
                             <p class="card-text text-secondary mb-4">Pedalea en las noches con Rueda Libre y descubre Medellín iluminado en recorridos guiados con luces y chaleco reflectivo.</p>
                             <!-- <a> enlace directo a Rueda Nocturna -->
                             <a href="nocturna/index.html" class="btn btn-campana rounded-pill fw-bold mt-auto">
+                                <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                                 <i class="bi bi-moon-stars-fill" aria-hidden="true"></i> Ir a Rueda Nocturna
                             </a>
                         </div>
@@ -450,11 +489,13 @@
                 <!-- <h2> título de sección · clases: titulo-seccion (título con detalle de marca); fw-bold (grosor de letra) -->
                 <h2 class="titulo-seccion fw-bold">Nuestra flota</h2>
                 <!-- <p> párrafo · clases: text-muted (color de texto) -->
-                <p class="text-muted">Conoce los modelos de bicicletas disponibles para alquiler por horas, días o recorridos:</p>
+                <p class="text-muted mb-2">Conoce los modelos de bicicletas disponibles para alquiler por horas, días o recorridos:</p>
+                <!-- <span> indicador del estado de conexión en tiempo real (SSE /api/stream/ventas) -->
+                <span id="sse-estado" class="badge text-bg-secondary"><i class="bi bi-broadcast" aria-hidden="true"></i> Conectando disponibilidad en vivo…</span>
             </div>
 
-            <!-- <div> contenedor · clases: row (fila de la cuadrícula Bootstrap); g-4 (separación entre columnas/filas); row-cols-1 (1 columnas por fila); row-cols-sm-2 (2 columnas por fila desde sm); row-cols-lg-3 (3 columnas por fila desde lg); row-cols-xl-4 (4 columnas por fila desde xl) -->
-            <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+            <!-- <div> contenedor · clases: row (fila de la cuadrícula Bootstrap); g-4 (separación entre columnas/filas); row-cols-1 (1 columnas por fila); row-cols-sm-2 (2 columnas por fila desde sm); row-cols-lg-3 (3 columnas por fila desde lg); row-cols-xl-4 (4 columnas por fila desde xl) · id «grid-flota» cargado desde /api/catalogo -->
+            <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4" id="grid-flota">
                 <!-- 1. Urbana Clásica -->
                 <!-- <div> contenedor · clases: col (columna de ancho automático) -->
                 <div class="col">
@@ -617,9 +658,13 @@
                 <div class="col">
                     <!-- <div> tarjeta · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2; rounded-4; bg-body-tertiary; tarjeta-hover; p-4; text-center -->
                     <div class="card h-100 border-2 rounded-4 bg-body-tertiary tarjeta-hover p-4 text-center">
+                        <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                         <i class="bi bi-wrench-adjustable fs-1 text-primary mb-2" aria-hidden="true"></i>
+                        <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
                         <h3 class="h5 fw-bold mb-2">Bicicletas revisadas</h3>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="text-secondary mb-3">Cada bicicleta pasa por una revisión antes de salir en cada alquiler.</p>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="mt-auto mb-0"><span class="badge text-bg-warning fs-6">Cada alquiler</span></p>
                     </div>
                 </div>
@@ -627,9 +672,13 @@
                 <div class="col">
                     <!-- <div> tarjeta · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2; rounded-4; bg-body-tertiary; tarjeta-hover; p-4; text-center -->
                     <div class="card h-100 border-2 rounded-4 bg-body-tertiary tarjeta-hover p-4 text-center">
+                        <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                         <i class="bi bi-shield-check fs-1 text-primary mb-2" aria-hidden="true"></i>
+                        <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
                         <h3 class="h5 fw-bold mb-2">Casco y candado incluidos</h3>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="text-secondary mb-3">Sales seguro: el equipo de protección va incluido en la tarifa.</p>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="mt-auto mb-0"><span class="badge text-bg-warning fs-6">Incluidos</span></p>
                     </div>
                 </div>
@@ -637,9 +686,13 @@
                 <div class="col">
                     <!-- <div> tarjeta · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2; rounded-4; bg-body-tertiary; tarjeta-hover; p-4; text-center -->
                     <div class="card h-100 border-2 rounded-4 bg-body-tertiary tarjeta-hover p-4 text-center">
+                        <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                         <i class="bi bi-person-check fs-1 text-primary mb-2" aria-hidden="true"></i>
+                        <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
                         <h3 class="h5 fw-bold mb-2">Guías certificados</h3>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="text-secondary mb-3">Los recorridos guiados los lideran personas con certificación.</p>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="mt-auto mb-0"><span class="badge text-bg-warning fs-6">Certificados</span></p>
                     </div>
                 </div>
@@ -647,9 +700,13 @@
                 <div class="col">
                     <!-- <div> tarjeta · clases: card (tarjeta Bootstrap); h-100 (alto 100%); border-2; rounded-4; bg-body-tertiary; tarjeta-hover; p-4; text-center -->
                     <div class="card h-100 border-2 rounded-4 bg-body-tertiary tarjeta-hover p-4 text-center">
+                        <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                         <i class="bi bi-geo-alt fs-1 text-primary mb-2" aria-hidden="true"></i>
+                        <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
                         <h3 class="h5 fw-bold mb-2">Devolución en tres sedes</h3>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="text-secondary mb-3">Devuelve la bicicleta en el punto que te quede más cómodo.</p>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="mt-auto mb-0"><span class="badge text-bg-warning fs-6">3 sedes</span></p>
                     </div>
                 </div>
@@ -658,9 +715,11 @@
             <!-- FRANJA DE LLAMADA A LA ACCIÓN: columna en celulares y fila desde md (utilidades de flex) -->
             <!-- <div> franja · clases: d-flex; flex-column (columna en celular); flex-md-row (fila desde md); align-items-center; justify-content-md-between; gap-3; mt-5; p-4; rounded-4; text-bg-dark (fondo azul noche con texto blanco) -->
             <div class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 mt-5 p-4 rounded-4 text-bg-dark">
+                <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                 <div class="d-flex align-items-center gap-3">
                     <!-- Imagen decorativa: alt vacío para que los lectores de pantalla la ignoren; d-none d-md-block la oculta en celulares -->
                     <img src="img/reloj-bici-transparente.png" alt="" width="80" class="d-none d-md-block">
+                    <!-- <p>: Párrafo de texto -->
                     <p class="h3 text-white fw-bold mb-0">¿Listo para rodar?</p>
                 </div>
                 <!-- <a> enlace · clases: btn btn-naranja (variante propia de botón con Naranja Pedal); btn-lg; fw-bold; rounded-pill · lleva a paginas/reservas.html -->
@@ -742,17 +801,17 @@
                 <!-- <p> párrafo · clases: text-secondary (color de texto) -->
                 <p class="text-secondary">Estamos ubicados en San Javier el Danubio. Puedes ver nuestra ubicación exacta en el <a href="https://www.google.com/maps/place/Cra.+90+%23+44B-58,+El+Danubio,+Medell%C3%ADn,+La+Am%C3%A9rica,+Medell%C3%ADn,+Antioquia/data=!4m2!3m1!1s0x8e442977282c5b17:0x79a49101d5c8d92?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener noreferrer" class="fw-bold text-decoration-underline">Mapa de Google</a>.</p>
             </div>
-            
+
             <!-- <div> contenedor · clases: card (tarjeta Bootstrap); border-2 (borde); rounded-4 (esquinas redondeadas); overflow-hidden (recorta el contenido); bg-body-tertiary (color de fondo); tarjeta-hover (tarjeta que se eleva al pasar el mouse); shadow (sombra) -->
             <div class="card border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover shadow">
                 <!-- <div> contenedor · clases: ratio (proporción fija); ratio-21x9 (proporción fija); mapa-contenedor (altura mínima, css/styles.css) -->
                 <div class="ratio ratio-21x9 mapa-contenedor">
                     <!-- <iframe> página incrustada -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15864.278281567436!2d-75.6208599932553!3d6.254564929816611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442979f4c74715%3A0x407c077a248f420e!2sEl%20Danubio%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1792980490652!5m2!1ses!2sco" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    title="Ubicación de Rueda Libre en Medellín">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15864.278281567436!2d-75.6208599932553!3d6.254564929816611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442979f4c74715%3A0x407c077a248f420e!2sEl%20Danubio%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1792980490652!5m2!1ses!2sco"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="Ubicación de Rueda Libre en Medellín">
                     </iframe>
                 </div>
             </div>
@@ -798,6 +857,7 @@
                         <strong class="d-block mb-2"><i class="bi bi-clock" aria-hidden="true"></i> Horario de atención:</strong>
                         <!-- <p> párrafo · clases: mb-0 (margen exterior) -->
                         <p class="mb-1">Lunes a viernes: 7:00 a. m. – 7:00 p. m.</p>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="mb-0">Sábados, domingos y festivos: 6:00 a. m. – 2:00 p. m.</p>
                     </div>
                 </div>
@@ -817,6 +877,9 @@
     <!-- BOOTSTRAP BUNDLE JS -->
     <!-- <script> script · carga https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- <script>: Bloque o archivo JavaScript para la interactividad de la página · carga el script js/tema.js -->
     <script src="js/tema.js"></script>
+    <!-- <script>: Conecta catálogo, disponibilidad de flota y stream SSE con la API en http://localhost:3000/api -->
+    <script src="js/api.js"></script>
 </body>
 </html>

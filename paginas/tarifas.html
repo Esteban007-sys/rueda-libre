@@ -14,7 +14,7 @@
     <title>Rueda Libre | Tarifas y rutas</title>
     <!-- <link> enlace a un recurso externo · carga ../img/favicon.png -->
     <link rel="icon" href="../img/favicon.png" type="image/png">
-    
+
     <!-- Google Fonts -->
     <!-- <link> enlace a un recurso externo · carga https://fonts.googleapis.com -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,18 +22,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- <link> enlace a un recurso externo · carga https://fonts.googleapis.com/css2?family=Montserra -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Bootstrap 5 CSS -->
     <!-- <link> enlace a un recurso externo · carga https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/ -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
+
     <!-- Bootstrap Icons -->
     <!-- <link> enlace a un recurso externo · carga https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11. -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+
     <!-- Estilos propios: paleta y tema claro/oscuro unificados con Rueda Nocturna -->
     <!-- <link> enlace a un recurso externo · carga ../css/styles.css -->
     <link rel="stylesheet" href="../css/styles.css">
+    <!-- <script>: Bloque o archivo JavaScript para la interactividad de la página · código JavaScript en línea -->
     <script>
         (function () {
             var saved = localStorage.getItem('rueda-tema') || localStorage.getItem('rueda-nocturna-tema');
@@ -68,22 +69,32 @@
                 <div class="d-flex flex-wrap align-items-center gap-2 order-lg-3 ms-auto ms-lg-3">
                     <!-- BOTÓN CAMPAÑA RUEDA NOCTURNA (siempre visible sin abrir el menú) -->
                     <a href="../nocturna/index.html" class="btn btn-campana btn-sm rounded-pill fw-bold">
+                        <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                         <i class="bi bi-moon-stars" aria-hidden="true"></i> Rueda en la noche
                     </a>
 
                     <!-- INTERRUPTOR DE TEMA EN LÍNEA (Sol / Luna) -->
                     <button id="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Cambiar entre tema claro y tema oscuro" class="theme-switch" title="Alternar entre tema claro y tema oscuro">
+                        <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · contiene el ícono de sol (tema claro) -->
                         <span class="theme-switch__label theme-switch__label--light" aria-hidden="true">
+                            <!-- <svg>: Gráfico vectorial escalable (ícono SVG) -->
                             <svg class="theme-switch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <!-- <circle>: Trazo circular dentro del ícono SVG -->
                                 <circle cx="12" cy="12" r="4" />
+                                <!-- <path>: Trazado vectorial que dibuja la forma del ícono SVG -->
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
                             </svg>
                         </span>
+                        <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · pista horizontal del interruptor de tema -->
                         <span class="theme-switch__track" aria-hidden="true">
+                            <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · indicador circular deslizante del interruptor -->
                             <span class="theme-switch__thumb"></span>
                         </span>
+                        <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · contiene el ícono de luna (tema oscuro) -->
                         <span class="theme-switch__label theme-switch__label--dark" aria-hidden="true">
+                            <!-- <svg>: Gráfico vectorial escalable (ícono SVG) -->
                             <svg class="theme-switch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <!-- <path>: Trazado vectorial que dibuja la forma del ícono SVG -->
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
                             </svg>
                         </span>
@@ -148,41 +159,68 @@
                 <section id="tabla-tarifas" class="mb-5">
                     <!-- <div> contenedor · clases: d-flex (display flex); align-items-center (alineación vertical de hijos); gap-2 (separación entre hijos); mb-3 (margen exterior) -->
                     <div class="d-flex align-items-center gap-2 mb-3">
+                        <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                         <i class="bi bi-tag-fill text-warning fs-3" aria-hidden="true"></i>
+                        <!-- <h2>: Título de sección de segundo nivel -->
                         <h2 class="titulo-seccion fw-bold mb-0">Tarifas de alquiler</h2>
                     </div>
+                    <!-- <p>: Párrafo de texto -->
                     <p class="text-secondary">Consulta nuestras tarifas según el tipo de bicicleta y la duración de tu alquiler:</p>
                     <!-- <div> contenedor · clases: table-responsive (la tabla se desplaza dentro de su caja en celulares); shadow-sm (sombra); rounded-3 (esquinas redondeadas) -->
                     <div class="table-responsive shadow-sm rounded-3">
+                        <!-- <table>: Tabla estructurada de datos en filas y columnas -->
                         <table class="table table-bordered table-hover align-middle mb-0">
+                            <!-- <caption>: Título descriptivo de la tabla para accesibilidad -->
                             <caption class="visually-hidden">Tarifas de alquiler por tipo de bicicleta y duración</caption>
+                            <!-- <thead>: Encabezado de columnas de la tabla -->
                             <thead class="table-dark">
+                                <!-- <tr>: Fila horizontal de la tabla -->
                                 <tr>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
                                     <th scope="col"><i class="bi bi-bicycle" aria-hidden="true"></i> Tipo de bicicleta</th>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
                                     <th scope="col"><i class="bi bi-clock" aria-hidden="true"></i> 1 hora</th>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
                                     <th scope="col"><i class="bi bi-sun" aria-hidden="true"></i> Medio día (4 h)</th>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
                                     <th scope="col"><i class="bi bi-calendar3" aria-hidden="true"></i> Día completo</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">Urbana</th>
-                                <td><span class="fw-bold text-primary">$10.000</span></td>
-                                <td><span class="fw-bold text-primary">$30.000</span></td>
-                                <td><span class="fw-bold text-primary">$50.000</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Montaña</th>
-                                <td><span class="fw-bold text-primary">$15.000</span></td>
-                                <td><span class="fw-bold text-primary">$45.000</span></td>
-                                <td><span class="fw-bold text-primary">$70.000</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Eléctrica</th>
-                                <td><span class="fw-bold text-primary">$25.000</span></td>
-                                <td><span class="fw-bold text-primary">$70.000</span></td>
-                                <td><span class="fw-bold text-primary">$110.000</span></td>
-                            </tr>
+                            <!-- <tbody>: Cuerpo principal con las filas de datos de la tabla · id «tbody-tarifas» actualizado desde /api/catalogo -->
+                            <tbody id="tbody-tarifas">
+                                <!-- <tr>: Fila horizontal de la tabla -->
+                                <tr>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
+                                    <th scope="row">Urbana</th>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary">$10.000</span></td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary">$30.000</span></td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary">$50.000</span></td>
+                                </tr>
+                                <!-- <tr>: Fila horizontal de la tabla -->
+                                <tr>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
+                                    <th scope="row">Montaña</th>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary">$15.000</span></td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary">$45.000</span></td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary">$70.000</span></td>
+                                </tr>
+                                <!-- <tr>: Fila horizontal de la tabla -->
+                                <tr>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
+                                    <th scope="row">Eléctrica</th>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary">$25.000</span></td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary">$70.000</span></td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary">$110.000</span></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -190,45 +228,78 @@
 
                 <!-- TABLA 2: RECORRIDOS GUIADOS (id «recorridos-guiados» para enlazarla desde inicio) -->
                 <section id="recorridos-guiados" class="mb-4">
+                    <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                     <div class="d-flex align-items-center gap-2 mb-3">
+                        <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                         <i class="bi bi-map-fill text-warning fs-3" aria-hidden="true"></i>
+                        <!-- <h2>: Título de sección de segundo nivel -->
                         <h2 class="titulo-seccion fw-bold mb-0">Recorridos guiados</h2>
                     </div>
+                    <!-- <p>: Párrafo de texto -->
                     <p class="text-secondary">Explora los detalles de cada circuito con acompañamiento profesional:</p>
+                    <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
                     <div class="table-responsive shadow-sm rounded-3">
+                        <!-- <table>: Tabla estructurada de datos en filas y columnas -->
                         <table class="table table-bordered table-hover align-middle mb-0">
+                            <!-- <caption>: Título descriptivo de la tabla para accesibilidad -->
                             <caption class="visually-hidden">Recorridos guiados: distancia, duración, nivel y precio por persona</caption>
+                            <!-- <thead>: Encabezado de columnas de la tabla -->
                             <thead class="table-dark">
+                                <!-- <tr>: Fila horizontal de la tabla -->
                                 <tr>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
                                     <th scope="col"><i class="bi bi-geo-alt" aria-hidden="true"></i> Recorrido</th>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
                                     <th scope="col"><i class="bi bi-signpost-split" aria-hidden="true"></i> Distancia</th>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
                                     <th scope="col"><i class="bi bi-stopwatch" aria-hidden="true"></i> Duración</th>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
                                     <th scope="col"><i class="bi bi-speedometer2" aria-hidden="true"></i> Nivel</th>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
                                     <th scope="col"><i class="bi bi-cash-stack" aria-hidden="true"></i> Precio por persona</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">Río y Parques</th>
-                                <td>12 km</td>
-                                <td>2 h</td>
-                                <td><span class="badge text-bg-success fw-bold">Fácil</span></td>
-                                <td><span class="fw-bold text-primary fs-6">$45.000</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Sabores de Barrio</th>
-                                <td>18 km</td>
-                                <td>3 h</td>
-                                <td><span class="badge text-bg-warning fw-bold">Medio</span></td>
-                                <td><span class="fw-bold text-primary fs-6">$60.000</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Reto Las Palmas</th>
-                                <td>25 km</td>
-                                <td>4 h</td>
-                                <td><span class="badge text-bg-danger fw-bold">Difícil</span></td>
-                                <td><span class="fw-bold text-primary fs-6">$85.000</span></td>
-                            </tr>
+                            <!-- <tbody>: Cuerpo principal con las filas de datos de la tabla · id «tbody-recorridos» actualizado desde /api/catalogo -->
+                            <tbody id="tbody-recorridos">
+                                <!-- <tr>: Fila horizontal de la tabla -->
+                                <tr>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
+                                    <th scope="row">Río y Parques</th>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td>12 km</td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td>2 h</td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="badge text-bg-success fw-bold">Fácil</span></td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary fs-6">$45.000</span></td>
+                                </tr>
+                                <!-- <tr>: Fila horizontal de la tabla -->
+                                <tr>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
+                                    <th scope="row">Sabores de Barrio</th>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td>18 km</td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td>3 h</td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="badge text-bg-warning fw-bold">Medio</span></td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary fs-6">$60.000</span></td>
+                                </tr>
+                                <!-- <tr>: Fila horizontal de la tabla -->
+                                <tr>
+                                    <!-- <th>: Celda de encabezado de columna o fila -->
+                                    <th scope="row">Reto Las Palmas</th>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td>25 km</td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td>4 h</td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="badge text-bg-danger fw-bold">Difícil</span></td>
+                                    <!-- <td>: Celda de dato dentro de la tabla -->
+                                    <td><span class="fw-bold text-primary fs-6">$85.000</span></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -236,6 +307,7 @@
                     <div class="my-4 text-center text-sm-start">
                         <!-- <a> enlace · clases: btn btn-primary (acción principal: reservar); btn-lg (tamaño grande); rounded-pill; fw-bold · lleva a reservas.html -->
                         <a href="reservas.html" class="btn btn-primary rounded-pill fw-bold btn-lg">
+                            <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                             <i class="bi bi-calendar2-check" aria-hidden="true"></i> Reservar ahora
                         </a>
                     </div>
@@ -246,25 +318,37 @@
             <div class="col-12 col-lg-4">
                 <!-- INFORMACIÓN ADICIONAL: nota de casco y candado + horarios de salida (párrafos, no tablas) -->
                 <section id="info-adicional" class="card border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover p-4 shadow-sm mb-4">
+                    <!-- <h2>: Título de sección de segundo nivel -->
                     <h2 class="h4 fw-bold mb-3"><i class="bi bi-info-circle text-primary" aria-hidden="true"></i> Información adicional</h2>
                     <!-- <div> aviso · clases: alert (aviso Bootstrap); alert-info (color informativo); d-flex; align-items-center; gap-2; mb-3 -->
                     <div class="alert alert-info d-flex align-items-center gap-2 mb-3" role="note">
+                        <!-- <i>: Ícono decorativo de Bootstrap Icons -->
                         <i class="bi bi-shield-shaded fs-4 text-primary" aria-hidden="true"></i>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="mb-0"><strong>¡Todo incluido!</strong> Todas las tarifas incluyen casco y candado de seguridad.</p>
                     </div>
+                    <!-- <div> aviso dinámico · promociones activas desde /api/catalogo -->
+                    <div id="promo-api-info" class="alert alert-warning d-none d-flex align-items-center gap-2 mb-3" role="note"></div>
+                    <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
                     <h3 class="h5 fw-bold"><i class="bi bi-clock-history text-warning" aria-hidden="true"></i> Horarios de salida</h3>
+                    <!-- <p>: Párrafo de texto -->
                     <p class="mb-0">Los recorridos salen sábados y domingos a las <strong>7:00 a. m.</strong></p>
                 </section>
 
                 <!-- CONTENIDO COMPLEMENTARIO: lista de qué llevar -->
                 <!-- <aside> contenido complementario · clases: card (tarjeta Bootstrap); border-2; rounded-4; bg-body-tertiary; tarjeta-hover; p-4; shadow-sm -->
                 <aside id="que-llevar" class="card border-2 rounded-4 overflow-hidden bg-body-tertiary tarjeta-hover p-4 shadow-sm" aria-labelledby="titulo-que-llevar">
+                    <!-- <h2>: Título de sección de segundo nivel · id="titulo-que-llevar" -->
                     <h2 class="h4 fw-bold mb-3" id="titulo-que-llevar"><i class="bi bi-backpack text-warning" aria-hidden="true"></i> ¿Qué llevar a tu recorrido?</h2>
                     <!-- <ul> lista · clases: list-unstyled (sin viñetas); d-flex; flex-column; gap-2; mb-0 -->
                     <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                        <!-- <li>: Elemento individual dentro de una lista -->
                         <li class="d-flex align-items-center gap-2"><i class="bi bi-person-walking fs-4 text-primary" aria-hidden="true"></i> Ropa cómoda</li>
+                        <!-- <li>: Elemento individual dentro de una lista -->
                         <li class="d-flex align-items-center gap-2"><i class="bi bi-cup-straw fs-4 text-primary" aria-hidden="true"></i> Agua</li>
+                        <!-- <li>: Elemento individual dentro de una lista -->
                         <li class="d-flex align-items-center gap-2"><i class="bi bi-sun fs-4 text-warning" aria-hidden="true"></i> Protector solar</li>
+                        <!-- <li>: Elemento individual dentro de una lista -->
                         <li class="d-flex align-items-center gap-2"><i class="bi bi-card-text fs-4 text-danger" aria-hidden="true"></i> Documento de identidad</li>
                     </ul>
                 </aside>
@@ -311,6 +395,7 @@
                         <strong class="d-block mb-2"><i class="bi bi-clock" aria-hidden="true"></i> Horario de atención:</strong>
                         <!-- <p> párrafo · clases: mb-0 (margen exterior) -->
                         <p class="mb-1">Lunes a viernes: 7:00 a. m. – 7:00 p. m.</p>
+                        <!-- <p>: Párrafo de texto -->
                         <p class="mb-0">Sábados, domingos y festivos: 6:00 a. m. – 2:00 p. m.</p>
                     </div>
                 </div>
@@ -330,6 +415,9 @@
     <!-- BOOTSTRAP BUNDLE JS -->
     <!-- <script> script · carga https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- <script>: Bloque o archivo JavaScript para la interactividad de la página · carga el script ../js/tema.js -->
     <script src="../js/tema.js"></script>
+    <!-- <script>: Conecta las tablas de tarifas y recorridos con GET http://localhost:3000/api/catalogo -->
+    <script src="../js/api.js"></script>
 </body>
 </html>

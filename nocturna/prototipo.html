@@ -1,23 +1,40 @@
+<!-- <!DOCTYPE html>: declara que el documento usa el estándar HTML5 -->
 <!DOCTYPE html>
+<!-- <html>: Etiqueta raíz que envuelve todo el documento HTML -->
 <html lang="es">
+<!-- <head>: Cabecera técnica con metadatos, fuentes, estilos y scripts iniciales (no visible) -->
 <head>
+  <!-- <meta>: Metadato de configuración del documento · codificación UTF-8 -->
   <meta charset="UTF-8">
+  <!-- <meta>: Metadato de configuración del documento · ajusta la escala para diseño responsive en móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <title>: Título que aparece en la pestaña del navegador -->
   <title>Rueda Nocturna · Prototipo</title>
   <!-- Play CDN de Tailwind: solo para prototipar -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+<!-- <body>: Cuerpo principal que contiene todo el contenido visible -->
 <body class="bg-slate-950 text-white antialiased">
+  <!-- <main>: Contenido principal y único de la página -->
   <main class="min-h-screen flex items-center justify-center px-4 py-12">
+    <!-- <section>: Sección temática que agrupa contenido relacionado -->
     <section class="w-full max-w-3xl bg-slate-900 text-white px-6 py-16 text-center rounded-3xl space-y-6">
+      <!-- <p>: Párrafo de texto -->
       <p class="uppercase tracking-widest text-sm text-amber-300 font-semibold">Nuevo · Jueves a sábado</p>
+      <!-- <h1>: Título principal de la página (único por documento para SEO y accesibilidad) -->
       <h1 class="text-4xl md:text-6xl font-bold tracking-tight">Rueda Nocturna</h1>
+      <!-- <p>: Párrafo de texto -->
       <p class="text-lg text-slate-300 leading-relaxed max-w-xl mx-auto">Descubre Medellín en bici cuando se encienden las luces</p>
+      <!-- <ul>: Lista no ordenada de elementos -->
       <ul class="flex flex-wrap justify-center gap-6 pt-2 text-base font-semibold text-amber-200">
+        <!-- <li>: Elemento individual dentro de una lista -->
         <li class="bg-slate-800 px-4 py-2 rounded-full">3 rutas</li>
+        <!-- <li>: Elemento individual dentro de una lista -->
         <li class="bg-slate-800 px-4 py-2 rounded-full">Desde $55.000</li>
       </ul>
+      <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
       <div class="pt-2">
+        <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inscripcion -->
         <a href="#inscripcion" class="inline-block bg-amber-400 text-slate-950 font-semibold px-8 py-3 rounded-full hover:bg-amber-300 focus:outline-hidden focus:ring-2 focus:ring-amber-200 focus:ring-offset-2 focus:ring-offset-slate-900">Inscríbete</a>
       </div>
     </section>

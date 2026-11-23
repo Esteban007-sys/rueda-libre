@@ -1,14 +1,26 @@
+<!-- <!DOCTYPE html>: declara que el documento usa el estándar HTML5 -->
 <!DOCTYPE html>
+<!-- <html>: Etiqueta raíz que envuelve todo el documento HTML -->
 <html lang="es">
+<!-- <head>: Cabecera técnica con metadatos, fuentes, estilos y scripts iniciales (no visible) -->
 <head>
+  <!-- <meta>: Metadato de configuración del documento · codificación UTF-8 -->
   <meta charset="UTF-8">
+  <!-- <meta>: Metadato de configuración del documento · ajusta la escala para diseño responsive en móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <title>: Título que aparece en la pestaña del navegador -->
   <title>Rueda Nocturna · Medellín en bici</title>
+  <!-- <link>: Enlaza un recurso externo (hoja de estilos, fuente o ícono) · ícono de pestaña (../img/favicon.png) -->
   <link rel="icon" href="../img/favicon.png" type="image/png">
+  <!-- <link>: Enlaza un recurso externo (hoja de estilos, fuente o ícono) · preconexión rápida a https://fonts.googleapis.com -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- <link>: Enlaza un recurso externo (hoja de estilos, fuente o ícono) · preconexión rápida a https://fonts.gstatic.com -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link>: Enlaza un recurso externo (hoja de estilos, fuente o ícono) · carga las fuentes de marca desde Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- <link>: Enlaza un recurso externo (hoja de estilos, fuente o ícono) · carga la hoja de estilos ./src/output.css -->
   <link rel="stylesheet" href="./src/output.css">
+  <!-- <script>: Bloque o archivo JavaScript para la interactividad de la página · código JavaScript en línea -->
   <script>
     (function () {
       var saved = localStorage.getItem('rueda-tema') || localStorage.getItem('rueda-nocturna-tema');
@@ -18,55 +30,80 @@
     })();
   </script>
 </head>
+<!-- <body>: Cuerpo principal que contiene todo el contenido visible -->
 <body class="font-sans antialiased bg-crema text-gris-asfalto dark:bg-azul-noche-fondo dark:text-gris-asfalto-claro">
   <!-- 1. Header (estructura equivalente al navbar de Rueda Libre; menú hamburguesa solo en mobile-first) -->
   <header class="sticky top-0 z-40 border-b backdrop-blur-sm bg-white/95 border-crema-borde dark:bg-azul-noche-fondo/95 dark:border-azul-noche-borde/40">
+    <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
     <div class="flex flex-wrap items-center justify-between max-w-6xl mx-auto px-4 py-2.5 gap-2 sm:px-6 lg:flex-nowrap lg:gap-4 lg:px-8">
       <!-- Marca / Logotipo -->
       <a href="#inicio" class="flex items-center shrink-0 rounded-lg gap-2.5 focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:focus:ring-amarillo-farol">
+        <!-- <img>: Imagen visual del contenido · muestra ../img/logo.png · texto alternativo: "Logo de Rueda Nocturna" -->
         <img src="../img/logo.png" alt="Logo de Rueda Nocturna" width="44" height="44" class="shrink-0 w-11 h-11 rounded-full object-cover p-0.5 bg-white border border-crema-borde dark:border-amarillo-farol/50">
+        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
         <div>
+          <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
           <span class="block font-display text-base font-bold leading-tight tracking-tight text-azul-noche sm:text-lg dark:text-crema">Rueda Nocturna</span>
+          <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
           <span class="hidden text-xs text-gris-asfalto sm:block dark:text-gris-asfalto-claro">Una campaña de Rueda Libre</span>
         </div>
       </a>
 
       <!-- Enlaces de navegación en línea (visibles en escritorio, ocultos en mobile-first) -->
       <nav aria-label="Navegación principal" class="hidden lg:flex lg:items-center lg:gap-1 lg:ml-auto">
+        <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inicio -->
         <a href="#inicio" class="rounded-lg transition px-3 py-2 text-sm font-semibold text-azul-noche hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Inicio</a>
+        <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #rutas -->
         <a href="#rutas" class="rounded-lg transition px-3 py-2 text-sm font-semibold text-azul-noche hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Rutas</a>
+        <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #como-funciona -->
         <a href="#como-funciona" class="rounded-lg transition px-3 py-2 text-sm font-semibold text-azul-noche hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">¿Cómo funciona?</a>
+        <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inscripcion -->
         <a href="#inscripcion" class="rounded-lg transition px-3 py-2 text-sm font-semibold text-azul-noche hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Inscripción</a>
       </nav>
 
       <!-- Controles de la barra: acceso a Rueda Libre, interruptor sol/luna, Inscríbete y hamburguesa (solo móvil) -->
       <div class="flex items-center gap-2 ml-auto lg:ml-2">
+        <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a ../index.html -->
         <a href="../index.html" class="btn-secundario shrink-0 whitespace-nowrap px-3 py-1.5 text-xs sm:px-3.5 sm:py-2 dark:focus:ring-offset-azul-noche-fondo">
+          <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
           <span class="hidden sm:inline">Regresar a&nbsp;</span>Rueda Libre
         </a>
 
+        <!-- <button>: Botón interactivo que ejecuta una acción · id="theme-toggle" · rol accesible "switch" · tipo "button" · etiqueta accesible: "Cambiar entre tema claro y tema oscuro" -->
         <button id="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Cambiar entre tema claro y tema oscuro" class="theme-switch" title="Alternar entre tema claro y tema oscuro">
+          <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · contiene el ícono de sol (tema claro) -->
           <span class="theme-switch__label theme-switch__label--light" aria-hidden="true">
+            <!-- <svg>: Gráfico vectorial escalable (ícono SVG) -->
             <svg class="theme-switch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <!-- <circle>: Trazo circular dentro del ícono SVG -->
               <circle cx="12" cy="12" r="4" />
+              <!-- <path>: Trazado vectorial que dibuja la forma del ícono SVG -->
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
             </svg>
           </span>
+          <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · pista horizontal del interruptor de tema -->
           <span class="theme-switch__track" aria-hidden="true">
+            <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · indicador circular deslizante del interruptor -->
             <span class="theme-switch__thumb"></span>
           </span>
+          <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos · contiene el ícono de luna (tema oscuro) -->
           <span class="theme-switch__label theme-switch__label--dark" aria-hidden="true">
+            <!-- <svg>: Gráfico vectorial escalable (ícono SVG) -->
             <svg class="theme-switch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <!-- <path>: Trazado vectorial que dibuja la forma del ícono SVG -->
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
             </svg>
           </span>
         </button>
 
+        <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inscripcion -->
         <a href="#inscripcion" class="btn-primario hidden shrink-0 whitespace-nowrap px-4 py-2 text-xs sm:inline-flex sm:text-sm dark:focus:ring-offset-azul-noche-fondo">Inscríbete</a>
 
         <!-- Botón de las tres rayitas: visible únicamente en mobile-first (< lg) -->
         <button id="menu-toggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menu-desplegable" class="inline-flex items-center justify-center shrink-0 w-10 h-10 rounded-xl transition cursor-pointer text-azul-noche hover:bg-crema focus:outline-hidden focus:ring-2 focus:ring-verde-ruta lg:hidden dark:text-crema dark:hover:bg-azul-noche-elevado dark:focus:ring-amarillo-farol">
+          <!-- <svg>: Gráfico vectorial escalable (ícono SVG) -->
           <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <!-- <path>: Trazado vectorial que dibuja la forma del ícono SVG -->
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
@@ -79,51 +116,83 @@
 
   <!-- Menú de opciones en el lateral izquierdo (solo mobile-first) -->
   <aside id="menu-desplegable" aria-label="Menú lateral de navegación" aria-hidden="true" class="fixed inset-y-0 left-0 z-50 flex flex-col w-72 max-w-[85vw] -translate-x-full border-r shadow-2xl transition-transform duration-300 ease-out bg-white border-crema-borde lg:hidden dark:bg-azul-noche dark:border-azul-noche-borde/40">
+    <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
     <div class="flex items-center justify-between border-b px-5 py-4 border-crema-borde dark:border-azul-noche-borde/40">
+      <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
       <div class="flex items-center gap-2.5">
+        <!-- <img>: Imagen visual del contenido · muestra ../img/logo.png · texto alternativo: "Logo de Rueda Nocturna" -->
         <img src="../img/logo.png" alt="Logo de Rueda Nocturna" width="36" height="36" class="w-9 h-9 rounded-full object-cover p-0.5 bg-white border border-crema-borde dark:border-amarillo-farol/50">
+        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
         <div>
+          <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
           <span class="block font-display text-sm font-bold leading-tight text-azul-noche dark:text-crema">Rueda Nocturna</span>
+          <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
           <span class="block text-xs text-gris-asfalto dark:text-gris-asfalto-claro">Navegación</span>
         </div>
       </div>
+      <!-- <button>: Botón interactivo que ejecuta una acción · id="menu-close" · tipo "button" · etiqueta accesible: "Cerrar menú lateral" -->
       <button id="menu-close" type="button" aria-label="Cerrar menú lateral" class="inline-flex items-center justify-center w-9 h-9 rounded-full border transition cursor-pointer bg-crema border-crema-borde text-azul-noche hover:bg-crema-borde/60 focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:bg-azul-noche-elevado dark:border-azul-noche-borde/40 dark:text-crema dark:hover:bg-azul-noche-borde/40 dark:focus:ring-amarillo-farol">
+        <!-- <svg>: Gráfico vectorial escalable (ícono SVG) -->
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <!-- <path>: Trazado vectorial que dibuja la forma del ícono SVG -->
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
 
+    <!-- <nav>: Bloque de navegación con enlaces a secciones o páginas · etiqueta accesible: "Navegación principal" -->
     <nav aria-label="Navegación principal" class="flex-1 overflow-y-auto p-4 space-y-1.5">
+      <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inicio -->
       <a href="#inicio" class="block rounded-xl transition px-4 py-2.5 text-sm font-semibold text-azul-noche hover:bg-crema hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:bg-azul-noche-elevado dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Inicio</a>
+      <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #rutas -->
       <a href="#rutas" class="block rounded-xl transition px-4 py-2.5 text-sm font-semibold text-azul-noche hover:bg-crema hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:bg-azul-noche-elevado dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Rutas</a>
+      <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #como-funciona -->
       <a href="#como-funciona" class="block rounded-xl transition px-4 py-2.5 text-sm font-semibold text-azul-noche hover:bg-crema hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:bg-azul-noche-elevado dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">¿Cómo funciona?</a>
+      <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inscripcion -->
       <a href="#inscripcion" class="block rounded-xl transition px-4 py-2.5 text-sm font-semibold text-azul-noche hover:bg-crema hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:bg-azul-noche-elevado dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Inscripción</a>
+      <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a ./componentes.html -->
       <a href="./componentes.html" class="block rounded-xl transition px-4 py-2.5 text-sm font-semibold text-azul-noche hover:bg-crema hover:text-verde-ruta focus:outline-hidden focus:ring-2 focus:ring-verde-ruta dark:text-crema dark:hover:bg-azul-noche-elevado dark:hover:text-amarillo-farol dark:focus:ring-amarillo-farol">Catálogo de componentes</a>
     </nav>
 
+    <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
     <div class="border-t p-4 space-y-2.5 border-crema-borde dark:border-azul-noche-borde/40">
+      <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inscripcion -->
       <a href="#inscripcion" class="btn-primario w-full text-sm py-2.5">Inscríbete</a>
+      <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a ../index.html -->
       <a href="../index.html" class="btn-secundario w-full text-sm py-2.5">Regresar a Rueda Libre</a>
     </div>
   </aside>
 
+  <!-- <main>: Contenido principal y único de la página -->
   <main>
     <!-- 2. Hero -->
     <section id="inicio" aria-labelledby="titulo-hero" class="py-8 sm:py-12 lg:py-16">
+      <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor centrado con ancho máximo -->
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
         <div class="overflow-hidden rounded-2xl border shadow-2xl bg-white border-crema-borde text-azul-noche sm:rounded-3xl dark:bg-azul-noche dark:border-azul-noche-borde/40 dark:text-crema">
+          <!-- <img>: Imagen visual del contenido · muestra ./img/rodada-nocturna.jpg · texto alternativo: "Grupo de ciclistas urbanos rodando de noche con luces encendidas …" -->
           <img src="./img/rodada-nocturna.jpg" alt="Grupo de ciclistas urbanos rodando de noche con luces encendidas y chalecos reflectivos" class="w-full h-52 object-cover sm:h-72 lg:h-80">
+          <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
           <div class="px-5 py-8 space-y-5 text-center sm:px-8 sm:py-12 sm:space-y-6 lg:px-10 lg:py-16">
+            <!-- <p>: Párrafo de texto -->
             <p class="text-xs font-semibold uppercase tracking-widest text-verde-ruta sm:text-sm dark:text-amarillo-farol">Nuevo · Jueves a sábado</p>
+            <!-- <h1>: Título principal de la página (único por documento para SEO y accesibilidad) · id="titulo-hero" -->
             <h1 id="titulo-hero" class="font-display text-3xl font-bold tracking-tight text-azul-noche sm:text-5xl lg:text-6xl dark:text-crema">Rueda Nocturna</h1>
+            <!-- <p>: Párrafo de texto -->
             <p class="max-w-xl mx-auto text-base leading-relaxed text-gris-asfalto sm:text-lg dark:text-gris-asfalto-claro">Descubre Medellín en bici cuando se encienden las luces</p>
+            <!-- <ul>: Lista no ordenada de elementos -->
             <ul class="flex flex-wrap justify-center pt-2 gap-3 text-sm font-semibold text-azul-noche sm:gap-4 sm:text-base dark:text-amarillo-farol">
+              <!-- <li>: Elemento individual dentro de una lista -->
               <li class="rounded-full border px-4 py-2 bg-crema border-crema-borde dark:bg-azul-noche-elevado dark:border-azul-noche-borde/40">3 rutas</li>
+              <!-- <li>: Elemento individual dentro de una lista -->
               <li class="rounded-full border px-4 py-2 bg-crema border-crema-borde dark:bg-azul-noche-elevado dark:border-azul-noche-borde/40">Desde $55.000</li>
             </ul>
+            <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
             <div class="flex flex-col justify-center pt-4 gap-3 sm:flex-row sm:gap-4">
+              <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inscripcion -->
               <a href="#inscripcion" class="btn-primario w-full sm:w-auto">Inscríbete</a>
+              <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #rutas -->
               <a href="#rutas" class="btn-secundario w-full sm:w-auto">Ver rutas</a>
             </div>
           </div>
@@ -133,91 +202,148 @@
 
     <!-- 3. Rutas (cards mantenidas con utilidades directamente en el HTML) -->
     <section id="rutas" aria-labelledby="titulo-rutas" class="py-10 sm:py-12 lg:py-16">
+      <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor centrado con ancho máximo -->
       <div class="max-w-6xl mx-auto px-4 space-y-8 sm:px-6 sm:space-y-10 lg:px-8">
+        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
         <div class="space-y-2">
+          <!-- <p>: Párrafo de texto -->
           <p class="text-xs font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol">Rutas nocturnas</p>
+          <!-- <h2>: Título de sección de segundo nivel · id="titulo-rutas" -->
           <h2 id="titulo-rutas" class="font-display text-2xl font-bold text-azul-noche sm:text-3xl dark:text-crema">Tres recorridos iluminados por Medellín</h2>
+          <!-- <p>: Párrafo de texto -->
           <p class="max-w-2xl text-sm leading-relaxed text-gris-asfalto sm:text-base dark:text-gris-asfalto-claro">Elige la distancia y el ritmo que mejor se ajusten a tu experiencia. Todas las salidas incluyen guía certificado, bicicleta urbana, luces y chaleco reflectivo.</p>
         </div>
 
+        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · cuadrícula CSS Grid responsive -->
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <!-- Card 1 -->
           <article class="w-full overflow-hidden rounded-2xl border shadow-xl bg-white border-crema-borde dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <!-- <img>: Imagen visual del contenido · muestra ./img/luces-centro-medellin.jpg · texto alternativo: "Edificio Carré iluminado de noche en el centro histórico de Medel…" -->
             <img src="./img/luces-centro-medellin.jpg" alt="Edificio Carré iluminado de noche en el centro histórico de Medellín" loading="lazy" class="w-full h-44 object-cover sm:h-48">
+            <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
             <div class="p-5 space-y-4 sm:p-6">
+              <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
               <div class="flex items-center justify-between gap-2">
+                <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
                 <span class="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-verde-ruta/10 text-verde-ruta dark:bg-verde-ruta-claro/15 dark:text-verde-ruta-claro">Fácil</span>
+                <!-- <p>: Párrafo de texto -->
                 <p class="font-display text-lg font-bold text-verde-ruta sm:text-xl dark:text-amarillo-farol">$55.000</p>
               </div>
+              <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
               <h3 class="font-display text-xl font-bold text-azul-noche sm:text-2xl dark:text-crema">Luces del Centro</h3>
+              <!-- <dl>: Lista de definiciones (pares etiqueta/valor) -->
               <dl class="border-t pt-4 space-y-2 text-sm border-crema-borde dark:border-azul-noche-borde/40">
+                <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                 <div class="flex justify-between gap-3">
+                  <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
                   <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Distancia</dt>
+                  <!-- <dd>: Valor o descripción correspondiente al término anterior -->
                   <dd class="font-semibold text-azul-noche dark:text-crema">10 km</dd>
                 </div>
+                <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                 <div class="flex justify-between gap-3">
+                  <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
                   <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Duración</dt>
+                  <!-- <dd>: Valor o descripción correspondiente al término anterior -->
                   <dd class="font-semibold text-azul-noche dark:text-crema">2 h</dd>
                 </div>
+                <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                 <div class="flex justify-between gap-3">
+                  <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
                   <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Punto de encuentro</dt>
+                  <!-- <dd>: Valor o descripción correspondiente al término anterior -->
                   <dd class="font-semibold text-right text-azul-noche dark:text-crema">Sede de Rueda Libre</dd>
                 </div>
               </dl>
+              <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inscripcion -->
               <a href="#inscripcion" class="btn-primario w-full">Inscríbete</a>
             </div>
           </article>
 
           <!-- Card 2 -->
           <article class="w-full overflow-hidden rounded-2xl border shadow-xl bg-white border-crema-borde dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <!-- <img>: Imagen visual del contenido · muestra ./img/parques-del-rio.jpg · texto alternativo: "Parques del Río Medellín iluminado de noche sobre el río" -->
             <img src="./img/parques-del-rio.jpg" alt="Parques del Río Medellín iluminado de noche sobre el río" loading="lazy" class="w-full h-44 object-cover sm:h-48">
+            <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
             <div class="p-5 space-y-4 sm:p-6">
+              <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
               <div class="flex items-center justify-between gap-2">
+                <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
                 <span class="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-amarillo-farol/35 text-azul-noche dark:bg-amarillo-farol/15 dark:text-amarillo-farol">Intermedia</span>
+                <!-- <p>: Párrafo de texto -->
                 <p class="font-display text-lg font-bold text-verde-ruta sm:text-xl dark:text-amarillo-farol">$65.000</p>
               </div>
+              <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
               <h3 class="font-display text-xl font-bold text-azul-noche sm:text-2xl dark:text-crema">Parques del Río</h3>
+              <!-- <dl>: Lista de definiciones (pares etiqueta/valor) -->
               <dl class="border-t pt-4 space-y-2 text-sm border-crema-borde dark:border-azul-noche-borde/40">
+                <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                 <div class="flex justify-between gap-3">
+                  <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
                   <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Distancia</dt>
+                  <!-- <dd>: Valor o descripción correspondiente al término anterior -->
                   <dd class="font-semibold text-azul-noche dark:text-crema">16 km</dd>
                 </div>
+                <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                 <div class="flex justify-between gap-3">
+                  <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
                   <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Duración</dt>
+                  <!-- <dd>: Valor o descripción correspondiente al término anterior -->
                   <dd class="font-semibold text-azul-noche dark:text-crema">2.5 h</dd>
                 </div>
+                <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                 <div class="flex justify-between gap-3">
+                  <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
                   <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Punto de encuentro</dt>
+                  <!-- <dd>: Valor o descripción correspondiente al término anterior -->
                   <dd class="font-semibold text-right text-azul-noche dark:text-crema">Sede de Rueda Libre</dd>
                 </div>
               </dl>
+              <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inscripcion -->
               <a href="#inscripcion" class="btn-primario w-full">Inscríbete</a>
             </div>
           </article>
 
           <!-- Card 3 -->
           <article class="w-full overflow-hidden rounded-2xl border shadow-xl bg-white border-crema-borde dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <!-- <img>: Imagen visual del contenido · muestra ./img/cerro-nutibara.jpg · texto alternativo: "Vista nocturna de Medellín y sus montañas iluminadas desde el Cer…" -->
             <img src="./img/cerro-nutibara.jpg" alt="Vista nocturna de Medellín y sus montañas iluminadas desde el Cerro Nutibara" loading="lazy" class="w-full h-44 object-cover sm:h-48">
+            <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
             <div class="p-5 space-y-4 sm:p-6">
+              <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
               <div class="flex items-center justify-between gap-2">
+                <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
                 <span class="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-naranja-pedal/25 text-azul-noche dark:bg-naranja-pedal/15 dark:text-naranja-pedal">Exigente</span>
+                <!-- <p>: Párrafo de texto -->
                 <p class="font-display text-lg font-bold text-verde-ruta sm:text-xl dark:text-amarillo-farol">$75.000</p>
               </div>
+              <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
               <h3 class="font-display text-xl font-bold text-azul-noche sm:text-2xl dark:text-crema">Cerro Nutibara</h3>
+              <!-- <dl>: Lista de definiciones (pares etiqueta/valor) -->
               <dl class="border-t pt-4 space-y-2 text-sm border-crema-borde dark:border-azul-noche-borde/40">
+                <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                 <div class="flex justify-between gap-3">
+                  <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
                   <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Distancia</dt>
+                  <!-- <dd>: Valor o descripción correspondiente al término anterior -->
                   <dd class="font-semibold text-azul-noche dark:text-crema">22 km</dd>
                 </div>
+                <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                 <div class="flex justify-between gap-3">
+                  <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
                   <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Duración</dt>
+                  <!-- <dd>: Valor o descripción correspondiente al término anterior -->
                   <dd class="font-semibold text-azul-noche dark:text-crema">3 h</dd>
                 </div>
+                <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
                 <div class="flex justify-between gap-3">
+                  <!-- <dt>: Término o etiqueta de un dato en la lista de definiciones -->
                   <dt class="text-gris-asfalto dark:text-gris-asfalto-claro">Punto de encuentro</dt>
+                  <!-- <dd>: Valor o descripción correspondiente al término anterior -->
                   <dd class="font-semibold text-right text-azul-noche dark:text-crema">Sede de Rueda Libre</dd>
                 </div>
               </dl>
+              <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #inscripcion -->
               <a href="#inscripcion" class="btn-primario w-full">Inscríbete</a>
             </div>
           </article>
@@ -227,35 +353,57 @@
 
     <!-- 4. ¿Cómo funciona? -->
     <section id="como-funciona" aria-labelledby="titulo-pasos" class="py-10 sm:py-12 lg:py-16">
+      <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor centrado con ancho máximo -->
       <div class="max-w-6xl mx-auto px-4 space-y-8 sm:px-6 sm:space-y-10 lg:px-8">
+        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
         <div class="space-y-2">
+          <!-- <p>: Párrafo de texto -->
           <p class="text-xs font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol">Paso a paso</p>
+          <!-- <h2>: Título de sección de segundo nivel · id="titulo-pasos" -->
           <h2 id="titulo-pasos" class="font-display text-2xl font-bold text-azul-noche sm:text-3xl dark:text-crema">¿Cómo funciona?</h2>
+          <!-- <p>: Párrafo de texto -->
           <p class="max-w-2xl text-sm leading-relaxed text-gris-asfalto sm:text-base dark:text-gris-asfalto-claro">En cuatro pasos sencillos te unes a nuestras rodadas nocturnas con todo el equipo de seguridad incluido.</p>
         </div>
 
+        <!-- <ol>: Lista ordenada (numerada) de pasos o elementos -->
         <ol class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          <!-- <li>: Elemento individual dentro de una lista -->
           <li class="rounded-2xl border shadow-lg p-5 space-y-3 bg-white border-crema-borde sm:p-6 dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-display text-sm font-bold bg-verde-ruta/10 text-verde-ruta dark:bg-amarillo-farol/15 dark:text-amarillo-farol">01</span>
+            <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
             <h3 class="font-display text-lg font-bold text-azul-noche sm:text-xl dark:text-crema">Elige tu ruta</h3>
+            <!-- <p>: Párrafo de texto -->
             <p class="text-sm leading-relaxed text-gris-asfalto dark:text-gris-asfalto-claro">Selecciona el recorrido nocturno que mejor se ajuste a tu nivel, distancia y horario preferido.</p>
           </li>
 
+          <!-- <li>: Elemento individual dentro de una lista -->
           <li class="rounded-2xl border shadow-lg p-5 space-y-3 bg-white border-crema-borde sm:p-6 dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-display text-sm font-bold bg-verde-ruta/10 text-verde-ruta dark:bg-amarillo-farol/15 dark:text-amarillo-farol">02</span>
+            <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
             <h3 class="font-display text-lg font-bold text-azul-noche sm:text-xl dark:text-crema">Inscríbete</h3>
+            <!-- <p>: Párrafo de texto -->
             <p class="text-sm leading-relaxed text-gris-asfalto dark:text-gris-asfalto-claro">Reserva tu cupo en línea en menos de dos minutos y recibe la confirmación por correo.</p>
           </li>
 
+          <!-- <li>: Elemento individual dentro de una lista -->
           <li class="rounded-2xl border shadow-lg p-5 space-y-3 bg-white border-crema-borde sm:p-6 dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-display text-sm font-bold bg-verde-ruta/10 text-verde-ruta dark:bg-amarillo-farol/15 dark:text-amarillo-farol">03</span>
+            <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
             <h3 class="font-display text-lg font-bold text-azul-noche sm:text-xl dark:text-crema">Recoge tu equipo</h3>
+            <!-- <p>: Párrafo de texto -->
             <p class="text-sm leading-relaxed text-gris-asfalto dark:text-gris-asfalto-claro">Llega 20 minutos antes a la sede para recibir bici ajustada, casco, luces y chaleco reflectivo.</p>
           </li>
 
+          <!-- <li>: Elemento individual dentro de una lista -->
           <li class="rounded-2xl border shadow-lg p-5 space-y-3 bg-white border-crema-borde sm:p-6 dark:bg-azul-noche dark:border-azul-noche-borde/40">
+            <!-- <span>: Contenedor en línea para estilizar texto, etiquetas o íconos -->
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-display text-sm font-bold bg-verde-ruta/10 text-verde-ruta dark:bg-amarillo-farol/15 dark:text-amarillo-farol">04</span>
+            <!-- <h3>: Subtítulo de tercer nivel (título de tarjeta o bloque) -->
             <h3 class="font-display text-lg font-bold text-azul-noche sm:text-xl dark:text-crema">Rueda</h3>
+            <!-- <p>: Párrafo de texto -->
             <p class="text-sm leading-relaxed text-gris-asfalto dark:text-gris-asfalto-claro">Pedalea en grupo por las ciclorrutas iluminadas de Medellín acompañado por guías expertos.</p>
           </li>
         </ol>
@@ -264,38 +412,60 @@
 
     <!-- 5. Franja de inscripción -->
     <section id="inscripcion" aria-labelledby="titulo-inscripcion" class="py-10 sm:py-12 lg:py-16">
+      <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor centrado con ancho máximo -->
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
         <div class="rounded-2xl border shadow-2xl p-6 space-y-6 bg-white border-crema-borde sm:rounded-3xl sm:p-8 sm:space-y-8 lg:p-10 dark:bg-azul-noche dark:border-azul-noche-borde/40">
+          <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor centrado con ancho máximo -->
           <div class="max-w-2xl mx-auto space-y-3 text-center">
+            <!-- <p>: Párrafo de texto -->
             <p class="text-xs font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol">Cupos limitados por salida</p>
+            <!-- <h2>: Título de sección de segundo nivel · id="titulo-inscripcion" -->
             <h2 id="titulo-inscripcion" class="font-display text-2xl font-bold text-azul-noche sm:text-3xl dark:text-crema">¿Listo para rodar de noche?</h2>
+            <!-- <p>: Párrafo de texto -->
             <p class="text-sm leading-relaxed text-gris-asfalto sm:text-base dark:text-gris-asfalto-claro">Salidas todos los jueves, viernes y sábados desde la Sede de Rueda Libre. Incluye guía, luces y chaleco reflectivo.</p>
           </div>
 
+          <!-- <form>: Formulario interactivo para capturar datos del usuario -->
           <form action="#" method="post" class="grid grid-cols-1 max-w-4xl mx-auto gap-4 md:grid-cols-3">
+            <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
             <div class="space-y-2">
+              <!-- <label>: Etiqueta accesible vinculada a un campo de formulario · asociada al campo "nombre" -->
               <label for="nombre" class="block text-sm font-semibold text-azul-noche dark:text-crema">Nombre completo</label>
+              <!-- <input>: Campo interactivo para ingresar datos o seleccionar opciones · id="nombre" · tipo "text" -->
               <input id="nombre" name="nombre" type="text" required placeholder="Ej. Camila Restrepo" class="w-full rounded-xl border px-4 py-3 text-sm bg-crema border-gris-asfalto text-azul-noche placeholder:text-gris-asfalto focus:outline-hidden focus:ring-2 focus:ring-verde-ruta focus:border-verde-ruta dark:bg-azul-noche-fondo dark:border-azul-noche-borde dark:text-crema dark:placeholder:text-gris-asfalto-claro dark:focus:ring-amarillo-farol dark:focus:border-amarillo-farol">
             </div>
 
+            <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
             <div class="space-y-2">
+              <!-- <label>: Etiqueta accesible vinculada a un campo de formulario · asociada al campo "correo" -->
               <label for="correo" class="block text-sm font-semibold text-azul-noche dark:text-crema">Correo electrónico</label>
+              <!-- <input>: Campo interactivo para ingresar datos o seleccionar opciones · id="correo" · tipo "email" -->
               <input id="correo" name="correo" type="email" required placeholder="camila@correo.com" class="w-full rounded-xl border px-4 py-3 text-sm bg-crema border-gris-asfalto text-azul-noche placeholder:text-gris-asfalto focus:outline-hidden focus:ring-2 focus:ring-verde-ruta focus:border-verde-ruta dark:bg-azul-noche-fondo dark:border-azul-noche-borde dark:text-crema dark:placeholder:text-gris-asfalto-claro dark:focus:ring-amarillo-farol dark:focus:border-amarillo-farol">
             </div>
 
+            <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado -->
             <div class="space-y-2">
+              <!-- <label>: Etiqueta accesible vinculada a un campo de formulario · asociada al campo "ruta" -->
               <label for="ruta" class="block text-sm font-semibold text-azul-noche dark:text-crema">Ruta preferida</label>
+              <!-- <select>: Lista desplegable de opciones seleccionables · id="ruta" -->
               <select id="ruta" name="ruta" class="w-full rounded-xl border px-4 py-3 text-sm bg-crema border-gris-asfalto text-azul-noche focus:outline-hidden focus:ring-2 focus:ring-verde-ruta focus:border-verde-ruta dark:bg-azul-noche-fondo dark:border-azul-noche-borde dark:text-crema dark:focus:ring-amarillo-farol dark:focus:border-amarillo-farol">
+                <!-- <option>: Opción individual dentro de la lista desplegable -->
                 <option value="luces">Luces del Centro · $55.000</option>
+                <!-- <option>: Opción individual dentro de la lista desplegable -->
                 <option value="parques">Parques del Río · $65.000</option>
+                <!-- <option>: Opción individual dentro de la lista desplegable -->
                 <option value="nutibara">Cerro Nutibara · $75.000</option>
               </select>
             </div>
 
+            <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
             <div class="flex flex-col items-stretch justify-center pt-2 gap-3 sm:flex-row sm:items-center sm:gap-4 md:col-span-3">
+              <!-- <button>: Botón interactivo que ejecuta una acción · tipo "submit" -->
               <button type="submit" class="btn-primario">
                 Confirmar inscripción
               </button>
+              <!-- <a>: Enlace interactivo hacia otra sección o página · dirige a #rutas -->
               <a href="#rutas" class="btn-terciario">
                 Comparar rutas
               </a>
@@ -308,38 +478,56 @@
 
   <!-- 6. Footer -->
   <footer class="border-t bg-white border-crema-borde dark:bg-azul-noche-fondo dark:border-azul-noche-borde/40">
+    <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor centrado con ancho máximo -->
     <div class="max-w-6xl mx-auto px-4 py-10 space-y-8 sm:px-6 sm:py-12 lg:px-8">
+      <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
       <div class="flex flex-col items-start gap-8 md:flex-row md:justify-between">
         <!-- Bloque 1: Marca -->
         <div class="max-w-xs space-y-3">
+          <!-- <p>: Párrafo de texto -->
           <p class="font-display text-lg font-bold text-azul-noche dark:text-crema">Rueda Nocturna</p>
+          <!-- <p>: Párrafo de texto -->
           <p class="text-sm leading-relaxed text-gris-asfalto dark:text-gris-asfalto-claro">Recorridos nocturnos guiados en bicicleta por Medellín. Una campaña de movilidad sostenible de Rueda Libre.</p>
         </div>
 
         <!-- Bloque 2: Navegación -->
         <div class="space-y-3">
+          <!-- <h2>: Título de sección de segundo nivel -->
           <h2 class="font-display text-sm font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol">Explora</h2>
+          <!-- <ul>: Lista no ordenada de elementos -->
           <ul class="space-y-2 text-sm text-gris-asfalto dark:text-gris-asfalto-claro">
+            <!-- <li>: Elemento individual dentro de una lista · dirige a #rutas -->
             <li><a href="#rutas" class="transition hover:text-verde-ruta dark:hover:text-amarillo-farol">Rutas nocturnas</a></li>
+            <!-- <li>: Elemento individual dentro de una lista · dirige a #como-funciona -->
             <li><a href="#como-funciona" class="transition hover:text-verde-ruta dark:hover:text-amarillo-farol">¿Cómo funciona?</a></li>
+            <!-- <li>: Elemento individual dentro de una lista · dirige a #inscripcion -->
             <li><a href="#inscripcion" class="transition hover:text-verde-ruta dark:hover:text-amarillo-farol">Inscripción</a></li>
+            <!-- <li>: Elemento individual dentro de una lista · dirige a ./componentes.html -->
             <li><a href="./componentes.html" class="transition hover:text-verde-ruta dark:hover:text-amarillo-farol">Catálogo de componentes</a></li>
           </ul>
         </div>
 
         <!-- Bloque 3: Contacto y horarios -->
         <div class="space-y-3">
+          <!-- <h2>: Título de sección de segundo nivel -->
           <h2 class="font-display text-sm font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol">Encuentro y contacto</h2>
+          <!-- <ul>: Lista no ordenada de elementos -->
           <ul class="space-y-2 text-sm text-gris-asfalto dark:text-gris-asfalto-claro">
+            <!-- <li>: Elemento individual dentro de una lista -->
             <li>Sede de Rueda Libre · Medellín</li>
+            <!-- <li>: Elemento individual dentro de una lista -->
             <li>Jueves a sábado · 7:00 p. m.</li>
+            <!-- <li>: Elemento individual dentro de una lista · dirige a mailto:hola@ruedanocturna.co -->
             <li><a href="mailto:hola@ruedanocturna.co" class="transition hover:text-verde-ruta dark:hover:text-amarillo-farol">hola@ruedanocturna.co</a></li>
           </ul>
         </div>
       </div>
 
+      <!-- <div>: Contenedor genérico para organizar diseño, columnas o espaciado · contenedor flexible (Flexbox) -->
       <div class="flex flex-col items-start justify-between border-t pt-6 gap-2 text-xs border-crema-borde text-gris-asfalto sm:flex-row sm:items-center dark:border-azul-noche-borde/40 dark:text-gris-asfalto-claro">
+        <!-- <p>: Párrafo de texto -->
         <p>&copy; 2026 Rueda Libre · Campaña Rueda Nocturna.</p>
+        <!-- <p>: Párrafo de texto -->
         <p>Pedalea seguro: luces y chaleco reflectivo incluidos en cada salida.</p>
       </div>
     </div>
